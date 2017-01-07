@@ -56,17 +56,17 @@ int			cam_key(int key, int status, void *data)
 	if (status != FTX_KEY_STATUS_PRESSED)
 		return (0);
 	if (key == KEY_W)
-		prim()[0][0].position.y += 10;
+		prim()[0][0].position.y -= 15;
 	if (key == KEY_Q)
-		prim()[0][0].position.z += 10;
+		prim()[0][0].position.z += 15;
 	if (key == KEY_E)
-		prim()[0][0].position.z -= 10;
+		prim()[0][0].position.z -= 15;
 	if (key == KEY_S)
-		prim()[0][0].position.y -= 10;
+		prim()[0][0].position.y += 15;
 	if (key == KEY_D)
-		prim()[0][0].position.x -= 10;
+		prim()[0][0].position.x += 15;
 	if (key == KEY_A)
-		prim()[0][0].position.x += 10;
+		prim()[0][0].position.x -= 15;
 	//if (key == KEY_SPACE)
 	//	cam()->pos.y += 100;
 	//if (key == KEY_SHIFT_LEFT)
@@ -108,9 +108,10 @@ void		rtv1(void)
 	argn()->nb_lights = 2;
 	*prim() = (t_primitive*)ft_malloc(sizeof(t_primitive) * argn()->nb_objects);
 	*lights() = (t_light*)ft_malloc(sizeof(t_light) * argn()->nb_lights);
-	prim()[0][0] = sphere((cl_float4){.x = 120, .y = 0, .z = -500, .w = 0}, 100, (cl_float4){.x = 0, .y = 0, .z = 1, .w = 0});
-	lights()[0][0] = light((cl_float4){.x = 0, .y = 0, .z = -500, .w = 0},  (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
-	lights()[0][1] = light((cl_float4){.x = 100, .y = 200, .z = -500, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
+	prim()[0][0] = sphere((cl_float4){.x = 0, .y = 0, .z = 500, .w = 0}, 100, (cl_float4){.x = 0, .y = 0, .z = 1, .w = 0});
+	lights()[0][0] = light((cl_float4){.x = 0, .y = 0, .z = 200, .w = 0},  (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
+	lights()[0][1] = light((cl_float4){.x = 100, .y = 20, .z = 500, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
+	cam()->pos = (cl_float4){.x = 0, .y = 0, .z = 0, .w = 0};
 	out.size = ft_point(SW, SH);
 	out.data = (int*)ft_malloc(sizeof(int) * SW * SH);
 	update_kernel_args();

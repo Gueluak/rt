@@ -17,7 +17,7 @@ t_camera	*cam(void)
 	static t_camera	cam = {
 
 	.pos = {.x = 0, .y = 0, .z = 0, .w = 0},
-	.dir = {.x = 0, .y = 0, .z = -1, .w = 0},
+	.dir = {.x = 0, .y = 0, .z = 1, .w = 0},
 	.up = {.x = 0, .y = 1, .z = 0, .w = 0},
 	.right = {.x = 1, .y = 0, .z = 0, .w = 0},
 	.orientation = {.r = 1, .i = 0, .j = 0, .k = 0}};

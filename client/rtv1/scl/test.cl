@@ -41,58 +41,98 @@ typedef struct	s_ray
 
 //j'aime les commentaires, et vous? :p
 float4	calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_primitive *objects);
-int		dist_colision_sphere(float	*dist, float4 ray, __global t_primitive *sphr);
-int		colision_sphere(float4 ray, float dist, __global t_primitive *objects, __global t_argn *argn, __global t_light *lights);
+int		dist_colision_sphere(float	*dist, t_ray ray, t_primitive sphr);
+int		colision_sphere(t_ray ray, float dist, __global t_primitive *objects, __global t_argn *argn, __global t_light *lights);
+int		dist_colision_cylindre(float	*dist, t_ray ray, t_primitive cyl);
 		
 
 float4	calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_primitive *objects)
 {
 	float	dist = 0;
-	float4 tmp_l = light.position - colision;
-	tmp_l = normalize(tmp_l);
-	float scal = dot(tmp_l, norm);
+	t_ray tmp_l;
+	tmp_l.direction = light.position - colision;
+	tmp_l.direction = normalize(tmp_l.direction);
+	float scal = dot(tmp_l.direction, norm);
 	for (int i = 0; i < argn->nb_objects; i++)
 	{
-		if (dist_colision_sphere(&dist, tmp_l, &(objects[i])))
+		if (dist_colision_cylindre(&dist, tmp_l, objects[i]))
 			return (0);
 	}
 	return (scal >= 0 ? (float4)(0, 0, 0x88 * scal, 0) : (float4)(0, 0, 0, 0));
 }
 
 
-int		dist_colision_sphere(float	*dist, float4 ray, __global t_primitive *sphr)
+int		dist_colision_sphere(float	*dist, t_ray ray, t_primitive sphr)
 {
-	float c = sphr[0].position.x * sphr[0].position.x + sphr[0].position.y * sphr[0].position.y + sphr[0].position.z * sphr[0].position.z - sphr[0].radius * sphr[0].radius;
-	float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
-	float b = -2 * (ray.x * sphr[0].position.x + ray.y * sphr[0].position.y + ray.z * sphr[0].position.z);
+	sphr.position = sphr.position - ray.origin;
+	float c = sphr.position.x * sphr.position.x + sphr.position.y * sphr.position.y + sphr.position.z * sphr.position.z - sphr.radius * sphr.radius;
+	float a = ray.direction.x * ray.direction.x + ray.direction.y * ray.direction.y + ray.direction.z * ray.direction.z;
+	float b = 2 * (ray.direction.x * sphr.position.x + ray.direction.y * sphr.position.y + ray.direction.z * sphr.position.z);
 	float delta = b * b - 4 * a * c;
 	if (delta < 0)
 		return (0);
-	float x1 = (-b + sqrt(delta)) / (2 * a);
-	float x2 = (-b - sqrt(delta)) / (2 * a);
-	if (x2 >= 0)
+	float x1 = (b - sqrt(delta)) / (2 * a);
+	float x2 = (b + sqrt(delta)) / (2 * a);
+	if (x2 > 0)
 	{
-		if (dist[0] < x2)
+		if (x1 < 0)
 		{
-			dist[0] = x2;
-			return (1);
+			if (x2 < *dist)
+			{
+				*dist = x2;
+				return (-1);
+			}
 		}
-	}
-	else
-	{
-		if (dist[0] < x1)
+		else
 		{
-			dist[0] = x1;
-			return (-1);
+			if (x1 < *dist)
+			{
+				*dist = x1;
+				return (1);
+			}
 		}
 	}
 	return (0);
 }
 
 
-int		colision_sphere(float4 ray, float dist, __global t_primitive *objects, __global t_argn *argn, __global t_light *lights)
+int		dist_colision_cylindre(float	*dist, t_ray ray, t_primitive cyl)
 {
-	float4 colision = ray * dist;
+	//cyl.position = cyl.position - ray.origin;
+	float c = cyl.position.x * cyl.position.x + cyl.position.y * cyl.position.y - cyl.position.z * cyl.position.z + cyl.radius;
+	float a = ray.direction.x * ray.direction.x + ray.direction.y * ray.direction.y - cyl.radius * ray.direction.z * ray.direction.z;
+	float b = 2 * (ray.direction.x * cyl.position.x + ray.direction.y * cyl.position.y + cyl.radius * ray.direction.z * cyl.position.z);
+	float delta = b * b - 4 * a * c;
+	if (delta < 0)
+		return (0);
+	float x1 = (b - sqrt(delta)) / (2 * a);
+	float x2 = (b + sqrt(delta)) / (2 * a);
+	if (x2 > 0)
+	{
+		if (x1 < 0)
+		{
+			if (x2 < *dist)
+			{
+				*dist = x2;
+				return (-1);
+			}
+		}
+		else
+		{
+			if (x1 < *dist)
+			{
+				*dist = x1;
+				return (1);
+			}
+		}
+	}
+	return (0);
+}
+
+
+int		colision_sphere(t_ray ray, float dist, __global t_primitive *objects, __global t_argn *argn, __global t_light *lights)
+{
+	float4 colision = ray.origin + ray.direction * dist;
 	float4 norm = colision - objects[0].position;
 	norm = normalize(norm);
 	float4 fcolor = 0;
@@ -116,21 +156,17 @@ __kernel void	example(							//main kernel, called for each ray
 
 	if (i >= (size_t)argn->screen_size.x * (size_t)argn->screen_size.y)	//the number of kernel executed can overflow the number initialy needed, this is a simple protection to avoid bad memory acces
 		return ;
-	float4 ray = (float4)(0, 0, 0, 0);
-	ray.x = (i % argn->screen_size.x) - (argn->screen_size.x / 2.0f);
-	ray.y = (i / argn->screen_size.x) - (argn->screen_size.y / 2.0f);
-	ray.z = 800;
-	ray = normalize(ray);
-	float dist = -MAXFLOAT;
+	t_ray ray;
+	ray.origin = cam[0].pos;
+	ray.direction.x = (i % argn->screen_size.x) - (argn->screen_size.x / 2.0f);
+	ray.direction.y = (i / argn->screen_size.x) - (argn->screen_size.y / 2.0f);
+	ray.direction.z = 800;
+	ray.direction = normalize(ray.direction);
+	float dist = MAXFLOAT;
 	//printf("dist = %f", dist);
-	float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
-	float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
-	float b = -2 * (ray.x * objects[0].position.x + ray.y * objects[0].position.y + ray.z * objects[0].position.z);
-	float delta;
-	delta = b * b - 4 * a * c;
-	if (dist_colision_sphere(&dist, ray, objects))
+	if (dist_colision_cylindre(&dist, ray, objects[0]))
 	{
-		out[i] = colision_sphere(ray, dist, objects, argn, lights);
+		out[i] = 0xff;//colision_sphere(ray, dist, objects, argn, lights);
 		out[i] = out[i] > 0xff ? 0xff : out[i];
 		//out[i] = out[i] <= 0x33 ? 0x33 : out[i];
 		//if (i == 500 + 500 * 1000)
