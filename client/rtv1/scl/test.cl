@@ -342,18 +342,20 @@ __kernel void	example(							//main kernel, called for each ray
 				if (s_hit == -1) //si on était dans la primitive, on inverse la normale
 					norm = -norm;
 
+				// ambient light
+				cur_color += prim->color * 0.05f; // TODO: ambient amount should be configurable
+
 				// diffuse lighting
 				float scal;
 				if ((scal = DOT(ray_l.direction, norm)) > 0)
-					cur_color += prim->color * light.color * scal; // * diffuse amount;
+					cur_color += prim->color * light.color * scal; // TODO: diffuse coef
 
 				// specular highlights (needs pow to make the curve sharper)
 				float4 ir = phong(-ray_l.direction, norm);
 				if (scal > 0 && (scal = DOT(ray_l.direction, ir)) > 0)
-					cur_color += light.color * pow(max(0.0f, scal), 20); // * specular amount;
+					cur_color += light.color * pow(max(0.0f, scal), 20); // TODO: specular coef
 			}
 
-			// this isnt mathematically correct but is definitely better looking for now
 			color += cur_color; // / (float)argn->nb_lights
 			samples++;
 		}
