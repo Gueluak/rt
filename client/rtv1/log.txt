@@ -1148,3 +1148,2876 @@ Log ended
 New log started
 Initializing OpenCL environement...
 Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+[ft_error] - No opencl gpu device foundNew log started
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:87:2: error: expected statement
+        }
+ ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:87:19: error: use of undeclared identifier 'scal'
+                        printf("%f\n", scal);
+                  ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:83:38: error: invalid operands to binary expression ('float' and 'int')
+                scal >= 0 ? out[i] = (0xff * scal) << 8 : 0;
+                       ~~~~~~~~~~~~~ ^  ~
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:83:17: error: expected ';' after expression
+                out[i] += 0x22
+                ^
+                ;
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:81:3: error: expected expression
+                if (i == 200 + 500 * 1000)
+  ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:74:28: error: can't convert between vector values of different size ('double' and '__float4')
+                tmp_r = ray - 1.5 * scal * norm;
+                ~~~~~~~~~~ ^ ~~~~
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:74:18: error: invalid digit 'f' in decimal constant
+                tmp_r = ray - 3f * scal * norm;
+                 ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:73:37: error: use of undeclared identifier 'cx'
+                tmp_l.x = objects[1].position.x - cx;
+                                    ^
+<program source>:74:37: error: use of undeclared identifier 'cy'
+                tmp_l.y = objects[1].position.y - cy;
+                                    ^
+<program source>:75:37: error: use of undeclared identifier 'cz'
+                tmp_l.z = objects[1].position.z - cz;
+                                    ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:57:46: error: expected identifier
+        float b = -2 * (ray.x * objects[0].position..x + ray.y * objects[0].position.y + ray.z * objects[0].position.z);
+                                             ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:39:1: error: expected function body after function declarator
+__kernel void   example(                                                                                          
+^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:43:7: error: use of undeclared identifier 'i'
+                if (i == 200 + 500 * 1000)
+      ^
+<program source>:73:10: warning: unused variable 'tmp_l'
+                float4 tmp_l = (float4)(0,0,0,0);
+         ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+OpenCL Build Warning : Compiler build log:
+<program source>:71:10: warning: unused variable 'tmp_l'
+                float4 tmp_l = (float4)(0,0,0,0);
+         ^
+
+
+New log started
+Initializing OpenCL environement...
+New log started
+Initializing OpenCL environement...
+New log started
+Initializing OpenCL environement...
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:43:46: error: expected expression
+                return (scal >= 0 ? 0x88 * scal           /: 0);
+                                             ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:45:16: error: use of undeclared identifier 'b'
+                float x1 = (-b + sqrt(delta)) / (2 * a);
+               ^
+<program source>:45:25: error: use of undeclared identifier 'delta'
+                float x1 = (-b + sqrt(delta)) / (2 * a);
+                        ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:4790:33: note: expanded from macro 'sqrt'
+    #define sqrt(__x) __cl_sqrt(__x)
+                                ^
+<program source>:45:40: error: use of undeclared identifier 'a'
+                float x1 = (-b + sqrt(delta)) / (2 * a);
+                                       ^
+<program source>:46:7: error: expected expression
+                if ()
+      ^
+<program source>:47:1: error: expected statement
+}
+^
+<program source>:61:2: error: expected identifier or '('
+ /
+ ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:45:16: error: use of undeclared identifier 'b'
+                float x1 = (-b + sqrt(delta)) / (2 * a);
+               ^
+<program source>:45:25: error: use of undeclared identifier 'delta'
+                float x1 = (-b + sqrt(delta)) / (2 * a);
+                        ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:4790:33: note: expanded from macro 'sqrt'
+    #define sqrt(__x) __cl_sqrt(__x)
+                                ^
+<program source>:45:40: error: use of undeclared identifier 'a'
+                float x1 = (-b + sqrt(delta)) / (2 * a);
+                                       ^
+<program source>:46:7: error: expected expression
+                if ()
+      ^
+<program source>:47:1: error: expected statement
+}
+^
+<program source>:61:2: error: expected identifier or '('
+ /
+ ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:45:16: error: use of undeclared identifier 'b'
+                float x1 = (-b + sqrt(delta)) / (2 * a);
+               ^
+<program source>:45:25: error: use of undeclared identifier 'delta'
+                float x1 = (-b + sqrt(delta)) / (2 * a);
+                        ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:4790:33: note: expanded from macro 'sqrt'
+    #define sqrt(__x) __cl_sqrt(__x)
+                                ^
+<program source>:45:40: error: use of undeclared identifier 'a'
+                float x1 = (-b + sqrt(delta)) / (2 * a);
+                                       ^
+<program source>:60:2: error: expected identifier or '('
+ /
+ ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:59:2: error: expected identifier or '('
+ /
+ ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:59:2: error: expected identifier or '('
+ /
+ ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:60:2: error: expected identifier or '('
+ /
+ ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:17:2: error: unknown type name 'cl_float4'; did you mean '__float4'?
+        cl_float4               position;
+ ^~~~~~~~~
+ __float4
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:65:54: note: '__float4' declared here
+typedef __attribute__(( ext_vector_type(4) ))  float __float4;
+                                                     ^
+<program source>:18:2: error: unknown type name 'cl_float4'; did you mean '__float4'?
+        cl_float4               color;
+ ^~~~~~~~~
+ __float4
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:65:54: note: '__float4' declared here
+typedef __attribute__(( ext_vector_type(4) ))  float __float4;
+                                                     ^
+<program source>:58:12: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+           ^
+<program source>:58:36: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                   ^
+<program source>:58:60: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                           ^
+<program source>:58:84: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                   ^
+<program source>:58:108: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                           ^
+<program source>:58:132: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                                                   ^
+<program source>:58:156: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                                                                           ^
+<program source>:58:176: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                                                                                               ^
+<program source>:60:26: error: use of undeclared identifier 'objects'
+        float b = -2 * (ray.x * objects[0].position.x + ray.y * objects[0].position.y + ray.z * objects[0].position.z);
+                         ^
+<program source>:60:58: error: use of undeclared identifier 'objects'
+        float b = -2 * (ray.x * objects[0].position.x + ray.y * objects[0].position.y + ray.z * objects[0].position.z);
+                                                         ^
+<program source>:60:90: error: use of undeclared identifier 'objects'
+        float b = -2 * (ray.x * objects[0].position.x + ray.y * objects[0].position.y + ray.z * objects[0].position.z);
+                                                                                         ^
+<program source>:66:14: warning: if statement has empty body
+        if (x2 >= 0);
+             ^
+<program source>:66:14: note: put the semicolon on a separate line to silence this warning
+<program source>:74:2: error: expected expression
+        else
+ ^
+<program source>:102:15: error: use of undeclared identifier 'MINFLOAT'
+        float dist = MINFLOAT;
+              ^
+<program source>:103:6: warning: implicit declaration of function 'dist_colision' is invalid in C99
+        if (dist_colision(*dist, ray, objects))
+     ^
+<program source>:103:20: error: indirection requires pointer operand ('float' invalid)
+        if (dist_colision(*dist, ray, objects))
+                   ^~~~~
+<program source>:105:3: error: use of undeclared identifier 'colision'
+                colision = ray * dist;
+  ^
+<program source>:106:3: error: use of undeclared identifier 'norm'
+                norm = colision - objects[0].position;
+  ^
+<program source>:106:10: error: use of undeclared identifier 'colision'
+                norm = colision - objects[0].position;
+         ^
+<program source>:107:3: error: use of undeclared identifier 'norm'
+                norm = normalize(norm);
+  ^
+<program source>:107:20: error: use of undeclared identifier 'norm'
+                norm = normalize(norm);
+                   ^
+<program source>:108:25: error: use of undeclared identifier 'norm'
+                float scal = dot(ray, norm);
+                        ^
+<program source>:109:3: error: use of undeclared identifier 'tmp_r'
+                tmp_r = ray - 2.0f * scal * norm;
+  ^
+<program source>:109:31: error: use of undeclared identifier 'norm'
+                tmp_r = ray - 2.0f * scal * norm;
+                              ^
+<program source>:110:3: error: use of undeclared identifier 'tmp_r'
+                tmp_r = normalize(tmp_r);
+  ^
+<program source>:110:21: error: use of undeclared identifier 'tmp_r'
+                tmp_r = normalize(tmp_r);
+                    ^
+<program source>:114:25: error: use of undeclared identifier 'colision'
+                        out[i] += calcul_lum(colision, norm, objects[1 + j]);
+                        ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:17:2: error: unknown type name 'cl_float4'; did you mean '__float4'?
+        cl_float4               position;
+ ^~~~~~~~~
+ __float4
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:65:54: note: '__float4' declared here
+typedef __attribute__(( ext_vector_type(4) ))  float __float4;
+                                                     ^
+<program source>:18:2: error: unknown type name 'cl_float4'; did you mean '__float4'?
+        cl_float4               color;
+ ^~~~~~~~~
+ __float4
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:65:54: note: '__float4' declared here
+typedef __attribute__(( ext_vector_type(4) ))  float __float4;
+                                                     ^
+<program source>:58:12: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+           ^
+<program source>:58:36: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                   ^
+<program source>:58:60: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                           ^
+<program source>:58:84: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                   ^
+<program source>:58:108: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                           ^
+<program source>:58:132: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                                                   ^
+<program source>:58:156: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                                                                           ^
+<program source>:58:176: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                                                                                               ^
+<program source>:60:26: error: use of undeclared identifier 'objects'
+        float b = -2 * (ray.x * objects[0].position.x + ray.y * objects[0].position.y + ray.z * objects[0].position.z);
+                         ^
+<program source>:60:58: error: use of undeclared identifier 'objects'
+        float b = -2 * (ray.x * objects[0].position.x + ray.y * objects[0].position.y + ray.z * objects[0].position.z);
+                                                         ^
+<program source>:60:90: error: use of undeclared identifier 'objects'
+        float b = -2 * (ray.x * objects[0].position.x + ray.y * objects[0].position.y + ray.z * objects[0].position.z);
+                                                                                         ^
+<program source>:66:14: warning: if statement has empty body
+        if (x2 >= 0);
+             ^
+<program source>:66:14: note: put the semicolon on a separate line to silence this warning
+<program source>:74:2: error: expected expression
+        else
+ ^
+<program source>:102:15: error: use of undeclared identifier 'MINFLOAT'
+        float dist = MINFLOAT;
+              ^
+<program source>:103:6: warning: implicit declaration of function 'dist_colision' is invalid in C99
+        if (dist_colision(*dist, ray, objects))
+     ^
+<program source>:103:20: error: indirection requires pointer operand ('float' invalid)
+        if (dist_colision(*dist, ray, objects))
+                   ^~~~~
+<program source>:105:3: error: use of undeclared identifier 'colision'
+                colision = ray * dist;
+  ^
+<program source>:106:17: error: use of undeclared identifier 'colision'
+                float4 norm = colision - objects[0].position;
+                ^
+<program source>:109:3: error: use of undeclared identifier 'tmp_r'
+                tmp_r = ray - 2.0f * scal * norm;
+  ^
+<program source>:110:3: error: use of undeclared identifier 'tmp_r'
+                tmp_r = normalize(tmp_r);
+  ^
+<program source>:110:21: error: use of undeclared identifier 'tmp_r'
+                tmp_r = normalize(tmp_r);
+                    ^
+<program source>:114:25: error: use of undeclared identifier 'colision'
+                        out[i] += calcul_lum(colision, norm, objects[1 + j]);
+                        ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:17:2: error: unknown type name 'cl_float4'; did you mean '__float4'?
+        cl_float4               position;
+ ^~~~~~~~~
+ __float4
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:65:54: note: '__float4' declared here
+typedef __attribute__(( ext_vector_type(4) ))  float __float4;
+                                                     ^
+<program source>:18:2: error: unknown type name 'cl_float4'; did you mean '__float4'?
+        cl_float4               color;
+ ^~~~~~~~~
+ __float4
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:65:54: note: '__float4' declared here
+typedef __attribute__(( ext_vector_type(4) ))  float __float4;
+                                                     ^
+<program source>:58:12: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+           ^
+<program source>:58:36: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                   ^
+<program source>:58:60: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                           ^
+<program source>:58:84: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                   ^
+<program source>:58:108: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                           ^
+<program source>:58:132: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                                                   ^
+<program source>:58:156: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                                                                           ^
+<program source>:58:176: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                                                                                               ^
+<program source>:60:26: error: use of undeclared identifier 'objects'
+        float b = -2 * (ray.x * objects[0].position.x + ray.y * objects[0].position.y + ray.z * objects[0].position.z);
+                         ^
+<program source>:60:58: error: use of undeclared identifier 'objects'
+        float b = -2 * (ray.x * objects[0].position.x + ray.y * objects[0].position.y + ray.z * objects[0].position.z);
+                                                         ^
+<program source>:60:90: error: use of undeclared identifier 'objects'
+        float b = -2 * (ray.x * objects[0].position.x + ray.y * objects[0].position.y + ray.z * objects[0].position.z);
+                                                                                         ^
+<program source>:66:14: warning: if statement has empty body
+        if (x2 >= 0);
+             ^
+<program source>:66:14: note: put the semicolon on a separate line to silence this warning
+<program source>:74:2: error: expected expression
+        else
+ ^
+<program source>:102:15: error: use of undeclared identifier 'MINFLOAT'
+        float dist = MINFLOAT;
+              ^
+<program source>:103:6: warning: implicit declaration of function 'dist_colision' is invalid in C99
+        if (dist_colision(*dist, ray, objects))
+     ^
+<program source>:103:20: error: indirection requires pointer operand ('float' invalid)
+        if (dist_colision(*dist, ray, objects))
+                   ^~~~~
+<program source>:105:3: error: use of undeclared identifier 'colision'
+                colision = ray * dist;
+  ^
+<program source>:106:17: error: use of undeclared identifier 'colision'
+                float4 norm = colision - objects[0].position;
+                ^
+<program source>:114:25: error: use of undeclared identifier 'colision'
+                        out[i] += calcul_lum(colision, norm, objects[1 + j]);
+                        ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:17:2: error: unknown type name 'cl_float4'; did you mean '__float4'?
+        cl_float4               position;
+ ^~~~~~~~~
+ __float4
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:65:54: note: '__float4' declared here
+typedef __attribute__(( ext_vector_type(4) ))  float __float4;
+                                                     ^
+<program source>:18:2: error: unknown type name 'cl_float4'; did you mean '__float4'?
+        cl_float4               color;
+ ^~~~~~~~~
+ __float4
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:65:54: note: '__float4' declared here
+typedef __attribute__(( ext_vector_type(4) ))  float __float4;
+                                                     ^
+<program source>:58:12: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+           ^
+<program source>:58:36: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                   ^
+<program source>:58:60: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                           ^
+<program source>:58:84: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                   ^
+<program source>:58:108: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                           ^
+<program source>:58:132: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                                                   ^
+<program source>:58:156: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                                                                           ^
+<program source>:58:176: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                                                                                               ^
+<program source>:60:26: error: use of undeclared identifier 'objects'
+        float b = -2 * (ray.x * objects[0].position.x + ray.y * objects[0].position.y + ray.z * objects[0].position.z);
+                         ^
+<program source>:60:58: error: use of undeclared identifier 'objects'
+        float b = -2 * (ray.x * objects[0].position.x + ray.y * objects[0].position.y + ray.z * objects[0].position.z);
+                                                         ^
+<program source>:60:90: error: use of undeclared identifier 'objects'
+        float b = -2 * (ray.x * objects[0].position.x + ray.y * objects[0].position.y + ray.z * objects[0].position.z);
+                                                                                         ^
+<program source>:66:14: warning: if statement has empty body
+        if (x2 >= 0);
+             ^
+<program source>:66:14: note: put the semicolon on a separate line to silence this warning
+<program source>:74:2: error: expected expression
+        else
+ ^
+<program source>:102:15: error: use of undeclared identifier 'MINFLOAT'
+        float dist = MINFLOAT;
+              ^
+<program source>:103:6: warning: implicit declaration of function 'dist_colision' is invalid in C99
+        if (dist_colision(*dist, ray, objects))
+     ^
+<program source>:103:20: error: indirection requires pointer operand ('float' invalid)
+        if (dist_colision(*dist, ray, objects))
+                   ^~~~~
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:17:2: error: unknown type name 'cl_float4'; did you mean '__float4'?
+        cl_float4               position;
+ ^~~~~~~~~
+ __float4
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:65:54: note: '__float4' declared here
+typedef __attribute__(( ext_vector_type(4) ))  float __float4;
+                                                     ^
+<program source>:18:2: error: unknown type name 'cl_float4'; did you mean '__float4'?
+        cl_float4               color;
+ ^~~~~~~~~
+ __float4
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:65:54: note: '__float4' declared here
+typedef __attribute__(( ext_vector_type(4) ))  float __float4;
+                                                     ^
+<program source>:58:12: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+           ^
+<program source>:58:36: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                   ^
+<program source>:58:60: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                           ^
+<program source>:58:84: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                   ^
+<program source>:58:108: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                           ^
+<program source>:58:132: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                                                   ^
+<program source>:58:156: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                                                                           ^
+<program source>:58:176: error: use of undeclared identifier 'objects'
+        float c = objects[0].position.x * objects[0].position.x + objects[0].position.y * objects[0].position.y + objects[0].position.z * objects[0].position.z - objects[0].radius * objects[0].radius;
+                                                                                                                                                                               ^
+<program source>:60:26: error: use of undeclared identifier 'objects'
+        float b = -2 * (ray.x * objects[0].position.x + ray.y * objects[0].position.y + ray.z * objects[0].position.z);
+                         ^
+<program source>:60:58: error: use of undeclared identifier 'objects'
+        float b = -2 * (ray.x * objects[0].position.x + ray.y * objects[0].position.y + ray.z * objects[0].position.z);
+                                                         ^
+<program source>:60:90: error: use of undeclared identifier 'objects'
+        float b = -2 * (ray.x * objects[0].position.x + ray.y * objects[0].position.y + ray.z * objects[0].position.z);
+                                                                                         ^
+<program source>:66:14: warning: if statement has empty body
+        if (x2 >= 0);
+             ^
+<program source>:66:14: note: put the semicolon on a separate line to silence this warning
+<program source>:74:2: error: expected expression
+        else
+ ^
+<program source>:103:6: warning: implicit declaration of function 'dist_colision' is invalid in C99
+        if (dist_colision(*dist, ray, objects))
+     ^
+<program source>:103:20: error: indirection requires pointer operand ('float' invalid)
+        if (dist_colision(*dist, ray, objects))
+                   ^~~~~
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:17:2: error: unknown type name 'cl_float4'; did you mean '__float4'?
+        cl_float4               position;
+ ^~~~~~~~~
+ __float4
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:65:54: note: '__float4' declared here
+typedef __attribute__(( ext_vector_type(4) ))  float __float4;
+                                                     ^
+<program source>:18:2: error: unknown type name 'cl_float4'; did you mean '__float4'?
+        cl_float4               color;
+ ^~~~~~~~~
+ __float4
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:65:54: note: '__float4' declared here
+typedef __attribute__(( ext_vector_type(4) ))  float __float4;
+                                                     ^
+<program source>:66:14: warning: if statement has empty body
+        if (x2 >= 0);
+             ^
+<program source>:66:14: note: put the semicolon on a separate line to silence this warning
+<program source>:74:2: error: expected expression
+        else
+ ^
+<program source>:103:6: warning: implicit declaration of function 'dist_colision' is invalid in C99
+        if (dist_colision(*dist, ray, objects))
+     ^
+<program source>:103:20: error: indirection requires pointer operand ('float' invalid)
+        if (dist_colision(*dist, ray, objects))
+                   ^~~~~
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:17:2: error: unknown type name 'cl_float4'; did you mean '__float4'?
+        cl_float4               position;
+ ^~~~~~~~~
+ __float4
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:65:54: note: '__float4' declared here
+typedef __attribute__(( ext_vector_type(4) ))  float __float4;
+                                                     ^
+<program source>:18:2: error: unknown type name 'cl_float4'; did you mean '__float4'?
+        cl_float4               color;
+ ^~~~~~~~~
+ __float4
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:65:54: note: '__float4' declared here
+typedef __attribute__(( ext_vector_type(4) ))  float __float4;
+                                                     ^
+<program source>:66:14: warning: if statement has empty body
+        if (x2 >= 0);
+             ^
+<program source>:66:14: note: put the semicolon on a separate line to silence this warning
+<program source>:74:2: error: expected expression
+        else
+ ^
+<program source>:103:6: warning: implicit declaration of function 'dist_colision' is invalid in C99
+        if (dist_colision(&dist, ray, objects))
+     ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:17:2: error: unknown type name 'cl_float4'; did you mean '__float4'?
+        cl_float4               position;
+ ^~~~~~~~~
+ __float4
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:65:54: note: '__float4' declared here
+typedef __attribute__(( ext_vector_type(4) ))  float __float4;
+                                                     ^
+<program source>:18:2: error: unknown type name 'cl_float4'; did you mean '__float4'?
+        cl_float4               color;
+ ^~~~~~~~~
+ __float4
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:65:54: note: '__float4' declared here
+typedef __attribute__(( ext_vector_type(4) ))  float __float4;
+                                                     ^
+<program source>:66:14: warning: if statement has empty body
+        if (x2 >= 0);
+             ^
+<program source>:66:14: note: put the semicolon on a separate line to silence this warning
+<program source>:74:2: error: expected expression
+        else
+ ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:66:14: warning: if statement has empty body
+        if (x2 >= 0);
+             ^
+<program source>:66:14: note: put the semicolon on a separate line to silence this warning
+<program source>:74:2: error: expected expression
+        else
+ ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:66:14: warning: if statement has empty body
+        if (x2 >= 0);
+             ^
+<program source>:66:14: note: put the semicolon on a separate line to silence this warning
+<program source>:74:2: error: expected expression
+        else
+ ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_INVALID_KERNEL_ARGS] : OpenCL Error : clEnqueueNDRangeKernel failed: kernel_arg 4 has not yet been initialized
+[ft_error] - starting of kernel failed
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:66:25: error: expected ';' after expression
+        printf("x1 = %f\n", x1)
+                        ^
+                        ;
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:56:6: error: conflicting types for 'dist_colision_sphere'
+int             dist_colision_sphere(float      *dist, float4 ray, t_primitive sphr)
+     ^
+<program source>:44:6: note: previous declaration is here
+int             dist_colision_sphere(float      *dist, float4 ray, __global t_primitive *sphr);
+     ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:109:39: error: passing '__global t_primitive *' (aka '__global struct s_primitive *') to parameter of incompatible type 't_primitive' (aka 'struct s_primitive')
+        if (dist_colision_sphere(&dist, ray, objects))
+                                      ^~~~~~~
+<program source>:56:64: note: passing argument to parameter 'sphr' here
+int             dist_colision_sphere(float      *dist, float4 ray, t_primitive sphr)
+                                                               ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:56:6: error: conflicting types for 'dist_colision_sphere'
+int             dist_colision_sphere(float      *dist, float4 ray, t_primitive *sphr)
+     ^
+<program source>:44:6: note: previous declaration is here
+int             dist_colision_sphere(float      *dist, float4 ray, __global t_primitive *sphr);
+     ^
+<program source>:112:8: warning: unused variable 'delta'
+        float delta = b * b - 4 * a * c;
+       ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:56:6: error: conflicting types for 'dist_colision_sphere'
+int             dist_colision_sphere(float      *dist, float4 ray, t_primitive *sphr)
+     ^
+<program source>:44:6: note: previous declaration is here
+int             dist_colision_sphere(float      *dist, float4 ray, __global t_primitive *sphr);
+     ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:49:8: error: conflicting types for 'calcul_lum'
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_light *objects)
+       ^
+<program source>:44:8: note: previous declaration is here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_primitive * objects);
+       ^
+<program source>:52:7: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+      ^
+<program source>:52:14: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+             ^
+<program source>:52:36: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+                                   ^
+<program source>:53:35: error: use of undeclared identifier 'tmp_l'
+                if (dist_colision_sphere(&dist, tmp_l, &(objects[i])))
+                                  ^
+<program source>:92:6: warning: no previous prototype for function 'colision_sphere'
+int             colision_sphere(float4 ray, float dist, __global t_primitive *objects, __global t_argn *argn)
+     ^
+<program source>:96:27: error: use of undeclared identifier 'sphr'
+        float4 norm = colision - sphr[0].position;
+                          ^
+<program source>:101:40: error: use of undeclared identifier 'lights'
+                fcolor += calcul_lum(colision, norm, lights[j], argn, objects);
+                                       ^
+<program source>:100:22: warning: comparison of integers of different signs: 'size_t' (aka 'unsigned long') and '__global int'
+        for(size_t j = 0; j < argn->nb_lights; j++)
+                   ~ ^ ~~~~~~~~~~~~~~~
+<program source>:114:6: error: use of undeclared identifier 'i'
+        out[i] = 0;
+     ^
+<program source>:134:53: error: expected ';' after expression
+                out[i] = colision_sphere(ray, dist, objects, argn)
+                                                    ^
+                                                    ;
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:49:8: error: conflicting types for 'calcul_lum'
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_light *objects)
+       ^
+<program source>:44:8: note: previous declaration is here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_primitive * objects);
+       ^
+<program source>:52:7: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+      ^
+<program source>:52:14: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+             ^
+<program source>:52:36: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+                                   ^
+<program source>:53:35: error: use of undeclared identifier 'tmp_l'
+                if (dist_colision_sphere(&dist, tmp_l, &(objects[i])))
+                                  ^
+<program source>:92:6: warning: no previous prototype for function 'colision_sphere'
+int             colision_sphere(float4 ray, float dist, __global t_primitive *objects, __global t_argn *argn)
+     ^
+<program source>:96:27: error: use of undeclared identifier 'sphr'
+        float4 norm = colision - sphr[0].position;
+                          ^
+<program source>:101:40: error: use of undeclared identifier 'lights'
+                fcolor += calcul_lum(colision, norm, lights[j], argn, objects);
+                                       ^
+<program source>:100:22: warning: comparison of integers of different signs: 'size_t' (aka 'unsigned long') and '__global int'
+        for(size_t j = 0; j < argn->nb_lights; j++)
+                   ~ ^ ~~~~~~~~~~~~~~~
+<program source>:114:6: error: use of undeclared identifier 'i'
+        out[i] = 0;
+     ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:49:8: error: conflicting types for 'calcul_lum'
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_light *objects)
+       ^
+<program source>:44:8: note: previous declaration is here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_primitive * objects);
+       ^
+<program source>:52:7: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+      ^
+<program source>:52:14: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+             ^
+<program source>:52:36: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+                                   ^
+<program source>:53:35: error: use of undeclared identifier 'tmp_l'
+                if (dist_colision_sphere(&dist, tmp_l, &(objects[i])))
+                                  ^
+<program source>:92:6: warning: no previous prototype for function 'colision_sphere'
+int             colision_sphere(float4 ray, float dist, __global t_primitive *objects, __global t_argn *argn)
+     ^
+<program source>:96:27: error: use of undeclared identifier 'sphr'
+        float4 norm = colision - sphr[0].position;
+                          ^
+<program source>:101:40: error: use of undeclared identifier 'lights'
+                fcolor += calcul_lum(colision, norm, lights[j], argn, objects);
+                                       ^
+<program source>:100:22: warning: comparison of integers of different signs: 'size_t' (aka 'unsigned long') and '__global int'
+        for(size_t j = 0; j < argn->nb_lights; j++)
+                   ~ ^ ~~~~~~~~~~~~~~~
+<program source>:115:9: warning: unused variable 'j'
+        size_t j = 0;
+        ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:49:8: error: conflicting types for 'calcul_lum'
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_light *objects)
+       ^
+<program source>:44:8: note: previous declaration is here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_primitive * objects);
+       ^
+<program source>:52:7: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+      ^
+<program source>:52:14: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+             ^
+<program source>:52:36: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+                                   ^
+<program source>:53:35: error: use of undeclared identifier 'tmp_l'
+                if (dist_colision_sphere(&dist, tmp_l, &(objects[i])))
+                                  ^
+<program source>:92:6: warning: no previous prototype for function 'colision_sphere'
+int             colision_sphere(float4 ray, float dist, __global t_primitive *objects, __global t_argn *argn)
+     ^
+<program source>:96:27: error: use of undeclared identifier 'sphr'
+        float4 norm = colision - sphr[0].position;
+                          ^
+<program source>:101:40: error: use of undeclared identifier 'lights'
+                fcolor += calcul_lum(colision, norm, lights[j], argn, objects);
+                                       ^
+<program source>:100:22: warning: comparison of integers of different signs: 'size_t' (aka 'unsigned long') and '__global int'
+        for(size_t j = 0; j < argn->nb_lights; j++)
+                   ~ ^ ~~~~~~~~~~~~~~~
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:49:8: error: conflicting types for 'calcul_lum'
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_light *objects)
+       ^
+<program source>:44:8: note: previous declaration is here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_primitive * objects);
+       ^
+<program source>:52:7: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+      ^
+<program source>:52:14: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+             ^
+<program source>:52:36: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+                                   ^
+<program source>:53:35: error: use of undeclared identifier 'tmp_l'
+                if (dist_colision_sphere(&dist, tmp_l, &(objects[i])))
+                                  ^
+<program source>:92:6: warning: no previous prototype for function 'colision_sphere'
+int             colision_sphere(float4 ray, float dist, __global t_primitive *objects, __global t_argn *argn)
+     ^
+<program source>:96:27: error: use of undeclared identifier 'sphr'
+        float4 norm = colision - sphr[0].position;
+                          ^
+<program source>:101:40: error: use of undeclared identifier 'lights'
+                fcolor += calcul_lum(colision, norm, lights[j], argn, objects);
+                                       ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:49:8: error: conflicting types for 'calcul_lum'
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_light *objects)
+       ^
+<program source>:44:8: note: previous declaration is here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_primitive * objects);
+       ^
+<program source>:52:7: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+      ^
+<program source>:52:14: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+             ^
+<program source>:52:36: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+                                   ^
+<program source>:53:35: error: use of undeclared identifier 'tmp_l'
+                if (dist_colision_sphere(&dist, tmp_l, &(objects[i])))
+                                  ^
+<program source>:92:6: warning: no previous prototype for function 'colision_sphere'
+int             colision_sphere(float4 ray, float dist, __global t_primitive *objects, __global t_argn *argn, __global t_light *lights)
+     ^
+<program source>:96:27: error: use of undeclared identifier 'sphr'
+        float4 norm = colision - sphr[0].position;
+                          ^
+<program source>:101:57: error: too many arguments to function call, expected 4, have 5
+                fcolor += calcul_lum(colision, norm, lights[j], argn, objects);
+            ~~~~~~~~~~                                  ^~~~~~~
+<program source>:44:1: note: 'calcul_lum' declared here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_primitive * objects);
+^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:133:18: note: expanded from macro 'float4'
+#define float4                  __float4
+                 ^
+<program source>:133:52: error: too few arguments to function call, expected 5, have 4
+                out[i] = colision_sphere(ray, dist, objects, argn);
+           ~~~~~~~~~~~~~~~                         ^
+<program source>:92:1: note: 'colision_sphere' declared here
+int             colision_sphere(float4 ray, float dist, __global t_primitive *objects, __global t_argn *argn, __global t_light *lights)
+^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:49:8: error: conflicting types for 'calcul_lum'
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_light *objects)
+       ^
+<program source>:44:8: note: previous declaration is here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_primitive * objects);
+       ^
+<program source>:52:7: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+      ^
+<program source>:52:14: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+             ^
+<program source>:52:36: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+                                   ^
+<program source>:53:35: error: use of undeclared identifier 'tmp_l'
+                if (dist_colision_sphere(&dist, tmp_l, &(objects[i])))
+                                  ^
+<program source>:96:27: error: use of undeclared identifier 'sphr'
+        float4 norm = colision - sphr[0].position;
+                          ^
+<program source>:101:57: error: too many arguments to function call, expected 4, have 5
+                fcolor += calcul_lum(colision, norm, lights[j], argn, objects);
+            ~~~~~~~~~~                                  ^~~~~~~
+<program source>:44:1: note: 'calcul_lum' declared here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_primitive * objects);
+^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:133:18: note: expanded from macro 'float4'
+#define float4                  __float4
+                 ^
+<program source>:133:52: error: too few arguments to function call, expected 5, have 4
+                out[i] = colision_sphere(ray, dist, objects, argn);
+           ~~~~~~~~~~~~~~~                         ^
+<program source>:92:1: note: 'colision_sphere' declared here
+int             colision_sphere(float4 ray, float dist, __global t_primitive *objects, __global t_argn *argn, __global t_light *lights)
+^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:49:8: error: conflicting types for 'calcul_lum'
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_light *objects)
+       ^
+<program source>:44:8: note: previous declaration is here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_primitive * objects);
+       ^
+<program source>:52:7: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+      ^
+<program source>:52:14: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+             ^
+<program source>:52:36: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+                                   ^
+<program source>:53:35: error: use of undeclared identifier 'tmp_l'
+                if (dist_colision_sphere(&dist, tmp_l, &(objects[i])))
+                                  ^
+<program source>:96:27: error: use of undeclared identifier 'sphr'
+        float4 norm = colision - sphr[0].position;
+                          ^
+<program source>:101:57: error: too many arguments to function call, expected 4, have 5
+                fcolor += calcul_lum(colision, norm, lights[j], argn, objects);
+            ~~~~~~~~~~                                  ^~~~~~~
+<program source>:44:1: note: 'calcul_lum' declared here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_primitive * objects);
+^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:133:18: note: expanded from macro 'float4'
+#define float4                  __float4
+                 ^
+<program source>:133:54: error: use of undeclared identifier 'lights'
+                out[i] = colision_sphere(ray, dist, objects, argn, lights);
+                                                     ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:49:8: error: conflicting types for 'calcul_lum'
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_light *objects)
+       ^
+<program source>:44:8: note: previous declaration is here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_primitive * objects);
+       ^
+<program source>:52:7: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+      ^
+<program source>:52:14: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+             ^
+<program source>:52:36: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+                                   ^
+<program source>:53:35: error: use of undeclared identifier 'tmp_l'
+                if (dist_colision_sphere(&dist, tmp_l, &(objects[i])))
+                                  ^
+<program source>:96:27: error: use of undeclared identifier 'sphr'
+        float4 norm = colision - sphr[0].position;
+                          ^
+<program source>:101:57: error: too many arguments to function call, expected 4, have 5
+                fcolor += calcul_lum(colision, norm, lights[j], argn, objects);
+            ~~~~~~~~~~                                  ^~~~~~~
+<program source>:44:1: note: 'calcul_lum' declared here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_primitive * objects);
+^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:133:18: note: expanded from macro 'float4'
+#define float4                  __float4
+                 ^
+<program source>:133:54: error: use of undeclared identifier 'lights'
+                out[i] = colision_sphere(ray, dist, objects, argn, lights);
+                                                     ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:49:8: error: conflicting types for 'calcul_lum'
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_light *objects)
+       ^
+<program source>:44:8: note: previous declaration is here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_primitive * objects);
+       ^
+<program source>:52:7: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+      ^
+<program source>:52:14: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+             ^
+<program source>:52:36: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+                                   ^
+<program source>:53:35: error: use of undeclared identifier 'tmp_l'
+                if (dist_colision_sphere(&dist, tmp_l, &(objects[i])))
+                                  ^
+<program source>:96:27: error: use of undeclared identifier 'sphr'
+        float4 norm = colision - sphr[0].position;
+                          ^
+<program source>:101:57: error: too many arguments to function call, expected 4, have 5
+                fcolor += calcul_lum(colision, norm, lights[j], argn, objects);
+            ~~~~~~~~~~                                  ^~~~~~~
+<program source>:44:1: note: 'calcul_lum' declared here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_primitive * objects);
+^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:133:18: note: expanded from macro 'float4'
+#define float4                  __float4
+                 ^
+<program source>:133:54: error: use of undeclared identifier 'lights'
+                out[i] = colision_sphere(ray, dist, objects, argn, lights);
+                                                     ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:44:113: error: expected ';' after top level declarator
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_light *objects)
+                                                                                                                ^
+                                                                                                                ;
+<program source>:52:7: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+      ^
+<program source>:52:14: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+             ^
+<program source>:52:36: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+                                   ^
+<program source>:53:35: error: use of undeclared identifier 'tmp_l'
+                if (dist_colision_sphere(&dist, tmp_l, &(objects[i])))
+                                  ^
+<program source>:96:27: error: use of undeclared identifier 'sphr'
+        float4 norm = colision - sphr[0].position;
+                          ^
+<program source>:101:57: warning: incompatible pointer types passing '__global t_primitive *' (aka '__global struct s_primitive *') to parameter of type '__global t_light *' (aka '__global struct s_light *')
+                fcolor += calcul_lum(colision, norm, lights[j], argn, objects);
+                                                        ^~~~~~~
+<program source>:49:105: note: passing argument to parameter 'objects' here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_light *objects)
+                                                                                                        ^
+<program source>:133:54: error: use of undeclared identifier 'lights'
+                out[i] = colision_sphere(ray, dist, objects, argn, lights);
+                                                     ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:52:7: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+      ^
+<program source>:52:14: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+             ^
+<program source>:52:36: error: use of undeclared identifier 'i'
+        for (i = 0; i < argn->nb_objects; i++)
+                                   ^
+<program source>:53:35: error: use of undeclared identifier 'tmp_l'
+                if (dist_colision_sphere(&dist, tmp_l, &(objects[i])))
+                                  ^
+<program source>:96:27: error: use of undeclared identifier 'sphr'
+        float4 norm = colision - sphr[0].position;
+                          ^
+<program source>:101:57: warning: incompatible pointer types passing '__global t_primitive *' (aka '__global struct s_primitive *') to parameter of type '__global t_light *' (aka '__global struct s_light *')
+                fcolor += calcul_lum(colision, norm, lights[j], argn, objects);
+                                                        ^~~~~~~
+<program source>:49:105: note: passing argument to parameter 'objects' here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_light *objects)
+                                                                                                        ^
+<program source>:133:54: error: use of undeclared identifier 'lights'
+                out[i] = colision_sphere(ray, dist, objects, argn, lights);
+                                                     ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:53:35: error: use of undeclared identifier 'tmp_l'
+                if (dist_colision_sphere(&dist, tmp_l, &(objects[i])))
+                                  ^
+<program source>:96:27: error: use of undeclared identifier 'sphr'
+        float4 norm = colision - sphr[0].position;
+                          ^
+<program source>:101:57: warning: incompatible pointer types passing '__global t_primitive *' (aka '__global struct s_primitive *') to parameter of type '__global t_light *' (aka '__global struct s_light *')
+                fcolor += calcul_lum(colision, norm, lights[j], argn, objects);
+                                                        ^~~~~~~
+<program source>:49:105: note: passing argument to parameter 'objects' here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_light *objects)
+                                                                                                        ^
+<program source>:133:54: error: use of undeclared identifier 'lights'
+                out[i] = colision_sphere(ray, dist, objects, argn, lights);
+                                                     ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:56:9: warning: unused variable 'scal'
+                float scal = dot(tmp_l, norm);
+        ^
+<program source>:101:27: error: use of undeclared identifier 'sphr'
+        float4 norm = colision - sphr[0].position;
+                          ^
+<program source>:138:54: error: use of undeclared identifier 'lights'
+                out[i] = colision_sphere(ray, dist, objects, argn, lights);
+                                                     ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:98:27: error: use of undeclared identifier 'sphr'
+        float4 norm = colision - sphr[0].position;
+                          ^
+<program source>:135:54: error: use of undeclared identifier 'lights'
+                out[i] = colision_sphere(ray, dist, objects, argn, lights);
+                                                     ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:96:9: warning: unused variable 'j'
+        size_t  j;
+        ^
+<program source>:100:8: warning: unused variable 'scal'
+        float scal = dot(ray, norm);
+       ^
+<program source>:135:54: error: use of undeclared identifier 'lights'
+                out[i] = colision_sphere(ray, dist, objects, argn, lights);
+                                                     ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:99:8: warning: unused variable 'scal'
+        float scal = dot(ray, norm);
+       ^
+<program source>:134:54: error: use of undeclared identifier 'lights'
+                out[i] = colision_sphere(ray, dist, objects, argn, lights);
+                                                     ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:133:54: error: use of undeclared identifier 'lights'
+                out[i] = colision_sphere(ray, dist, objects, argn, lights);
+                                                     ^
+
+
+[ft_error] - Could not build program
+New log started
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:133:54: error: use of undeclared identifier 'lights'
+                out[i] = colision_sphere(ray, dist, objects, argn, lights);
+                                                     ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_INVALID_KERNEL_ARGS] : OpenCL Error : clEnqueueNDRangeKernel failed: kernel_arg 4 has not yet been initialized
+[ft_error] - starting of kernel failed
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:65:22: error: illegal vector component name 'o'
+        sphr.position -= ray.origin;
+                     ^~~~~~~
+<program source>:132:39: error: passing '__global t_primitive *' (aka '__global struct s_primitive *') to parameter of incompatible type 't_primitive' (aka 'struct s_primitive')
+        if (dist_colision_sphere(&dist, ray, objects))
+                                      ^~~~~~~
+<program source>:63:64: note: passing argument to parameter 'sphr' here
+int             dist_colision_sphere(float      *dist, float4 ray, t_primitive sphr)
+                                                               ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:65:37: error: illegal vector component name 'o'
+        sphr.position = sphr.position - ray.origin;
+                                    ^~~~~~~
+<program source>:132:39: error: passing '__global t_primitive *' (aka '__global struct s_primitive *') to parameter of incompatible type 't_primitive' (aka 'struct s_primitive')
+        if (dist_colision_sphere(&dist, ray, objects))
+                                      ^~~~~~~
+<program source>:63:64: note: passing argument to parameter 'sphr' here
+int             dist_colision_sphere(float      *dist, float4 ray, t_primitive sphr)
+                                                               ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:65:37: error: illegal vector component name 'o'
+        sphr.position = sphr.position - ray.origin;
+                                    ^~~~~~~
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:56:35: error: passing '__float4' to parameter of incompatible type 't_ray' (aka 'struct s_ray')
+                if (dist_colision_sphere(&dist, tmp_l, objects[i]))
+                                  ^~~~~
+<program source>:44:46: note: passing argument to parameter 'ray' here
+int             dist_colision_sphere(float      *dist, t_ray ray, t_primitive sphr);
+                                             ^
+<program source>:67:16: error: no member named 'x' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+           ~~~ ^
+<program source>:67:24: error: no member named 'x' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                   ~~~ ^
+<program source>:67:32: error: no member named 'y' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                           ~~~ ^
+<program source>:67:40: error: no member named 'y' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                                   ~~~ ^
+<program source>:67:48: error: no member named 'z' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                                           ~~~ ^
+<program source>:67:56: error: no member named 'z' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                                                   ~~~ ^
+<program source>:68:22: error: no member named 'x' in 'struct s_ray'
+        float b = -2 * (ray.x * sphr.position.x + ray.y * sphr.position.y + ray.z * sphr.position.z);
+                 ~~~ ^
+<program source>:68:48: error: no member named 'y' in 'struct s_ray'
+        float b = -2 * (ray.x * sphr.position.x + ray.y * sphr.position.y + ray.z * sphr.position.z);
+                                           ~~~ ^
+<program source>:68:74: error: no member named 'z' in 'struct s_ray'
+        float b = -2 * (ray.x * sphr.position.x + ray.y * sphr.position.y + ray.z * sphr.position.z);
+                                                                     ~~~ ^
+<program source>:124:8: error: no matching function for call to 'normalize'
+        ray = normalize(ray);
+       ^~~~~~~~~
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5029:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to 'float' for 1st argument
+__CLFN_FD_1FD_MODD4(normalize);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:524:54: note: expanded from macro '__CLFN_FD_1FD_MODD4'
+#define __CLFN_FD_1FD_MODD4(name) float __OVERLOAD__ name(float x); \
+                                                     ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5029:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__float2' for 1st argument
+__CLFN_FD_1FD_MODD4(normalize);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:525:21: note: expanded from macro '__CLFN_FD_1FD_MODD4'
+float2 __OVERLOAD__ name(float2 x); \
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5029:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__float3' for 1st argument
+__CLFN_FD_1FD_MODD4(normalize);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:526:21: note: expanded from macro '__CLFN_FD_1FD_MODD4'
+float3 __OVERLOAD__ name(float3 x); \
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5029:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__float4' for 1st argument
+__CLFN_FD_1FD_MODD4(normalize);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:527:21: note: expanded from macro '__CLFN_FD_1FD_MODD4'
+float4 __OVERLOAD__ name(float4 x); \
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5029:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to 'double' for 1st argument
+__CLFN_FD_1FD_MODD4(normalize);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:528:21: note: expanded from macro '__CLFN_FD_1FD_MODD4'
+double __OVERLOAD__ name(double x); \
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5029:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__double2' for 1st argument
+__CLFN_FD_1FD_MODD4(normalize);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:529:22: note: expanded from macro '__CLFN_FD_1FD_MODD4'
+double2 __OVERLOAD__ name(double2 x); \
+                     ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5029:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__double3' for 1st argument
+__CLFN_FD_1FD_MODD4(normalize);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:530:22: note: expanded from macro '__CLFN_FD_1FD_MODD4'
+double3 __OVERLOAD__ name(double3 x); \
+                     ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5029:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__double4' for 1st argument
+__CLFN_FD_1FD_MODD4(normalize);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:531:22: note: expanded from macro '__CLFN_FD_1FD_MODD4'
+double4 __OVERLOAD__ name(double4 x);
+                     ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:56:35: error: passing '__float4' to parameter of incompatible type 't_ray' (aka 'struct s_ray')
+                if (dist_colision_sphere(&dist, tmp_l, objects[i]))
+                                  ^~~~~
+<program source>:44:46: note: passing argument to parameter 'ray' here
+int             dist_colision_sphere(float      *dist, t_ray ray, t_primitive sphr);
+                                             ^
+<program source>:67:16: error: no member named 'x' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+           ~~~ ^
+<program source>:67:24: error: no member named 'x' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                   ~~~ ^
+<program source>:67:32: error: no member named 'y' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                           ~~~ ^
+<program source>:67:40: error: no member named 'y' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                                   ~~~ ^
+<program source>:67:48: error: no member named 'z' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                                           ~~~ ^
+<program source>:67:56: error: no member named 'z' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                                                   ~~~ ^
+<program source>:68:22: error: no member named 'x' in 'struct s_ray'
+        float b = -2 * (ray.x * sphr.position.x + ray.y * sphr.position.y + ray.z * sphr.position.z);
+                 ~~~ ^
+<program source>:68:48: error: no member named 'y' in 'struct s_ray'
+        float b = -2 * (ray.x * sphr.position.x + ray.y * sphr.position.y + ray.z * sphr.position.z);
+                                           ~~~ ^
+<program source>:68:74: error: no member named 'z' in 'struct s_ray'
+        float b = -2 * (ray.x * sphr.position.x + ray.y * sphr.position.y + ray.z * sphr.position.z);
+                                                                     ~~~ ^
+<program source>:124:6: error: assigning to 't_ray' (aka 'struct s_ray') from incompatible type '__float4'
+        ray = normalize(ray.direction);
+     ^ ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:54:15: error: no matching function for call to 'dot'
+        float scal = dot(tmp_l, norm);
+              ^~~
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__float4' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:487:20: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+float __OVERLOAD__ name(float4 x, float4 y); \
+                   ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to 'float' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:484:54: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+#define __CLFN_1FD_2FD_MODD(name) float __OVERLOAD__ name(float x, float y); \
+                                                     ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__float2' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:485:20: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+float __OVERLOAD__ name(float2 x, float2 y); \
+                   ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__float3' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:486:20: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+float __OVERLOAD__ name(float3 x, float3 y); \
+                   ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to 'double' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:488:21: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+double __OVERLOAD__ name(double x, double y); \
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__double2' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:489:21: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+double __OVERLOAD__ name(double2 x, double2 y); \
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__double3' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:490:21: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+double __OVERLOAD__ name(double3 x, double3 y); \
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__double4' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:491:21: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+double __OVERLOAD__ name(double4 x, double4 y);
+                    ^
+<program source>:68:16: error: no member named 'x' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+           ~~~ ^
+<program source>:68:24: error: no member named 'x' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                   ~~~ ^
+<program source>:68:32: error: no member named 'y' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                           ~~~ ^
+<program source>:68:40: error: no member named 'y' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                                   ~~~ ^
+<program source>:68:48: error: no member named 'z' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                                           ~~~ ^
+<program source>:68:56: error: no member named 'z' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                                                   ~~~ ^
+<program source>:69:22: error: no member named 'x' in 'struct s_ray'
+        float b = -2 * (ray.x * sphr.position.x + ray.y * sphr.position.y + ray.z * sphr.position.z);
+                 ~~~ ^
+<program source>:69:48: error: no member named 'y' in 'struct s_ray'
+        float b = -2 * (ray.x * sphr.position.x + ray.y * sphr.position.y + ray.z * sphr.position.z);
+                                           ~~~ ^
+<program source>:69:74: error: no member named 'z' in 'struct s_ray'
+        float b = -2 * (ray.x * sphr.position.x + ray.y * sphr.position.y + ray.z * sphr.position.z);
+                                                                     ~~~ ^
+<program source>:125:6: error: assigning to 't_ray' (aka 'struct s_ray') from incompatible type '__float4'
+        ray = normalize(ray.direction);
+     ^ ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:54:15: error: no matching function for call to 'dot'
+        float scal = dot(tmp_l, norm);
+              ^~~
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__float4' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:487:20: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+float __OVERLOAD__ name(float4 x, float4 y); \
+                   ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to 'float' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:484:54: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+#define __CLFN_1FD_2FD_MODD(name) float __OVERLOAD__ name(float x, float y); \
+                                                     ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__float2' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:485:20: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+float __OVERLOAD__ name(float2 x, float2 y); \
+                   ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__float3' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:486:20: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+float __OVERLOAD__ name(float3 x, float3 y); \
+                   ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to 'double' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:488:21: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+double __OVERLOAD__ name(double x, double y); \
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__double2' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:489:21: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+double __OVERLOAD__ name(double2 x, double2 y); \
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__double3' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:490:21: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+double __OVERLOAD__ name(double3 x, double3 y); \
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__double4' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:491:21: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+double __OVERLOAD__ name(double4 x, double4 y);
+                    ^
+<program source>:68:16: error: no member named 'x' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+           ~~~ ^
+<program source>:68:24: error: no member named 'x' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                   ~~~ ^
+<program source>:68:32: error: no member named 'y' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                           ~~~ ^
+<program source>:68:40: error: no member named 'y' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                                   ~~~ ^
+<program source>:68:48: error: no member named 'z' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                                           ~~~ ^
+<program source>:68:56: error: no member named 'z' in 'struct s_ray'
+        float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
+                                                   ~~~ ^
+<program source>:69:22: error: no member named 'x' in 'struct s_ray'
+        float b = -2 * (ray.x * sphr.position.x + ray.y * sphr.position.y + ray.z * sphr.position.z);
+                 ~~~ ^
+<program source>:69:48: error: no member named 'y' in 'struct s_ray'
+        float b = -2 * (ray.x * sphr.position.x + ray.y * sphr.position.y + ray.z * sphr.position.z);
+                                           ~~~ ^
+<program source>:69:74: error: no member named 'z' in 'struct s_ray'
+        float b = -2 * (ray.x * sphr.position.x + ray.y * sphr.position.y + ray.z * sphr.position.z);
+                                                                     ~~~ ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:54:15: error: no matching function for call to 'dot'
+        float scal = dot(tmp_l, norm);
+              ^~~
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__float4' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:487:20: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+float __OVERLOAD__ name(float4 x, float4 y); \
+                   ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to 'float' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:484:54: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+#define __CLFN_1FD_2FD_MODD(name) float __OVERLOAD__ name(float x, float y); \
+                                                     ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__float2' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:485:20: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+float __OVERLOAD__ name(float2 x, float2 y); \
+                   ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__float3' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:486:20: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+float __OVERLOAD__ name(float3 x, float3 y); \
+                   ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to 'double' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:488:21: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+double __OVERLOAD__ name(double x, double y); \
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__double2' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:489:21: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+double __OVERLOAD__ name(double2 x, double2 y); \
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__double3' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:490:21: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+double __OVERLOAD__ name(double3 x, double3 y); \
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:5019:21: note: candidate function not viable: no known conversion from 't_ray' (aka 'struct s_ray') to '__double4' for 1st argument
+__CLFN_1FD_2FD_MODD(dot);
+                    ^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:491:21: note: expanded from macro '__CLFN_1FD_2FD_MODD'
+double __OVERLOAD__ name(double4 x, double4 y);
+                    ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:122:22: error: no member named 'origin' in 'struct s_camera'
+        ray.origin = cam[0].origin;
+              ~~~~~~ ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:48:8: error: conflicting types for 'calcul_lum'
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_primitive *objects, float4 origine)
+       ^
+<program source>:43:8: note: previous declaration is here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_primitive *objects);
+       ^
+<program source>:103:66: error: too many arguments to function call, expected 5, have 6
+                fcolor += calcul_lum(colision, norm, lights[j], argn, objects, ray.origin);
+            ~~~~~~~~~~                                           ^~~~~~~~~~
+<program source>:43:1: note: 'calcul_lum' declared here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_primitive *objects);
+^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:133:18: note: expanded from macro 'float4'
+#define float4                  __float4
+                 ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:48:8: error: conflicting types for 'calcul_lum'
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_primitive *objects, float4 origin)
+       ^
+<program source>:43:8: note: previous declaration is here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_primitive *objects);
+       ^
+<program source>:102:66: error: too many arguments to function call, expected 5, have 6
+                fcolor += calcul_lum(colision, norm, lights[j], argn, objects, ray.origin);
+            ~~~~~~~~~~                                           ^~~~~~~~~~
+<program source>:43:1: note: 'calcul_lum' declared here
+float4  calcul_lum(float4 colision, float4 norm, t_light light, __global t_argn *argn, __global t_primitive *objects);
+^
+/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/lib/clang/3.5/include/cl_kernel.h:133:18: note: expanded from macro 'float4'
+#define float4                  __float4
+                 ^
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+
+OpenCL notify error (nb: 1): 
+[CL_DEVICE_NOT_AVAILABLE] : OpenCL Error : Error: Build Program driver returned (10007)
+
+OpenCL notify error (nb: 2): 
+OpenCL Warning : clBuildProgram failed: could not build program for 0x1022700 (GeForce GTX 660M) (err:-2)
+
+OpenCL notify error (nb: 3): 
+[CL_BUILD_ERROR] : OpenCL Build Error : Compiler build log:
+<program source>:98:124: error: expected ';' at end of declaration
+        float c = cyl.position.x * cyl.position.x + cyl.position.y * cyl.position.y - cyl.position.z * cyl.position.z + cyl.radius
+                                                                                                                           ^
+                                                                                                                           ;
+
+
+[ft_error] - Could not build program
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended

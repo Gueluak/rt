@@ -98,7 +98,7 @@ int		dist_colision_sphere(float	*dist, t_ray ray, t_primitive sphr)
 
 int		dist_colision_cylindre(float	*dist, t_ray ray, t_primitive cyl)
 {
-	//cyl.position = cyl.position - ray.origin;
+	cyl.position = cyl.position - ray.origin;
 	float c = cyl.position.x * cyl.position.x + cyl.position.y * cyl.position.y - cyl.position.z * cyl.position.z + cyl.radius;
 	float a = ray.direction.x * ray.direction.x + ray.direction.y * ray.direction.y - cyl.radius * ray.direction.z * ray.direction.z;
 	float b = 2 * (ray.direction.x * cyl.position.x + ray.direction.y * cyl.position.y + cyl.radius * ray.direction.z * cyl.position.z);
