@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 09:15:54 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/10 05:26:10 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/01/14 16:52:35 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,11 +147,16 @@ void		rotate_cam(double angle, t_vector axe)
 
 	q = ft_quat_rotation_build(angle, axe);
 	q = ft_quat_multiply(cam()->orientation, q);
+	cam()->orientation = q;
 	mat = ft_quat_rotation_to_matrix(NULL, q);
 	tva = ft_matrix_multply_vector_array((t_vector[3]){
-		cl_float4_to_vector(cam()->dir),
-		cl_float4_to_vector(cam()->up),
-		cl_float4_to_vector(cam()->right)}, 3, mat);
+//		cl_float4_to_vector(cam()->dir),
+//		cl_float4_to_vector(cam()->up),
+//		cl_float4_to_vector(cam()->right)
+	ft_vector(0,0,1),
+	ft_vector(0,1,0),
+	ft_vector(1,0,0)
+}, 3, mat);
 	cam()->dir = vector_to_cl_float4(tva[0]);
 	cam()->up = vector_to_cl_float4(tva[1]);
 	cam()->right = vector_to_cl_float4(tva[2]);
@@ -196,6 +201,7 @@ int			keys(t_ftx_data *data)
 	ftx_fill_image(ftx_data()->focused_window->vbuffer, 0x00FFFF, 1);
 	ftx_put_ubmp_img(ftx_data()->focused_window->vbuffer, ft_point(0, 0), &out,
 					NOMASK);
+	ft_free(out.data);
 	ftx_refresh_window(ftx_data()->focused_window);
 
 	return (0);
