@@ -16,6 +16,7 @@ typedef struct	s_light
 {
 	float4		position;
 	float4		color;
+	float		direct;
 }				t_light;
 
 typedef struct	s_argn		//structure containing the limit of out, rays and objects
@@ -112,6 +113,11 @@ inline float	local_length(float4 v)
 
 #ifndef SHADOW_E
 # define SHADOW_E 0.1f
+#endif
+
+// minimum direct lighting coefficient
+#ifndef MIN_DIRECT
+# define MIN_DIRECT 0.95f
 #endif
 
 // antialias 0 = 1x1 (none), 1 = 3x3, 2 = 5x5, 3 = 7x7, etc.
@@ -240,7 +246,7 @@ inline int		intersect(__global t_primitive *obj, t_ray *ray, float *dist)
 			break;
 	}
 
-	
+
 	float4 point = ray->origin + ray->direction * (*dist);
 	if (limit(obj, point))
 	{
@@ -253,20 +259,25 @@ inline int		intersect(__global t_primitive *obj, t_ray *ray, float *dist)
 
 inline float4	get_normal(__global t_primitive *obj, float4 point)
 {
+	float4 n = (float4)(0, 0, 0, 0);
 	float t;
 
 	switch (obj->type)
 	{
 		case SPHERE:
-			return NORMALIZE(point - obj->position);
+			n = NORMALIZE(point - obj->position);
+			break;
 		case PLANE:
-			return obj->direction;
+			n = obj->direction;
+			break;
 		case CYLINDER:
 		case CONE:
 			t = DOT(-obj->direction, obj->position) + DOT(point, obj->direction) / addv(pow(obj->direction, 2));
-			return NORMALIZE(point - (obj->position + obj->direction * t));
+			n = NORMALIZE(point - (obj->position + obj->direction * t));
+			break;
 	}
-	return (float4)(0, 0, 0, 0);
+	n.y = n.y + cos(point.y / 10.0f) * LENGTH(n) / 10.0f;
+	return (n);
 }
 
 inline float4	phong(float4 dir, float4 norm)
@@ -369,24 +380,31 @@ __kernel void	example(							//main kernel, called for each ray
 			t_ray ray_l;
 			float dist_l;
 			float scal;
-			float min_direct = 0.99f;
 			float dist2 = dist;
 			for (cur_l = 0; cur_l < argn->nb_lights; cur_l++)
 			{
 				t_light light = lights[cur_l];
 
 				// calculate direct lighting
-				dist_l = LENGTH(light.position - ray.origin);
-				ray_l.direction = NORMALIZE(light.position - ray.origin);
-				ray_l.origin = ray.origin;
-
-				// if our light is in front of the object
-				if (dist_l < dist2)
+				if (light.direct > EPSILON)
 				{
-					scal = pow(DOT(ray_l.direction, ray.direction), dist_l / 100);
+					dist_l = LENGTH(light.position - ray.origin);
+					ray_l.direction = NORMALIZE(light.position - ray.origin);
+					ray_l.origin = ray.origin;
 
-					if (scal > min_direct)
-						add_color += light.color * (scal - min_direct) / (1.0f - min_direct);
+					// if our light is closer than intersect
+					if (dist_l < dist2)
+					{
+						// if our light is between us and the object, dot will
+						// be positive
+						scal = DOT(ray_l.direction, ray.direction);
+						if (scal > EPSILON)
+						{
+							scal = pow(scal, dist_l / 50);
+							if (scal > MIN_DIRECT)
+								add_color += (light.color * (scal - MIN_DIRECT) / (1.0f - MIN_DIRECT)) * light.direct;
+						}
+					}
 				}
 
 				// if we didn't hit anything, don't calculate light for object

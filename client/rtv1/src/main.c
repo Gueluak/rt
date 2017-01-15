@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 09:15:54 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/15 11:40:57 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/01/16 00:07:42 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_primitive	plane(cl_float4 pos, cl_float4 norm, cl_float4 color)
 
 t_light		light(cl_float4 pos, cl_float4 color)
 {
-	return ((t_light){.position = pos, .color = color});
+	return ((t_light){.position = pos, .color = color, .direct = 1.0f});
 }
 
 #include <stdio.h>

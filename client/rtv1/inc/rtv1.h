@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 00:05:50 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/09 21:29:06 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/01/16 00:07:22 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct	s_light
 {
 	cl_float4		position;
 	cl_float4		color;
+	cl_float		direct;
 }				t_light;
 
 typedef struct	s_argn
