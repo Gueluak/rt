@@ -110,10 +110,16 @@ inline float	local_length(float4 v)
 # define EPSILON 0.0001f
 #endif
 
+#ifndef SHADOW_E
+# define SHADOW_E 0.1f
+#endif
+
 // antialias 0 = 1x1 (none), 1 = 3x3, 2 = 5x5, 3 = 7x7, etc.
 #ifndef AA
 # define AA 0
 #endif
+
+#define SEPIA 1
 
 inline float	addv(float4 v)
 {
@@ -252,6 +258,17 @@ inline int		color_to_int(float4 color)
 	return (int)(((int)color.x << 16) + ((int)color.y << 8) + (int)color.z);
 }
 
+inline float4		sepia_color(float4 color)
+{
+	float4 out;
+
+	out.x = color.x * 0.393f + color.y * 0.769f + color.z * 0.189f;
+	out.y = color.x * 0.349f + color.y * 0.686f + color.z * 0.168f;
+	out.z = color.x * 0.272f + color.y * 0.534f + color.z * 0.131f;
+
+	return (out);
+}
+
 __kernel void	example(							//main kernel, called for each ray
 		__global int *out,				//int bitmap, his size is equal to screen_size.x * screen_size.y
 		__global t_argn *argn,			//structure containing important info on how to acces out, rays and objects
@@ -316,10 +333,12 @@ __kernel void	example(							//main kernel, called for each ray
 
 				// get the normal for this intersection point
 				norm = get_normal(prim, collision);
-				if (s_hit == -1) // invert the normal if we're inside
+
+				// invert the normal if we're inside the primitive
+				if (s_hit == -1)
 					norm = -norm;
 
-				// add ambient light now
+				// add ambient light
 				cur_color += prim->color * 0.1f; // TODO: ambient amount should be configurable
 			}
 
@@ -357,7 +376,7 @@ __kernel void	example(							//main kernel, called for each ray
 				// rounding errors
 				dist_l = LENGTH(light.position - collision);
 				ray_l.direction = NORMALIZE(light.position - collision);
-				ray_l.origin = collision + ray_l.direction;
+				ray_l.origin = collision + ray_l.direction * SHADOW_E;
 				int hit = 0;
 
 				dist = MAXFLOAT;
@@ -377,12 +396,12 @@ __kernel void	example(							//main kernel, called for each ray
 					continue ;
 
 				// diffuse lighting
-				if ((scal = DOT(ray_l.direction, norm)) > 0)
+				if ((scal = DOT(ray_l.direction, norm)) > EPSILON)
 					cur_color += prim->color * light.color * scal; // TODO: diffuse coef
 
 				// specular highlights (needs pow to make the curve sharper)
 				float4 ir = phong(-ray_l.direction, norm);
-				if (scal > 0.0f && (scal = DOT(ray_l.direction, ir)) > 0.0f)
+				if (scal > EPSILON && (scal = DOT(ray_l.direction, ir)) > EPSILON)
 					cur_color += light.color * pow(scal, 20); // TODO: specular coef
 			}
 
@@ -394,6 +413,9 @@ __kernel void	example(							//main kernel, called for each ray
 
 	// divide by the total amount of samples
 	color /= samples;
+
+	if (SEPIA)
+		color = sepia_color(color);
 
 	out[i] = color_to_int(color);
 }
