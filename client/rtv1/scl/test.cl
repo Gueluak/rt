@@ -119,7 +119,7 @@ inline float	local_length(float4 v)
 # define AA 0
 #endif
 
-#define SEPIA 1
+#define SEPIA 0
 
 inline float	addv(float4 v)
 {
@@ -177,6 +177,7 @@ int		cone_intersect(__global t_primitive *obj, t_ray *ray, float *dist)
 	float a = DOT(dir, dir) - (r * pow(dd, 2));
 	float b = 2 * (DOT(dir, pos) - (r * dd * DOT(pos, obj->direction)));
 	float c = DOT(pos, pos) - (r * pow(DOT(pos, obj->direction), 2));
+
 	return solve_quadratic(a, b, c, dist);
 }
 
@@ -211,22 +212,43 @@ int		solve_quadratic(float a, float b, float c, float *dist)
 	return (0);
 }
 
+inline int		limit(__global t_primitive *obj, float4 point)
+{
+	//if (point.y > 150)
+	//	return (1);
+	return (0);
+}
+
 inline int		intersect(__global t_primitive *obj, t_ray *ray, float *dist)
 {
+	int i = 0;
+	float d = *dist;
+
 	switch (obj->type)
 	{
 		case SPHERE:
-			return sphere_intersect(obj, ray, dist);
+			i = sphere_intersect(obj, ray, dist);
+			break;
 		case PLANE:
-			return plane_intersect(obj, ray, dist);
+			i = plane_intersect(obj, ray, dist);
+			break;
 		case CONE:
-			return cone_intersect(obj, ray, dist);
+			i = cone_intersect(obj, ray, dist);
+			break;
 		case CYLINDER:
-			return cylinder_intersect(obj, ray, dist);
+			i = cylinder_intersect(obj, ray, dist);
+			break;
 	}
 
-	// unknown object type
-	return (0);
+	
+	float4 point = ray->origin + ray->direction * (*dist);
+	if (limit(obj, point))
+	{
+		*dist = d;
+		return (0);
+	}
+
+	return (i);
 }
 
 inline float4	get_normal(__global t_primitive *obj, float4 point)

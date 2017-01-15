@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 09:15:54 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/15 09:16:22 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/01/15 11:40:57 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,8 +201,8 @@ int			keys(t_ftx_data *data)
 	ftx_fill_image(ftx_data()->focused_window->vbuffer, 0x00FFFF, 1);
 	ftx_put_ubmp_img(ftx_data()->focused_window->vbuffer, ft_point(0, 0), &out,
 					NOMASK);
-	ft_free(out.data);
 	ftx_refresh_window(ftx_data()->focused_window);
+	ft_free(out.data);
 
 	return (0);
 }
@@ -212,6 +212,7 @@ void		rtv1(void)
 	t_ubmp		out;
 	cl_event	event;
 
+	printf("5\n");
 	argn()->screen_size = (cl_int2){.x = SW, .y = SH};
 	argn()->nb_objects = 4;
 	argn()->nb_lights = 3;
@@ -231,10 +232,12 @@ void		rtv1(void)
 	out.size = ft_point(SW, SH);
 	out.data = (int*)ft_malloc(sizeof(int) * SW * SH);
 	update_kernel_args();
+	printf("6\n");
 	event = ftocl_start_current_kernel(1, (const size_t[1]){SW * SH}, NULL);
 	clWaitForEvents(1, &event);
 	clReleaseEvent(event);
 	ftocl_read_current_kernel_arg(0, out.data);
+	printf("7\n");
 	ftx_new_window(ft_point(SW, SH), "test", NULL);
 	ftx_put_ubmp_img(ftx_data()->focused_window->vbuffer, ft_point(0, 0), &out,
 					NOMASK);
@@ -257,11 +260,15 @@ int			main(const int argc, char **argv, char **env)
 	if (argc != 2)
 		ft_end(0 * printf("\nUsage: \t%s/%s <scene.json>\n\n", ft_pwd(),
 										ft_path_name(argv[0])));
+	printf("1\n");
 	if ((fd = open(OCL_SOURCE_PATH, O_RDONLY)) == -1)
 		ft_end(-1);
+	printf("2\n");
 	ftocl_make_program(ft_str_to_id64("rtv1"),
 		ft_str_clear_commentaries(ft_readfile(fd)), NULL);
+	printf("3\n");
 	close(fd);
+	printf("4\n");
 	if (!(fd = ftocl_set_current_kernel(ft_str_to_id64("example"))))
 		rtv1();
 	if (fd == 1)

@@ -5,10 +5,6 @@
 * Scene file
   * Scene file using JSON or something advanced
 * Configurable ambient lighting
-* Object limits
-  * Basic XYZ cutting
-  * XYZ based on world/object coordinates
-  * Transforms work properly after cutting
 * Perturbation
   * Normal
   * Color (XY based)
@@ -48,6 +44,10 @@
 * It's particularly fast ^_^
 * Direct light (get blinded by spots in front of the camera)
 * Color effects (sepia, grayscale, etc.)
+* Object limits
+  * Basic XYZ cutting
+  * XYZ based on world/object coordinates
+  * Transforms work properly after cutting
 
 ## Probably won't do
 * Object limits
