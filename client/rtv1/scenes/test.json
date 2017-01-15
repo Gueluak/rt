@@ -1,0 +1,55 @@
+{
+	"render_options": {
+		"size": [1920, 1080],
+		"ambient_lighting": 0.05,
+		"direct_lighting": 1.0,
+		"antialias": 1,
+		"bounce_depth": 4,
+		"filter": "sepia"
+	},
+	"camera": {
+		"position": [0, 0, 0],
+		"direction": [0, 0, 1]
+	},
+	"materials": {
+		"red": {
+			"color": [255, 0, 0],
+			"diffuse": 1.0,
+			"specular": 1.0,
+			"reflect": 0.0,
+			"alpha", 1.0
+		}
+	},
+	"objects": [
+		{
+			"type": "sphere",
+			"position": [0, 0, 200],
+			"radius": 20,
+			"material": "red"
+		},
+		{
+			"type": "plane",
+			"position": [0, -200, 0],
+			"direction": [0, 1, 0],
+			"material": "red"
+		},
+		{
+			"type": "cylinder",
+			"position": [150, 0, 200],
+			"direction": [1, 1, 0],
+			"radius": 20,
+			"material": "red"
+		},
+		{
+			"type": "cone",
+			"position": [0, 0, 500],
+			"direction": [0, 1, 0],
+			"radius": 30,
+			"material": "red"
+		}
+	],
+	"lights": [
+		{ "position": [0, 0, 0], "color": [255, 255, 255] },
+		{ "position": [0, 0, 100], "color": [255, 255, 255] }
+	]
+}
