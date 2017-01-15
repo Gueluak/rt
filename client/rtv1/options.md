@@ -4,9 +4,7 @@
 
 * Scene file
   * Scene file using JSON or something advanced
-* Configurable ambient lighting
 * Perturbation
-  * Normal
   * Color (XY based)
   * Color (something more complex)
   * Color (Perlin noise)
@@ -39,6 +37,7 @@
 ## Done
 * RTv1
 * Ambient light
+* Configurable ambient lighting
 * Antialias
 * Multithreaded or OpenCL rendering
 * It's particularly fast ^_^
@@ -48,6 +47,8 @@
   * Basic XYZ cutting
   * XYZ based on world/object coordinates
   * Transforms work properly after cutting
+* Perturbation
+  * Normal
 
 ## Probably won't do
 * Object limits

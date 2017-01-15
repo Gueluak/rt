@@ -10,6 +10,9 @@ typedef struct	s_primitive
 	float4		direction;
 	float4		color;
 	float		radius;
+	float		ambient;
+	float		diffuse;
+	float		specular;
 }				t_primitive;
 
 typedef struct	s_light
@@ -24,6 +27,7 @@ typedef struct	s_argn		//structure containing the limit of out, rays and objects
 	int2	screen_size;	//total screen size in pixels (accesed by .x and .y)
 	int		nb_objects;		//total number of objects in the scene
 	int		nb_lights;		//total number of lights in the scene
+	float	gamma;
 }				t_argn;		//norm42 magle
 
 typedef struct	s_camera	//note: yes, this structure is not equivalent to s_camera in rtv1.h
@@ -276,7 +280,8 @@ inline float4	get_normal(__global t_primitive *obj, float4 point)
 			n = NORMALIZE(point - (obj->position + obj->direction * t));
 			break;
 	}
-	n.y = n.y + cos(point.y / 10.0f) * LENGTH(n) / 10.0f;
+
+	//n.y = n.y + cos(point.y / 10.0f) * LENGTH(n) / 10.0f;
 	return (n);
 }
 
@@ -372,7 +377,7 @@ __kernel void	example(							//main kernel, called for each ray
 					norm = -norm;
 
 				// add ambient light
-				cur_color += prim->color * 0.1f; // TODO: ambient amount should be configurable
+				cur_color += prim->color * prim->ambient; // TODO: ambient amount should be configurable
 			}
 
 			// lights, maestro!
@@ -437,15 +442,15 @@ __kernel void	example(							//main kernel, called for each ray
 
 				// diffuse lighting
 				if ((scal = DOT(ray_l.direction, norm)) > EPSILON)
-					cur_color += prim->color * light.color * scal; // TODO: diffuse coef
+					cur_color += prim->color * light.color * scal * prim->diffuse;
 
 				// specular highlights (needs pow to make the curve sharper)
 				float4 ir = phong(-ray_l.direction, norm);
 				if (scal > EPSILON && (scal = DOT(ray_l.direction, ir)) > EPSILON)
-					cur_color += light.color * pow(scal, 20); // TODO: specular coef
+					cur_color += light.color * pow(scal, dist_l / 50) * prim->specular;
 			}
 
-			color += clamp(cur_color / ((float)argn->nb_lights * 0.5f), 0.0f, 1.0f); // TODO: attenuate
+			color += clamp(cur_color / ((float)argn->nb_lights * argn->gamma), 0.0f, 1.0f);
 			color += clamp(add_color, 0.0f, 1.0f);
 			samples++;
 		}

@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 09:15:54 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/16 00:07:42 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/01/16 00:34:41 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,30 @@ t_light	**lights(void)
 t_primitive	cone(cl_float4 pos, cl_float4 direction, cl_float alpha, cl_float4 color)
 {
 	return ((t_primitive){.type = CONE, .position = pos,
-		.direction = direction, .radius = alpha * M_PI / 180.0f, .color = color});
+		.direction = direction, .radius = alpha * M_PI / 180.0f, .color = color,
+		.ambient = AMBIENT, .diffuse = DIFFUSE, .specular = SPECULAR});
 }
 
 t_primitive	cylinder(cl_float4 pos, cl_float4 direction, cl_float radius, cl_float4 color)
 {
 	return ((t_primitive){.type = CYLINDER, .position = pos,
-		.direction = direction, .radius = radius, .color = color});
+		.direction = direction, .radius = radius, .color = color,
+		.ambient = AMBIENT, .diffuse = DIFFUSE, .specular = SPECULAR});
 }
 
 t_primitive	sphere(cl_float4 pos, cl_float radius, cl_float4 color)
 {
 	return ((t_primitive){.type = SPHERE, .position = pos,
 		.direction = {.x = 0, .y = 0, .z = 1, .w = 0}, .radius = radius,
-		.color = color});
+		.color = color, .ambient = AMBIENT, .diffuse = DIFFUSE,
+		.specular = SPECULAR});
 }
 
 t_primitive	plane(cl_float4 pos, cl_float4 norm, cl_float4 color)
 {
-	return ((t_primitive){.type = PLANE, .position = pos,
-		.direction = norm, .radius = 0, .color = color});
+	return ((t_primitive){.type = PLANE, .position = pos, .direction = norm,
+		.radius = 0, .color = color, .ambient = AMBIENT, .diffuse = DIFFUSE,
+		.specular = SPECULAR});
 }
 
 t_light		light(cl_float4 pos, cl_float4 color)
@@ -212,10 +216,10 @@ void		rtv1(void)
 	t_ubmp		out;
 	cl_event	event;
 
-	printf("5\n");
 	argn()->screen_size = (cl_int2){.x = SW, .y = SH};
 	argn()->nb_objects = 4;
 	argn()->nb_lights = 3;
+	argn()->gamma = 0.5f;
 	*prim() = (t_primitive*)ft_malloc(sizeof(t_primitive) * argn()->nb_objects);
 	*lights() = (t_light*)ft_malloc(sizeof(t_light) * argn()->nb_lights);
 	prim()[0][0] = cone((cl_float4){.x = 0, .y = 0, .z = 800, .w = 0}, (cl_float4){.x = 0, .y = 1, .z = 0, .w = 0}, 10, (cl_float4){.x = 1, .y = 0, .z = 0, .w = 0});
@@ -232,12 +236,10 @@ void		rtv1(void)
 	out.size = ft_point(SW, SH);
 	out.data = (int*)ft_malloc(sizeof(int) * SW * SH);
 	update_kernel_args();
-	printf("6\n");
 	event = ftocl_start_current_kernel(1, (const size_t[1]){SW * SH}, NULL);
 	clWaitForEvents(1, &event);
 	clReleaseEvent(event);
 	ftocl_read_current_kernel_arg(0, out.data);
-	printf("7\n");
 	ftx_new_window(ft_point(SW, SH), "test", NULL);
 	ftx_put_ubmp_img(ftx_data()->focused_window->vbuffer, ft_point(0, 0), &out,
 					NOMASK);
@@ -260,15 +262,11 @@ int			main(const int argc, char **argv, char **env)
 	if (argc != 2)
 		ft_end(0 * printf("\nUsage: \t%s/%s <scene.json>\n\n", ft_pwd(),
 										ft_path_name(argv[0])));
-	printf("1\n");
 	if ((fd = open(OCL_SOURCE_PATH, O_RDONLY)) == -1)
 		ft_end(-1);
-	printf("2\n");
 	ftocl_make_program(ft_str_to_id64("rtv1"),
 		ft_str_clear_commentaries(ft_readfile(fd)), NULL);
-	printf("3\n");
 	close(fd);
-	printf("4\n");
 	if (!(fd = ftocl_set_current_kernel(ft_str_to_id64("example"))))
 		rtv1();
 	if (fd == 1)

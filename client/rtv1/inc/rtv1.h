@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 00:05:50 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/16 00:07:22 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/01/16 00:33:47 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 
 # define SW 1000
 # define SH 1000
+
+# define AMBIENT 0.1f
+# define DIFFUSE 1.0f
+# define SPECULAR 1.0f
 
 typedef enum	e_prim_type
 {
@@ -51,6 +55,9 @@ typedef struct	s_primitive
 	cl_float4		direction;
 	cl_float4		color;
 	cl_float		radius;
+	cl_float		ambient;
+	cl_float		diffuse;
+	cl_float		specular;
 }				t_primitive;
 
 typedef struct	s_light
@@ -65,6 +72,7 @@ typedef struct	s_argn
 	cl_int2			screen_size;
 	cl_int			nb_objects;
 	cl_int			nb_lights;
+	cl_float		gamma;
 }				t_argn;
 
 cl_float4		*ray_plane(const t_camera *cam, const cl_int2 screen_size);
