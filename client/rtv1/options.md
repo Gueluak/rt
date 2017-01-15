@@ -14,7 +14,6 @@
   * Color (XY based)
   * Color (something more complex)
   * Color (Perlin noise)
-* Direct light (get blinded by spots in front of the camera)
 * Reflection (with percentage)
 * Transparency (with percentage)
 * Refraction
@@ -38,6 +37,7 @@
 * Video to show off RT on YouTube/Vimeo
 * Spherical light (soft shadows)
 * Depth of field
+* Skybox
 
 ## Done
 * RTv1
@@ -45,6 +45,7 @@
 * Antialias
 * Multithreaded or OpenCL rendering
 * It's particularly fast ^_^
+* Direct light (get blinded by spots in front of the camera)
 
 ## Probably won't do
 * Object limits
