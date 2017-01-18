@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <rtv1.h>
+#include <stdio.h>
 
 int			cb_exit(int k, int s, void *p)
 {
@@ -30,6 +31,7 @@ t_light	**lights(void)
 
 t_primitive	cone(cl_float4 pos, cl_float4 direction, cl_float alpha, cl_float4 color)
 {
+	printf("%f \n", alpha * M_PI / 180.0f);
 	return ((t_primitive){.type = CONE, .position = pos,
 		.direction = direction, .radius = alpha * M_PI / 180.0f, .color = color});
 }
@@ -166,7 +168,7 @@ void		rotate_cam(double angle, t_vector axe)
 
 int			keys(t_ftx_data *data)
 {
-	t_ubmp		out;
+	static t_ubmp		out = {.size = {SW, SH}, .data = NULL};
 
 	(void)data;
 	if (data->keymap[KEY_W].status == FTX_KEY_STATUS_PRESSED)
@@ -189,7 +191,8 @@ int			keys(t_ftx_data *data)
 		rotate_cam(-0.05, ft_vector(1, 0, 0));
 	if (data->keymap[KEY_DOWN].status == FTX_KEY_STATUS_PRESSED)
 		rotate_cam(0.05, ft_vector(1, 0, 0));
-	out.size = ft_point(SW, SH);
+//	out.size = ft_point(SW, SH);
+	if (out.data == NULL)
 	out.data = (int*)ft_memalloc(sizeof(int) * SW * SH);
 	ftocl_clear_current_kernel_arg(4);
 //	ftocl_set_current_kernel_arg(CL_MEM_READ_ONLY, 2, sizeof(t_primitive) *
@@ -201,7 +204,7 @@ int			keys(t_ftx_data *data)
 	ftx_fill_image(ftx_data()->focused_window->vbuffer, 0x00FFFF, 1);
 	ftx_put_ubmp_img(ftx_data()->focused_window->vbuffer, ft_point(0, 0), &out,
 					NOMASK);
-	ft_free(out.data);
+//	ft_free(out.data);
 	ftx_refresh_window(ftx_data()->focused_window);
 
 	return (0);

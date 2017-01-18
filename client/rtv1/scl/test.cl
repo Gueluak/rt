@@ -164,7 +164,10 @@ int		cone_intersect(__global t_primitive *obj, t_ray *ray, float *dist)
 	float4 pos = ray->origin - obj->position;
 	float4 dir = -ray->direction;
 
-	float r = 1 + pow(obj->radius, 2);
+	normalize(obj->direction);
+	normalize(dir);
+	float r = 1 + pow(tan(obj->radius), 2);
+	//printf("radius = %f \n",tan(obj->radius));
 	float dd = DOT(dir, obj->direction);
 
 	float a = DOT(dir, dir) - (r * pow(dd, 2));
@@ -181,24 +184,13 @@ int		solve_quadratic(float a, float b, float c, float *dist)
 
 	delta = sqrt(delta);
 	float x1 = (b - delta) / (2.0f * a);
-	float x2 = (b + delta) / (2.0f * a);
-	if (x2 > 0)
+	//float x2 = (b + delta) / (2.0f * a);
+	if (x1 > 0)
 	{
-		if (x1 < 0)
+		if (x1 < *dist)
 		{
-			if (x2 < *dist)
-			{
-				*dist = x2;
-				return (-1);
-			}
-		}
-		else
-		{
-			if (x1 < *dist)
-			{
-				*dist = x1;
-				return (1);
-			}
+			*dist = x1;
+			return (1);
 		}
 	}
 	return (0);
@@ -234,7 +226,7 @@ float4	get_normal(__global t_primitive *obj, float4 point)
 			return obj->direction;
 		case CYLINDER:
 		case CONE:
-			t = DOT(-obj->direction, obj->position) + DOT(point, obj->direction) / addv(pow(obj->direction, 2));
+			t = DOT(obj->direction, obj->position) + DOT(point, obj->direction) / addv(pow(obj->direction, 2));
 			return NORMALIZE(point - (obj->position + obj->direction * t));
 	}
 	return (float4)(0, 0, 0, 0);
