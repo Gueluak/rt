@@ -3,6 +3,11 @@ typedef enum	e_prim_type
 	SPHERE = 0, PLANE = 1, CONE = 2, CYLINDER = 3, PARABOLOID = 4
 }				t_prim_type;
 
+typedef enum	e_color_filter
+{
+	NONE = 0, SEPIA = 1, GRAYSCALE = 2, CARTOON = 3
+}				t_color_filter;
+
 typedef struct	s_primitive
 {
 	t_prim_type		type;
@@ -24,10 +29,11 @@ typedef struct	s_light
 
 typedef struct	s_argn		//structure containing the limit of out, rays and objects
 {							//note the corespondance with the C structure (types end position of variables correspond, but types have a preceding "cl_")
-	int2	screen_size;	//total screen size in pixels (accesed by .x and .y)
-	int		nb_objects;		//total number of objects in the scene
-	int		nb_lights;		//total number of lights in the scene
-	float	gamma;
+	int2			screen_size;	//total screen size in pixels (accesed by .x and .y)
+	int				nb_objects;		//total number of objects in the scene
+	int				nb_lights;		//total number of lights in the scene
+	float			gamma;
+	t_color_filter	filter;
 }				t_argn;		//norm42 magle
 
 typedef struct	s_camera	//note: yes, this structure is not equivalent to s_camera in rtv1.h
@@ -131,7 +137,10 @@ inline float	local_length(float4 v)
 # define AA 0
 #endif
 
-#define SEPIA 0
+// cartoon effect steps
+#ifndef CARTOON_STEPS
+# define CARTOON_STEPS 6
+#endif
 
 inline float	addv(float4 v)
 {
@@ -325,13 +334,33 @@ inline int		color_to_int(float4 color)
 	return (int)(((int)color.x << 16) + ((int)color.y << 8) + (int)color.z);
 }
 
-inline float4		sepia_color(float4 color)
+inline float4		color_filter(float4 color, t_color_filter filter)
 {
-	float4 out;
+	float4	out;
+	float	t;
 
-	out.x = color.x * 0.393f + color.y * 0.769f + color.z * 0.189f;
-	out.y = color.x * 0.349f + color.y * 0.686f + color.z * 0.168f;
-	out.z = color.x * 0.272f + color.y * 0.534f + color.z * 0.131f;
+	switch (filter)
+	{
+		case SEPIA:
+			out.x = color.x * 0.393f + color.y * 0.769f + color.z * 0.189f;
+			out.y = color.x * 0.349f + color.y * 0.686f + color.z * 0.168f;
+			out.z = color.x * 0.272f + color.y * 0.534f + color.z * 0.131f;
+			break;
+		case GRAYSCALE:
+			t = (color.x + color.y + color.z) / 3.0f;
+			out.x = t;
+			out.y = t;
+			out.z = t;
+			break;
+		case CARTOON:
+			out.x = floor(color.x * CARTOON_STEPS) / CARTOON_STEPS;
+			out.y = floor(color.y * CARTOON_STEPS) / CARTOON_STEPS;
+			out.z = floor(color.z * CARTOON_STEPS) / CARTOON_STEPS;
+			break;
+		case NONE:
+			out = color;
+			break;
+	}
 
 	return (out);
 }
@@ -486,8 +515,8 @@ __kernel void	example(							//main kernel, called for each ray
 	color /= samples;
 
 	// apply color filter
-	if (SEPIA)
-		color = sepia_color(color);
+	if (argn->filter != NONE)
+		color = color_filter(color, argn->filter);
 
 	// return the pixel color
 	out[i] = color_to_int(color);

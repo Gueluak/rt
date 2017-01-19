@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 00:05:50 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/19 22:46:55 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/01/19 23:49:20 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ typedef enum	e_prim_type
 {
 	SPHERE = 0, PLANE = 1, CONE = 2, CYLINDER = 3, PARABOLOID = 4
 }				t_prim_type;
+
+typedef enum	e_color_filter
+{
+	NONE = 0, SEPIA = 1, GRAYSCALE = 2, CARTOON = 3
+}				t_color_filter;
 
 /*
 ** note: the quaternion part of camera is discarded on GPU side
@@ -73,6 +78,7 @@ typedef struct	s_argn
 	cl_int			nb_objects;
 	cl_int			nb_lights;
 	cl_float		gamma;
+	t_color_filter	filter;
 }				t_argn;
 
 cl_float4		*ray_plane(const t_camera *cam, const cl_int2 screen_size);

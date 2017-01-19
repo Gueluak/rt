@@ -1,7 +1,6 @@
 # RT options
 
 ## To do
-
 * Scene file
   * Scene file using JSON or something advanced
 * Perturbation
@@ -20,7 +19,6 @@
   * Use another library to read textures
 * Bump mapping textures
 * Groups
-* Cartoon effect
 * Integrated image saving
 * Progress bar with render progress
 * A good GUI with a library (GTK/SDL)
@@ -33,7 +31,6 @@
 * Red/blue 3D
 * Depth of field
 * Skybox
-* Simple quadric object
 
 ## Done
 * RTv1
@@ -50,6 +47,8 @@
   * Transforms work properly after cutting
 * Perturbation
   * Normal
+* Simple quadric object (paraboloid)
+* Cartoon effect
 
 ## Probably won't do
 * Object limits
