@@ -226,7 +226,7 @@ float4	get_normal(__global t_primitive *obj, float4 point)
 			return obj->direction;
 		case CYLINDER:
 		case CONE:
-			t = DOT(obj->direction, obj->position) + DOT(point, obj->direction) / addv(pow(obj->direction, 2));
+			t = DOT(-obj->direction, obj->position) + DOT(point, obj->direction) / addv(pow(obj->direction, 2));
 			return NORMALIZE(point - (obj->position + obj->direction * t));
 	}
 	return (float4)(0, 0, 0, 0);
@@ -310,7 +310,7 @@ __kernel void	example(							//main kernel, called for each ray
 				// shadows start a tiny amount from the actual sphere to prevent rounding errors
 				float dist_l = LENGTH(light.position - collision);
 				ray_l.direction = NORMALIZE(light.position - collision);
-				ray_l.origin = collision + ray_l.direction * EPSILON;
+				ray_l.origin = collision + ray_l.direction;
 				int hit = 0;
 
 				dist = MAXFLOAT;

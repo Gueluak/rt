@@ -226,7 +226,6 @@ void		rtv1(void)
 	prim()[0][3] = cylinder((cl_float4){.x = 150, .y = 0, .z = 300, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 0, .w = 0}, 20, (cl_float4){.x = 0, .y = 0, .z = 1, .w = 0});
 	lights()[0][0] = light((cl_float4){.x = 0, .y = 0, .z = -100, .w = 0},  (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
 	lights()[0][1] = light((cl_float4){.x = 0, .y = 300, .z = 600, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
-	lights()[0][2] = light((cl_float4){.x = 0, .y = 30, .z = 500, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
 	cam()->pos = (cl_float4){.x = 0, .y = 0, .z = 0, .w = 0};
 	cam()->vp_size = (cl_int2){.x = SW, .y = SH};
 	cam()->dist = 800;
