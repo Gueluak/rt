@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 09:15:54 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/16 00:34:41 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/01/19 23:18:14 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,13 @@ t_primitive	plane(cl_float4 pos, cl_float4 norm, cl_float4 color)
 		.specular = SPECULAR});
 }
 
+t_primitive	paraboloid(cl_float4 pos, cl_float4 norm, cl_float value, cl_float4 color)
+{
+	return ((t_primitive){.type = PARABOLOID, .position = pos, .direction = norm,
+		.radius = value, .color = color, .ambient = AMBIENT, .diffuse = DIFFUSE,
+		.specular = SPECULAR});
+}
+
 t_light		light(cl_float4 pos, cl_float4 color)
 {
 	return ((t_light){.position = pos, .color = color, .direct = 1.0f});
@@ -79,59 +86,6 @@ void		calc_vpul(void)
 					(cam()->up.z * y)) + (cam()->right.z * x);
 	cam()->vpul.w = 0.0f;
 }
-
-/*
-int			cam_key(int key, int status, void *data)
-{
-	t_ubmp		out;
-
-	(void)data;
-	if (status != FTX_KEY_STATUS_PRESSED)
-		return (0);
-	if (key == KEY_W)
-		prim()[0][0].position.y += 10;
-	if (key == KEY_Q)
-		prim()[0][0].position.z += 10;
-	if (key == KEY_E)
-		prim()[0][0].position.z -= 10;
-	if (key == KEY_S)
-		prim()[0][0].position.y -= 10;
-	if (key == KEY_D)
-		prim()[0][0].position.x -= 10;
-	if (key == KEY_A)
-		prim()[0][0].position.x += 10;
-	//if (key == KEY_SPACE)
-	//	cam()->pos.y += 100;
-	//if (key == KEY_SHIFT_LEFT)
-	//	cam()->pos.y -= 100;
-	out.size = ft_point(SW, SH);
-	out.data = (int*)ft_memalloc(sizeof(int) * SW * SH);
-	ftocl_clear_current_kernel_arg(2);
-	ftocl_set_current_kernel_arg(CL_MEM_READ_ONLY, 2, sizeof(t_primitive) *
-		argn()->nb_objects, (void*)*prim());
-	ftocl_start_current_kernel(1, (const size_t[1]){SW * SH}, NULL);
-	ftocl_read_current_kernel_arg(0, out.data);
-	ftx_fill_image(ftx_data()->focused_window->vbuffer, 0x00FFFF, 1);
-	ftx_put_ubmp_img(ftx_data()->focused_window->vbuffer, ft_point(0, 0), &out,
-					NOMASK);
-	ftx_refresh_window(ftx_data()->focused_window);
-	return (0);
-}
-*/
-
-/*
-void		keys(void)
-{
-	ftx_key_hook(KEY_W, cam_key, NULL);
-	ftx_key_hook(KEY_A, cam_key, NULL);
-	ftx_key_hook(KEY_S, cam_key, NULL);
-	ftx_key_hook(KEY_D, cam_key, NULL);
-	ftx_key_hook(KEY_Q, cam_key, NULL);
-	ftx_key_hook(KEY_E, cam_key, NULL);
-//	ftx_key_hook(KEY_SPACE, cam_key, NULL);
-//	ftx_key_hook(KEY_SHIFT_LEFT, cam_key, NULL);
-}
-*/
 
 t_vector	cl_float4_to_vector(cl_float4 v)
 {
@@ -170,7 +124,7 @@ void		rotate_cam(double angle, t_vector axe)
 
 int			keys(t_ftx_data *data)
 {
-	t_ubmp		out;
+	static t_ubmp		out = {.data = NULL, .size = {SW, SH}};
 
 	(void)data;
 	if (data->keymap[KEY_W].status == FTX_KEY_STATUS_PRESSED)
@@ -193,8 +147,9 @@ int			keys(t_ftx_data *data)
 		rotate_cam(-0.05, ft_vector(1, 0, 0));
 	if (data->keymap[KEY_DOWN].status == FTX_KEY_STATUS_PRESSED)
 		rotate_cam(0.05, ft_vector(1, 0, 0));
-	out.size = ft_point(SW, SH);
-	out.data = (int*)ft_memalloc(sizeof(int) * SW * SH);
+	//out.size = ft_point(SW, SH);
+	if (out.data == NULL)
+		out.data = (int*)ft_memalloc(sizeof(int) * SW * SH);
 	ftocl_clear_current_kernel_arg(4);
 //	ftocl_set_current_kernel_arg(CL_MEM_READ_ONLY, 2, sizeof(t_primitive) *
 //		argn()->nb_objects, (void*)*prim());
@@ -206,7 +161,7 @@ int			keys(t_ftx_data *data)
 	ftx_put_ubmp_img(ftx_data()->focused_window->vbuffer, ft_point(0, 0), &out,
 					NOMASK);
 	ftx_refresh_window(ftx_data()->focused_window);
-	ft_free(out.data);
+	//ft_free(out.data);
 
 	return (0);
 }
@@ -218,17 +173,17 @@ void		rtv1(void)
 
 	argn()->screen_size = (cl_int2){.x = SW, .y = SH};
 	argn()->nb_objects = 4;
-	argn()->nb_lights = 3;
+	argn()->nb_lights = 1;
 	argn()->gamma = 0.5f;
 	*prim() = (t_primitive*)ft_malloc(sizeof(t_primitive) * argn()->nb_objects);
 	*lights() = (t_light*)ft_malloc(sizeof(t_light) * argn()->nb_lights);
 	prim()[0][0] = cone((cl_float4){.x = 0, .y = 0, .z = 800, .w = 0}, (cl_float4){.x = 0, .y = 1, .z = 0, .w = 0}, 10, (cl_float4){.x = 1, .y = 0, .z = 0, .w = 0});
 	prim()[0][1] = sphere((cl_float4){.x = -150, .y = 0, .z = 500, .w = 0}, 200, (cl_float4){.x = 0, .y = 1, .z = 0, .w = 0});
 	prim()[0][2] = plane((cl_float4){.x = 0, .y = 0, .z = 1000, .w = 0}, (cl_float4){.x = 0, .y = 0, .z = 1, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 0, .w = 0});
-	prim()[0][3] = cylinder((cl_float4){.x = 150, .y = 0, .z = 300, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 0, .w = 0}, 20, (cl_float4){.x = 0, .y = 0, .z = 1, .w = 0});
+	prim()[0][3] = paraboloid((cl_float4){.x = 0, .y = -200, .z = 300, .w = 0}, (cl_float4){.x = 0, .y = -1, .z = 0, .w = 0}, 100, (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
 	lights()[0][0] = light((cl_float4){.x = 0, .y = 0, .z = -100, .w = 0},  (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
-	lights()[0][1] = light((cl_float4){.x = 0, .y = 300, .z = 600, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
-	lights()[0][2] = light((cl_float4){.x = 0, .y = 300, .z = 100, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
+	//lights()[0][1] = light((cl_float4){.x = 0, .y = 300, .z = 600, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
+	//lights()[0][2] = light((cl_float4){.x = 0, .y = 300, .z = 100, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
 	cam()->pos = (cl_float4){.x = 0, .y = 0, .z = 0, .w = 0};
 	cam()->vp_size = (cl_int2){.x = SW, .y = SH};
 	cam()->dist = 800;
@@ -264,8 +219,9 @@ int			main(const int argc, char **argv, char **env)
 										ft_path_name(argv[0])));
 	if ((fd = open(OCL_SOURCE_PATH, O_RDONLY)) == -1)
 		ft_end(-1);
+	ft_putendl("TEST");
 	ftocl_make_program(ft_str_to_id64("rtv1"),
-		ft_str_clear_commentaries(ft_readfile(fd)), NULL);
+		ft_str_clear_commentaries(readfile(fd)), NULL);
 	close(fd);
 	if (!(fd = ftocl_set_current_kernel(ft_str_to_id64("example"))))
 		rtv1();

@@ -1,6 +1,6 @@
 typedef enum	e_prim_type
 {
-	SPHERE = 0, PLANE = 1, CONE = 2, CYLINDER = 3
+	SPHERE = 0, PLANE = 1, CONE = 2, CYLINDER = 3, PARABOLOID = 4
 }				t_prim_type;
 
 typedef struct	s_primitive
@@ -44,6 +44,7 @@ typedef struct	s_ray
 {
 	float4		origin;
 	float4		direction;
+	float		dist;
 }				t_ray;
 
 //j'aime les commentaires, et vous? :p
@@ -52,12 +53,13 @@ typedef struct	s_ray
    pour la compatibilité AMD, il faut continuer d'utiliser les flags __global et les pointeurs
    (AMD ne copie pas les déférencements de pointeurs dans la stack, ce qui fait que les objets et la lumière n'étaient pas envoyé aux calculs)
    */
-inline float	addv(float4 v);
 
 int		plane_intersect(__global t_primitive *obj, t_ray *ray, float *dist);
 int		sphere_intersect(__global t_primitive *obj, t_ray *ray, float *dist);
 int		cylinder_intersect(__global t_primitive *obj, t_ray *ray, float *dist);
 int		cone_intersect(__global t_primitive *obj, t_ray *ray, float *dist);
+int		paraboloid_intersect(__global t_primitive *obj, t_ray *ray, float *dist);
+
 int		intersect(__global t_primitive *obj, t_ray *ray, float *dist);
 int		solve_quadratic(float a, float b, float c, float *dist);
 float4	get_normal(__global t_primitive *obj, float4 point);
@@ -160,7 +162,7 @@ int		sphere_intersect(__global t_primitive *obj, t_ray *ray, float *dist)
 
 	float a = DOT(ray->direction, ray->direction);
 	float b = 2 * DOT(ray->direction, pos);
-	float c = DOT(pos, pos) - pow(obj->radius, 2);
+	float c = DOT(pos, pos) - obj->radius * obj->radius;
 	return solve_quadratic(a, b, c, dist);
 }
 
@@ -172,7 +174,7 @@ int		cylinder_intersect(__global t_primitive *obj, t_ray *ray, float *dist)
 
 	float a = DOT(r, r);
 	float b = 2 * DOT(r, p);
-	float c = DOT(p, p) - pow(obj->radius, 2) * DOT(obj->direction, obj->direction);
+	float c = DOT(p, p) - obj->radius * obj->radius * DOT(obj->direction, obj->direction);
 	return solve_quadratic(a, b, c, dist);
 }
 
@@ -181,13 +183,34 @@ int		cone_intersect(__global t_primitive *obj, t_ray *ray, float *dist)
 	float4 pos = ray->origin - obj->position;
 	float4 dir = -ray->direction;
 
-	float r = 1 + pow(obj->radius, 2);
+	float r = 1.0f + obj->radius * obj->radius;
 	float dd = DOT(dir, obj->direction);
+	float xv = DOT(pos, obj->direction);
 
-	float a = DOT(dir, dir) - (r * pow(dd, 2));
-	float b = 2 * (DOT(dir, pos) - (r * dd * DOT(pos, obj->direction)));
-	float c = DOT(pos, pos) - (r * pow(DOT(pos, obj->direction), 2));
+	float a = DOT(dir, dir) - (r * dd * dd);
+	float b = 2.0f * (DOT(dir, pos) - (r * dd * xv));
+	float c = DOT(pos, pos) - (r * xv * xv);
 
+	return solve_quadratic(a, b, c, dist);
+}
+
+int		paraboloid_intersect(__global t_primitive *obj, t_ray *ray, float *dist)
+{
+	/*
+	 *    a   = D|D - (D|V)^2
+   b/2 = D|X - D|V*( X|V + 2*k )
+   c   = X|X - X|V*( X|V + 4*k )
+*/
+	float4 pos = ray->origin - obj->position;
+	float4 dir = -ray->direction;
+
+	float dv = DOT(dir, obj->direction);
+	float xv = DOT(pos, obj->direction);
+
+	float a = DOT(dir, dir) - dv * dv;
+	float b = 2.0f * (DOT(dir, pos) - dv * (xv + 2.0f * obj->radius));
+	float c = DOT(pos, pos) - xv * (xv + 4.0f * obj->radius);
+	
 	return solve_quadratic(a, b, c, dist);
 }
 
@@ -248,9 +271,12 @@ inline int		intersect(__global t_primitive *obj, t_ray *ray, float *dist)
 		case CYLINDER:
 			i = cylinder_intersect(obj, ray, dist);
 			break;
+		case PARABOLOID:
+			i = paraboloid_intersect(obj, ray, dist);
+			break;
 	}
 
-
+	// limit our object
 	float4 point = ray->origin + ray->direction * (*dist);
 	if (limit(obj, point))
 	{
@@ -264,25 +290,28 @@ inline int		intersect(__global t_primitive *obj, t_ray *ray, float *dist)
 inline float4	get_normal(__global t_primitive *obj, float4 point)
 {
 	float4 n = (float4)(0, 0, 0, 0);
-	float t;
 
 	switch (obj->type)
 	{
 		case SPHERE:
-			n = NORMALIZE(point - obj->position);
+			n = point - obj->position;
 			break;
 		case PLANE:
 			n = obj->direction;
 			break;
 		case CYLINDER:
+			n = DOT(obj->direction, obj->position - point) * obj->direction + (point - obj->position);
+			break;
 		case CONE:
-			t = DOT(-obj->direction, obj->position) + DOT(point, obj->direction) / addv(pow(obj->direction, 2));
-			n = NORMALIZE(point - (obj->position + obj->direction * t));
+			n = point - obj->position + (obj->direction * -DOT(point, obj->direction) / pow(cos(obj->radius), 2));
+			break;
+		case PARABOLOID:
+			n = point - obj->position - obj->direction * obj->radius;
 			break;
 	}
 
 	//n.y = n.y + cos(point.y / 10.0f) * LENGTH(n) / 10.0f;
-	return (n);
+	return (NORMALIZE(n));
 }
 
 inline float4	phong(float4 dir, float4 norm)
@@ -316,7 +345,6 @@ __kernel void	example(							//main kernel, called for each ray
 {
 	//mode 2: we use 1D Kernels:
 	size_t i = get_global_id(0); //id of the kernel in the global call
-	out[i] = 0;
 
 	// the amount of kernels executed can be more than the screen_size, protect
 	// against bad access
@@ -339,8 +367,7 @@ __kernel void	example(							//main kernel, called for each ray
 		for (aa_x = -AA; aa_x <= AA; aa_x++)
 		{
 			ray.direction = NORMALIZE(cam->vpul + NORMALIZE(cam->right) * (x + (aa_x / ((AA + 1) * 2.0f))) - NORMALIZE(cam->up) * (y + (aa_y / ((AA + 1) * 2.0f))));
-
-			float dist = MAXFLOAT;
+			ray.dist = MAXFLOAT;
 			int id = -1;
 
 			int cur;
@@ -348,7 +375,7 @@ __kernel void	example(							//main kernel, called for each ray
 			int s_hit;
 			for (cur = 0; cur < argn->nb_objects; cur++)
 			{
-				if ((t_hit = intersect(&objects[cur], &ray, &dist)))
+				if ((t_hit = intersect(&objects[cur], &ray, &ray.dist)))
 				{
 					id = cur;
 					s_hit = t_hit;
@@ -367,12 +394,12 @@ __kernel void	example(							//main kernel, called for each ray
 			if (id != -1)
 			{
 				prim = &objects[id];
-				collision = ray.origin + ray.direction * dist;
+				collision = ray.origin + ray.direction * ray.dist;
 
 				// get the normal for this intersection point
 				norm = get_normal(prim, collision);
 
-				// invert the normal if we're inside the primitive
+				// invert the normal if we're "inside" the primitive
 				if (s_hit == -1)
 					norm = -norm;
 
@@ -385,7 +412,6 @@ __kernel void	example(							//main kernel, called for each ray
 			t_ray ray_l;
 			float dist_l;
 			float scal;
-			float dist2 = dist;
 			for (cur_l = 0; cur_l < argn->nb_lights; cur_l++)
 			{
 				t_light light = lights[cur_l];
@@ -398,14 +424,14 @@ __kernel void	example(							//main kernel, called for each ray
 					ray_l.origin = ray.origin;
 
 					// if our light is closer than intersect
-					if (dist_l < dist2)
+					if (dist_l < ray.dist)
 					{
 						// if our light is between us and the object, dot will
 						// be positive
 						scal = DOT(ray_l.direction, ray.direction);
 						if (scal > EPSILON)
 						{
-							scal = pow(scal, dist_l / 50);
+							scal = pow(scal, dist_l / 100);
 							if (scal > MIN_DIRECT)
 								add_color += (light.color * (scal - MIN_DIRECT) / (1.0f - MIN_DIRECT)) * light.direct;
 						}
@@ -424,7 +450,7 @@ __kernel void	example(							//main kernel, called for each ray
 				ray_l.origin = collision + ray_l.direction * SHADOW_E;
 				int hit = 0;
 
-				dist = MAXFLOAT;
+				float dist = MAXFLOAT;
 				for (cur = 0; cur < argn->nb_objects; cur++)
 				{
 					if ((hit = intersect(&objects[cur], &ray_l, &dist)))
@@ -459,8 +485,10 @@ __kernel void	example(							//main kernel, called for each ray
 	// divide by the total amount of samples
 	color /= samples;
 
+	// apply color filter
 	if (SEPIA)
 		color = sepia_color(color);
 
+	// return the pixel color
 	out[i] = color_to_int(color);
 }

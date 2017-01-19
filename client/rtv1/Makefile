@@ -18,7 +18,9 @@ ITEMS = \
 		main \
 		update_kernel_args \
 		prim \
-		argn
+		argn \
+		readfile \
+		strmerge
 
 #variables for Linux
 ifeq ($(shell uname),Linux)

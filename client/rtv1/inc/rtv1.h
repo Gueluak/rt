@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 00:05:50 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/16 00:33:47 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/01/19 22:46:55 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 typedef enum	e_prim_type
 {
-	SPHERE = 0, PLANE = 1, CONE = 2, CYLINDER = 3
+	SPHERE = 0, PLANE = 1, CONE = 2, CYLINDER = 3, PARABOLOID = 4
 }				t_prim_type;
 
 /*
@@ -81,5 +81,7 @@ void			update_kernel_args(void);
 t_primitive		**prim(void);
 t_argn			*argn(void);
 t_light			**lights(void);
+char			*readfile(int fd);
+char			*strmerge(char *a, char *b);
 
 #endif

@@ -33,6 +33,7 @@
 * Red/blue 3D
 * Depth of field
 * Skybox
+* Simple quadric object
 
 ## Done
 * RTv1
@@ -59,7 +60,6 @@
 * Limit textures
 * Shadows work with semi-transparent textures
 * Negative objects
-* Simple quadric object
 * Motion blur (we don't have motion)
 * Clustered rendering
 * Menger sponge
