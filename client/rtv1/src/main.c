@@ -12,6 +12,7 @@
 
 #include <rtv1.h>
 #include <stdio.h>
+#include <time.h>
 
 int			cb_exit(int k, int s, void *p)
 {
@@ -217,14 +218,14 @@ void		rtv1(void)
 
 	argn()->screen_size = (cl_int2){.x = SW, .y = SH};
 	argn()->nb_objects = 4;
-	argn()->nb_lights = 3;
+	argn()->nb_lights = 2;
 	*prim() = (t_primitive*)ft_malloc(sizeof(t_primitive) * argn()->nb_objects);
 	*lights() = (t_light*)ft_malloc(sizeof(t_light) * argn()->nb_lights);
 	prim()[0][0] = cone((cl_float4){.x = 0, .y = 0, .z = 800, .w = 0}, (cl_float4){.x = 0, .y = 1, .z = 0, .w = 0}, 10, (cl_float4){.x = 1, .y = 0, .z = 0, .w = 0});
 	prim()[0][1] = sphere((cl_float4){.x = -150, .y = 0, .z = 500, .w = 0}, 200, (cl_float4){.x = 0, .y = 1, .z = 0, .w = 0});
 	prim()[0][2] = plane((cl_float4){.x = 0, .y = 0, .z = 1000, .w = 0}, (cl_float4){.x = 0, .y = 0, .z = 1, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 0, .w = 0});
-	prim()[0][3] = cylinder((cl_float4){.x = 150, .y = 0, .z = 300, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 0, .w = 0}, 20, (cl_float4){.x = 0, .y = 0, .z = 1, .w = 0});
-	lights()[0][0] = light((cl_float4){.x = 0, .y = 0, .z = -100, .w = 0},  (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
+	prim()[0][3] = cylinder((cl_float4){.x = 150, .y = 0, .z = 300, .w = 0}, (cl_float4){.x = 1, .y = 0, .z = 0, .w = 0}, 20, (cl_float4){.x = 0, .y = 0, .z = 1, .w = 0});
+	lights()[0][0] = light((cl_float4){.x = 0, .y = 300, .z = 600, .w = 0},  (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
 	lights()[0][1] = light((cl_float4){.x = 0, .y = 300, .z = 600, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
 	cam()->pos = (cl_float4){.x = 0, .y = 0, .z = 0, .w = 0};
 	cam()->vp_size = (cl_int2){.x = SW, .y = SH};
