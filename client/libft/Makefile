@@ -272,7 +272,9 @@ ITEMS = \
 		./src/xtree/ft_xtree_add_next \
 		./src/xtree/ft_xtree_add_shild \
 		./src/xtree/ft_xtree_new \
-		./src/conv/ft_str_to_id64
+		./src/conv/ft_str_to_id64 \
+		./src/test/ft_is_double \
+		./src/conv/ft_atod
 
 #variables for Linux
 ifeq ($(shell uname),Linux)
@@ -294,7 +296,7 @@ endif
 ifeq ($(shell uname),Darwin)
 
 #gcc/clang flags
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 #path to external includes
 PINC =
 #path to libs to compile

@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:39:36 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/07 18:40:00 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/01/20 00:01:52 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define NORM_LIBFT 0
 
 # ifndef FT_USE_FINAL_FREE
-#  define FT_USE_FINAL_FREE 1
+#  define FT_USE_FINAL_FREE 0
 # endif
 
 # ifndef NORM_LIBFT
@@ -1246,5 +1246,7 @@ void					**ft_tab_block_alloc(size_t x, size_t y, size_t block);
 t_pile					*ft_global_atend_stack(void);
 int						ft_atend(void (*func)(void));
 uint64_t				ft_str_to_id64(char *str);
+double					ft_atod(const char *str);
+int						ft_is_double(const char *str);
 
 #endif

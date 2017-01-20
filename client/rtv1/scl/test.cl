@@ -159,12 +159,14 @@ int		cylinder_intersect(__global t_primitive *obj, t_ray *ray, float *dist)
 	return solve_quadratic(a, b, c, dist);
 }
 
+#define COS2(v) (pow(cos(v),2))
+
 int		cone_intersect(__global t_primitive *obj, t_ray *ray, float *dist)
 {
 	float4 pos = ray->origin - obj->position;
 	float4 dir = -ray->direction;
 
-	float r = 1 + pow(obj->radius, 2);
+	float r = 1 + pow(tan(obj->radius), 2);
 	float dd = DOT(dir, obj->direction);
 
 	float a = DOT(dir, dir) - (r * pow(dd, 2));

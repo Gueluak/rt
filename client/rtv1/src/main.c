@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 09:15:54 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/14 16:52:35 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/01/17 22:31:35 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,44 +166,51 @@ void		rotate_cam(double angle, t_vector axe)
 
 int			keys(t_ftx_data *data)
 {
-	t_ubmp		out;
+	static t_ubmp		out = {.size = {SW, SH}, .data = NULL};
+	size_t				size;
 
 	(void)data;
-	if (data->keymap[KEY_W].status == FTX_KEY_STATUS_PRESSED)
-		cam()->pos.y += 10;
-	if (data->keymap[KEY_S].status == FTX_KEY_STATUS_PRESSED)
-		cam()->pos.y -= 10;
-	if (data->keymap[KEY_D].status == FTX_KEY_STATUS_PRESSED)
-		cam()->pos.x += 10;
-	if (data->keymap[KEY_A].status == FTX_KEY_STATUS_PRESSED)
-		cam()->pos.x -= 10;
-	if (data->keymap[KEY_Q].status == FTX_KEY_STATUS_PRESSED)
-		cam()->pos.z += 10;
-	if (data->keymap[KEY_E].status == FTX_KEY_STATUS_PRESSED)
-		cam()->pos.z -= 10;
-	if (data->keymap[KEY_LEFT].status == FTX_KEY_STATUS_PRESSED)
-		rotate_cam(-0.05, ft_vector(0, 1, 0));
-	if (data->keymap[KEY_RIGHT].status == FTX_KEY_STATUS_PRESSED)
-		rotate_cam(0.05, ft_vector(0, 1, 0));
-	if (data->keymap[KEY_UP].status == FTX_KEY_STATUS_PRESSED)
-		rotate_cam(-0.05, ft_vector(1, 0, 0));
-	if (data->keymap[KEY_DOWN].status == FTX_KEY_STATUS_PRESSED)
-		rotate_cam(0.05, ft_vector(1, 0, 0));
-	out.size = ft_point(SW, SH);
-	out.data = (int*)ft_memalloc(sizeof(int) * SW * SH);
-	ftocl_clear_current_kernel_arg(4);
+	size = SW * SH;
+//	if (data->keymap[KEY_W].status == FTX_KEY_STATUS_PRESSED)
+//		cam()->pos.y += 10;
+//	if (data->keymap[KEY_S].status == FTX_KEY_STATUS_PRESSED)
+//		cam()->pos.y -= 10;
+//	if (data->keymap[KEY_D].status == FTX_KEY_STATUS_PRESSED)
+//		cam()->pos.x += 10;
+//	if (data->keymap[KEY_A].status == FTX_KEY_STATUS_PRESSED)
+//		cam()->pos.x -= 10;
+//	if (data->keymap[KEY_Q].status == FTX_KEY_STATUS_PRESSED)
+//		cam()->pos.z += 10;
+//	if (data->keymap[KEY_E].status == FTX_KEY_STATUS_PRESSED)
+//		cam()->pos.z -= 10;
+//	if (data->keymap[KEY_LEFT].status == FTX_KEY_STATUS_PRESSED)
+//		rotate_cam(-0.05, ft_vector(0, 1, 0));
+//	if (data->keymap[KEY_RIGHT].status == FTX_KEY_STATUS_PRESSED)
+//		rotate_cam(0.05, ft_vector(0, 1, 0));
+//	if (data->keymap[KEY_UP].status == FTX_KEY_STATUS_PRESSED)
+//		rotate_cam(-0.05, ft_vector(1, 0, 0));
+//	if (data->keymap[KEY_DOWN].status == FTX_KEY_STATUS_PRESSED)
+//		rotate_cam(0.05, ft_vector(1, 0, 0));
+	if (out.data == NULL)
+		out.data = (int*)ft_memalloc(sizeof(int) * SW * SH);
+//	ftocl_clear_current_kernel_arg(4);													//leaks?
+//	ftocl_set_current_kernel_arg(CL_MEM_READ_ONLY, 4, sizeof(t_camera), (void*)cam());	//leaks?
+
 //	ftocl_set_current_kernel_arg(CL_MEM_READ_ONLY, 2, sizeof(t_primitive) *
 //		argn()->nb_objects, (void*)*prim());
-	ftocl_set_current_kernel_arg(CL_MEM_READ_ONLY, 4, sizeof(t_camera), (void*)cam());
 
-	ftocl_start_current_kernel(1, (const size_t[1]){SW * SH}, NULL);
-	ftocl_read_current_kernel_arg(0, out.data);
-	ftx_fill_image(ftx_data()->focused_window->vbuffer, 0x00FFFF, 1);
-	ftx_put_ubmp_img(ftx_data()->focused_window->vbuffer, ft_point(0, 0), &out,
-					NOMASK);
-	ft_free(out.data);
-	ftx_refresh_window(ftx_data()->focused_window);
+	ftocl_start_current_kernel(1, &size, NULL);											//leaks?
+//combinaison des deux? yep, confirmé, il y a une couille dans le potage
+	ftocl_read_current_kernel_arg(0, out.data);											//leaks?
 
+//	printf("%p\n", ftx_data()->focused_window->vbuffer);
+
+//	ftx_fill_image(ftx_data()->focused_window->vbuffer, 0x00FFFF, 1);
+//	ftx_put_ubmp_img(ftx_data()->focused_window->vbuffer, ft_point(0, 0), &out,
+//					NOMASK);
+
+//	ftx_refresh_window(ftx_data()->focused_window);
+//	ft_free(out.data);
 	return (0);
 }
 
@@ -217,7 +224,7 @@ void		rtv1(void)
 	argn()->nb_lights = 3;
 	*prim() = (t_primitive*)ft_malloc(sizeof(t_primitive) * argn()->nb_objects);
 	*lights() = (t_light*)ft_malloc(sizeof(t_light) * argn()->nb_lights);
-	prim()[0][0] = cone((cl_float4){.x = 0, .y = 0, .z = 800, .w = 0}, (cl_float4){.x = 0, .y = 1, .z = 0, .w = 0}, 10, (cl_float4){.x = 1, .y = 0, .z = 0, .w = 0});
+	prim()[0][0] = cone((cl_float4){.x = 0, .y = 0, .z = 800, .w = 0}, (cl_float4){.x = 0, .y = 1, .z = 0, .w = 0}, 20, (cl_float4){.x = 1, .y = 0, .z = 0, .w = 0});
 	prim()[0][1] = sphere((cl_float4){.x = -150, .y = 0, .z = 500, .w = 0}, 200, (cl_float4){.x = 0, .y = 1, .z = 0, .w = 0});
 	prim()[0][2] = plane((cl_float4){.x = 0, .y = 0, .z = 1000, .w = 0}, (cl_float4){.x = 0, .y = 0, .z = 1, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 0, .w = 0});
 	prim()[0][3] = cylinder((cl_float4){.x = 150, .y = 0, .z = 300, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 0, .w = 0}, 20, (cl_float4){.x = 0, .y = 0, .z = 1, .w = 0});
@@ -238,6 +245,7 @@ void		rtv1(void)
 	ftx_new_window(ft_point(SW, SH), "test", NULL);
 	ftx_put_ubmp_img(ftx_data()->focused_window->vbuffer, ft_point(0, 0), &out,
 					NOMASK);
+	ft_free(out.data);
 	printf("Kernel: %.8s was succesfully loaded\n",
 				(char*)&ftocl_data()->current_kernel->id);
 	ftx_key_hook(KEY_EXIT, cb_exit, NULL);
