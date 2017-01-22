@@ -150,6 +150,7 @@ int		sphere_intersect(__global t_primitive *obj, t_ray *ray, float *dist)
 int		cylinder_intersect(__global t_primitive *obj, t_ray *ray, float *dist)
 {
 	float4 pos = obj->position - ray->origin;
+	normalize(obj->direction);
 	float4 p = CROSS(pos, obj->direction);
 	float4 r = CROSS(ray->direction, obj->direction);
 
@@ -225,11 +226,12 @@ float4	get_normal(__global t_primitive *obj, float4 point)
 		case PLANE:
 			return obj->direction;
 		case CYLINDER:
-			t =  addv(DOT((point - obj->position), obj->direction)) / LENGTH(obj->direction);
-			return NORMALIZE((obj->direction * t) - (point - obj->position));
+			//obj->direction = NORMALIZE(obj->direction);
+			//t =  addv(DOT((point - obj->position), NORMALIZE(obj->direction))) / LENGTH(NORMALIZE(obj->direction));
+			//return NORMALIZE(point - (obj->position + NORMALIZE(obj->direction) * t));
 		case CONE:
-			t = DOT(-obj->direction, obj->position) + DOT(point, obj->direction) / addv(pow(obj->direction, 2));
-			return NORMALIZE(point - (obj->position + obj->direction * t));
+			t = DOT(NORMALIZE(-obj->direction), obj->position) + DOT(point, NORMALIZE(obj->direction)) / addv(pow(NORMALIZE(obj->direction), 2));
+			return NORMALIZE(point - (obj->position + NORMALIZE(obj->direction) * t));
 	}
 	return (float4)(0, 0, 0, 0);
 }
