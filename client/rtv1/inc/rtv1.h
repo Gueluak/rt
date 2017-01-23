@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 00:05:50 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/19 23:49:20 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/01/22 03:39:33 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ typedef enum	e_color_filter
 	NONE = 0, SEPIA = 1, GRAYSCALE = 2, CARTOON = 3
 }				t_color_filter;
 
+typedef enum	e_perturbation
+{
+	P_NONE = 0, CHECKERBOARD = 1, SINE = 2, PERIN = 3
+}				t_perturbation;
+
 /*
 ** note: the quaternion part of camera is discarded on GPU side
 ** (copied but not accessible via struct camera)
@@ -63,6 +68,8 @@ typedef struct	s_primitive
 	cl_float		ambient;
 	cl_float		diffuse;
 	cl_float		specular;
+	cl_float		normal_perturbation;
+	t_perturbation	perturbation;
 }				t_primitive;
 
 typedef struct	s_light
@@ -79,6 +86,7 @@ typedef struct	s_argn
 	cl_int			nb_lights;
 	cl_float		gamma;
 	t_color_filter	filter;
+	cl_int			antialias;
 }				t_argn;
 
 cl_float4		*ray_plane(const t_camera *cam, const cl_int2 screen_size);

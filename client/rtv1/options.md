@@ -4,8 +4,6 @@
 * Scene file
   * Scene file using JSON or something advanced
 * Perturbation
-  * Color (XY based)
-  * Color (something more complex)
   * Color (Perlin noise)
 * Reflection (with percentage)
 * Transparency (with percentage)
@@ -47,6 +45,8 @@
   * Transforms work properly after cutting
 * Perturbation
   * Normal
+  * Color (XY checkerboard)
+  * Color (something more complex)
 * Simple quadric object (paraboloid)
 * Cartoon effect
 

@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 09:15:54 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/20 00:00:11 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/01/23 20:25:48 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,16 @@ t_primitive	cone(cl_float4 pos, cl_float4 direction, cl_float alpha, cl_float4 c
 {
 	return ((t_primitive){.type = CONE, .position = pos,
 		.direction = direction, .radius = alpha * M_PI / 180.0f, .color = color,
-		.ambient = AMBIENT, .diffuse = DIFFUSE, .specular = SPECULAR});
+		.ambient = AMBIENT, .diffuse = DIFFUSE, .specular = SPECULAR,
+		.normal_perturbation = 0.0f, .perturbation = P_NONE});
 }
 
 t_primitive	cylinder(cl_float4 pos, cl_float4 direction, cl_float radius, cl_float4 color)
 {
 	return ((t_primitive){.type = CYLINDER, .position = pos,
 		.direction = direction, .radius = radius, .color = color,
-		.ambient = AMBIENT, .diffuse = DIFFUSE, .specular = SPECULAR});
+		.ambient = AMBIENT, .diffuse = DIFFUSE, .specular = SPECULAR,
+		.normal_perturbation = 0.0f, .perturbation = P_NONE});
 }
 
 t_primitive	sphere(cl_float4 pos, cl_float radius, cl_float4 color)
@@ -47,21 +49,24 @@ t_primitive	sphere(cl_float4 pos, cl_float radius, cl_float4 color)
 	return ((t_primitive){.type = SPHERE, .position = pos,
 		.direction = {.x = 0, .y = 0, .z = 1, .w = 0}, .radius = radius,
 		.color = color, .ambient = AMBIENT, .diffuse = DIFFUSE,
-		.specular = SPECULAR});
+		.specular = SPECULAR, .normal_perturbation = 0.0f,
+		.perturbation = CHECKERBOARD});
 }
 
 t_primitive	plane(cl_float4 pos, cl_float4 norm, cl_float4 color)
 {
 	return ((t_primitive){.type = PLANE, .position = pos, .direction = norm,
 		.radius = 0, .color = color, .ambient = AMBIENT, .diffuse = DIFFUSE,
-		.specular = SPECULAR});
+		.specular = SPECULAR, .normal_perturbation = 0.3f,
+		.perturbation = P_NONE});
 }
 
 t_primitive	paraboloid(cl_float4 pos, cl_float4 norm, cl_float value, cl_float4 color)
 {
 	return ((t_primitive){.type = PARABOLOID, .position = pos, .direction = norm,
 		.radius = value, .color = color, .ambient = AMBIENT, .diffuse = DIFFUSE,
-		.specular = SPECULAR});
+		.specular = SPECULAR, .normal_perturbation = 0.0f,
+		.perturbation = P_NONE});
 }
 
 t_light		light(cl_float4 pos, cl_float4 color)
@@ -175,7 +180,8 @@ void		rtv1(void)
 	argn()->nb_objects = 4;
 	argn()->nb_lights = 1;
 	argn()->gamma = 0.5f;
-	argn()->filter = CARTOON;
+	argn()->filter = NONE;
+	argn()->antialias = 1;
 	*prim() = (t_primitive*)ft_malloc(sizeof(t_primitive) * argn()->nb_objects);
 	*lights() = (t_light*)ft_malloc(sizeof(t_light) * argn()->nb_lights);
 	prim()[0][0] = cone((cl_float4){.x = 0, .y = 0, .z = 800, .w = 0}, (cl_float4){.x = 0, .y = 1, .z = 0, .w = 0}, 10, (cl_float4){.x = 1, .y = 0, .z = 0, .w = 0});
@@ -220,7 +226,6 @@ int			main(const int argc, char **argv, char **env)
 										ft_path_name(argv[0])));
 	if ((fd = open(OCL_SOURCE_PATH, O_RDONLY)) == -1)
 		ft_end(-1);
-	ft_putendl("TEST");
 	ftocl_make_program(ft_str_to_id64("rtv1"),
 		ft_str_clear_commentaries(readfile(fd)), NULL);
 	close(fd);

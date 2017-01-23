@@ -8,16 +8,23 @@ typedef enum	e_color_filter
 	NONE = 0, SEPIA = 1, GRAYSCALE = 2, CARTOON = 3
 }				t_color_filter;
 
+typedef enum	e_perturbation
+{
+	CHECKERBOARD = 1, SINE = 2, PERLIN = 3
+}				t_perturbation;
+
 typedef struct	s_primitive
 {
 	t_prim_type		type;
-	float4		position;
-	float4		direction;
-	float4		color;
-	float		radius;
-	float		ambient;
-	float		diffuse;
-	float		specular;
+	float4			position;
+	float4			direction;
+	float4			color;
+	float			radius;
+	float			ambient;
+	float			diffuse;
+	float			specular;
+	float			normal_perturbation;
+	t_perturbation	perturbation;
 }				t_primitive;
 
 typedef struct	s_light
@@ -34,6 +41,7 @@ typedef struct	s_argn		//structure containing the limit of out, rays and objects
 	int				nb_lights;		//total number of lights in the scene
 	float			gamma;
 	t_color_filter	filter;
+	int				antialias;
 }				t_argn;		//norm42 magle
 
 typedef struct	s_camera	//note: yes, this structure is not equivalent to s_camera in rtv1.h
@@ -132,14 +140,19 @@ inline float	local_length(float4 v)
 # define MIN_DIRECT 0.95f
 #endif
 
-// antialias 0 = 1x1 (none), 1 = 3x3, 2 = 5x5, 3 = 7x7, etc.
-#ifndef AA
-# define AA 0
+// normal perturbation size
+#ifndef NORMAL_PERTURBATION_SIZE
+# define NORMAL_PERTURBATION_SIZE 10.0f
+#endif
+
+// color perturbation checkerboard size
+#ifndef CHECKER_SIZE
+# define CHECKER_SIZE 10
 #endif
 
 // cartoon effect steps
 #ifndef CARTOON_STEPS
-# define CARTOON_STEPS 6
+# define CARTOON_STEPS 3
 #endif
 
 inline float	addv(float4 v)
@@ -205,11 +218,6 @@ int		cone_intersect(__global t_primitive *obj, t_ray *ray, float *dist)
 
 int		paraboloid_intersect(__global t_primitive *obj, t_ray *ray, float *dist)
 {
-	/*
-	 *    a   = D|D - (D|V)^2
-   b/2 = D|X - D|V*( X|V + 2*k )
-   c   = X|X - X|V*( X|V + 4*k )
-*/
 	float4 pos = ray->origin - obj->position;
 	float4 dir = -ray->direction;
 
@@ -219,37 +227,34 @@ int		paraboloid_intersect(__global t_primitive *obj, t_ray *ray, float *dist)
 	float a = DOT(dir, dir) - dv * dv;
 	float b = 2.0f * (DOT(dir, pos) - dv * (xv + 2.0f * obj->radius));
 	float c = DOT(pos, pos) - xv * (xv + 4.0f * obj->radius);
-	
+
 	return solve_quadratic(a, b, c, dist);
 }
 
 int		solve_quadratic(float a, float b, float c, float *dist)
 {
 	float delta = b * b - 4.0f * a * c;
-	if (delta < EPSILON)
+	if (delta < 0)
 		return (0);
 
 	delta = sqrt(delta);
 	float x1 = (b - delta) / (2.0f * a);
 	float x2 = (b + delta) / (2.0f * a);
-	if (x2 > EPSILON)
+
+	if (x1 <= EPSILON) // use x2 is x1 is negative
 	{
-		if (x1 < 0)
+		if (x2 <= EPSILON) // both are negative
+			return (0);
+		else if (x2 < *dist) // x2 positive
 		{
-			if (x2 < *dist)
-			{
-				*dist = x2;
-				return (-1);
-			}
+			*dist = x2;
+			return (-1);
 		}
-		else
-		{
-			if (x1 < *dist)
-			{
-				*dist = x1;
-				return (1);
-			}
-		}
+	}
+	else if (x1 < *dist) // x1 positive
+	{
+		*dist = x1;
+		return (1);
 	}
 	return (0);
 }
@@ -319,8 +324,45 @@ inline float4	get_normal(__global t_primitive *obj, float4 point)
 			break;
 	}
 
-	//n.y = n.y + cos(point.y / 10.0f) * LENGTH(n) / 10.0f;
+	// normal perturbation
+	if (obj->normal_perturbation > 0.0f)
+	{
+		float len = LENGTH(n);
+		//n.x = n.x + sin(point.x / NORMAL_PERTURBATION_SIZE) * obj->normal_perturbation * (len / NORMAL_PERTURBATION_SIZE);
+		n.y = n.y + cos(point.y / NORMAL_PERTURBATION_SIZE) * obj->normal_perturbation * (len / NORMAL_PERTURBATION_SIZE);
+	}
 	return (NORMALIZE(n));
+}
+
+inline float2	texture_map(__global t_primitive *prim, float4 normal)
+{
+	float2 pos = (float2)(0, 0);
+
+	switch (prim->type)
+	{
+		case SPHERE:
+			pos.x = 0.5f + atan2(normal.z, normal.x) / (2.0f * M_PI);
+			pos.y = 0.5f + asinpi(normal.y);
+			break;
+	}
+	return (pos);
+}
+
+inline float4	color_perturbation(float4 color, __global t_primitive *prim, float4 normal)
+{
+	float2 pos = texture_map(prim, normal);
+
+	switch (prim->perturbation)
+	{
+		case CHECKERBOARD:
+			if (fmod(pos.x * CHECKER_SIZE, 2) <= 1.0f ^ fmod(pos.y * CHECKER_SIZE, 2) <= 1.0f)
+				color /= 2.0f;
+			break;
+		case SINE:
+			color *= fabs(cos((pos.x + pos.y) * 10 * CHECKER_SIZE));
+			break;
+	}
+	return (color);
 }
 
 inline float4	phong(float4 dir, float4 norm)
@@ -382,23 +424,32 @@ __kernel void	example(							//main kernel, called for each ray
 
 	float x = (float)(i % argn->screen_size.x);
 	float y = (float)(i / argn->screen_size.x);
+
 	t_ray ray;
 	ray.origin = cam->pos;
 
 	int aa_x;
 	int aa_y;
+	int samples = 0;
+
 	float4 color = (float4)(0, 0, 0, 0);
 
-	// antialias
-	int samples = 0;
-	for (aa_y = -AA; aa_y <= AA; aa_y++)
+	// antialias loop
+	for (aa_y = 0; aa_y < argn->antialias; aa_y++)
 	{
-		for (aa_x = -AA; aa_x <= AA; aa_x++)
+		for (aa_x = 0; aa_x < argn->antialias; aa_x++)
 		{
-			ray.direction = NORMALIZE(cam->vpul + NORMALIZE(cam->right) * (x + (aa_x / ((AA + 1) * 2.0f))) - NORMALIZE(cam->up) * (y + (aa_y / ((AA + 1) * 2.0f))));
-			ray.dist = MAXFLOAT;
-			int id = -1;
+			float2 aa;
 
+			// subpixel positions
+			aa.x = x + (aa_x - argn->antialias / 2.0f) / argn->antialias;
+			aa.y = y + (aa_y - argn->antialias / 2.0f) / argn->antialias;
+
+			ray.direction = NORMALIZE(cam->vpul + NORMALIZE(cam->right) * (aa.x) - NORMALIZE(cam->up) * (aa.y));
+			ray.dist = MAXFLOAT;
+
+			// intersection check
+			int id = -1;
 			int cur;
 			int	t_hit;
 			int s_hit;
@@ -433,7 +484,7 @@ __kernel void	example(							//main kernel, called for each ray
 					norm = -norm;
 
 				// add ambient light
-				cur_color += prim->color * prim->ambient; // TODO: ambient amount should be configurable
+				cur_color += prim->color * prim->ambient;
 			}
 
 			// lights, maestro!
@@ -482,7 +533,7 @@ __kernel void	example(							//main kernel, called for each ray
 				float dist = MAXFLOAT;
 				for (cur = 0; cur < argn->nb_objects; cur++)
 				{
-					if ((hit = intersect(&objects[cur], &ray_l, &dist)))
+					if ((hit = intersect(&objects[cur], &ray_l, &dist)) > 0)
 					{
 						if (dist > EPSILON && dist < dist_l) // it is between us
 							break ;
@@ -502,10 +553,15 @@ __kernel void	example(							//main kernel, called for each ray
 				// specular highlights (needs pow to make the curve sharper)
 				float4 ir = phong(-ray_l.direction, norm);
 				if (scal > EPSILON && (scal = DOT(ray_l.direction, ir)) > EPSILON)
-					cur_color += light.color * pow(scal, dist_l / 50) * prim->specular;
+					cur_color += light.color * pow(scal, dist_l / 40) * prim->specular;
 			}
 
+			// calculate final color
 			color += clamp(cur_color / ((float)argn->nb_lights * argn->gamma), 0.0f, 1.0f);
+			// perturbation if we hit something
+			if (prim)
+				color = color_perturbation(color, prim, norm);
+			// added color
 			color += clamp(add_color, 0.0f, 1.0f);
 			samples++;
 		}
