@@ -69,22 +69,6 @@ int		color_to_int(float4 color);
 # define NORMALIZE local_normalize
 # define LENGTH local_length
 # define CROSS local_cross
-#else
-# define DOT dot
-# define NORMALIZE normalize
-# define LENGTH length
-# define CROSS cross
-#endif
-
-// error correction
-#ifndef EPSILON
-# define EPSILON 0.1f
-#endif
-
-// antialias 0 = 1x1 (none), 1 = 3x3, 2 = 5x5, 3 = 7x7, etc.
-#ifndef AA
-# define AA 0
-#endif
 
 float4	local_cross(float4 v1, float4 v2)
 {
@@ -114,6 +98,24 @@ float	local_length(float4 v)
 {
 	return sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
 }
+#else
+# define DOT dot
+# define NORMALIZE normalize
+# define LENGTH length
+# define CROSS cross
+#endif
+
+// error correction
+#ifndef EPSILON
+# define EPSILON 0.0001f
+#endif
+
+// antialias 0 = 1x1 (none), 1 = 3x3, 2 = 5x5, 3 = 7x7, etc.
+#ifndef AA
+# define AA 0
+#endif
+
+
 
 float	addv(float4 v)
 {
@@ -185,8 +187,29 @@ int		solve_quadratic(float a, float b, float c, float *dist)
 
 	delta = sqrt(delta);
 	float x1 = (b - delta) / (2.0f * a);
-	//float x2 = (b + delta) / (2.0f * a);
-	if (x1 > 0)
+	float x2 = (b + delta) / (2.0f * a);
+
+	if (x1 <= EPSILON)
+	{
+		//use x2
+		if (x2 <= EPSILON)
+		{
+			return (0); // both are negative
+		}
+		else if (x2 < *dist) // x2 positive
+		{
+			*dist = x2;
+			return (-1);
+		}
+	}
+	else if (x1 < *dist) // x1 positive
+	{
+		*dist = x1;
+		return (1);
+	}
+	
+	/*
+	if (x1 > 0) // then x2 > 0 && x2 > x1
 	{
 		if (x1 < *dist)
 		{
@@ -194,6 +217,7 @@ int		solve_quadratic(float a, float b, float c, float *dist)
 			return (1);
 		}
 	}
+	*/
 	return (0);
 }
 
@@ -226,12 +250,15 @@ float4	get_normal(__global t_primitive *obj, float4 point)
 		case PLANE:
 			return obj->direction;
 		case CYLINDER:
-			//obj->direction = NORMALIZE(obj->direction);
+			obj->direction = NORMALIZE(obj->direction);
 			//t =  addv(DOT((point - obj->position), NORMALIZE(obj->direction))) / LENGTH(NORMALIZE(obj->direction));
 			//return NORMALIZE(point - (obj->position + NORMALIZE(obj->direction) * t));
+			return NORMALIZE(point - obj->position + (obj->direction * DOT(obj->direction, obj->position - point)));
 		case CONE:
-			t = DOT(NORMALIZE(-obj->direction), obj->position) + DOT(point, NORMALIZE(obj->direction)) / addv(pow(NORMALIZE(obj->direction), 2));
-			return NORMALIZE(point - (obj->position + NORMALIZE(obj->direction) * t));
+			obj->direction = NORMALIZE(obj->direction);
+			return NORMALIZE(point - obj->position + (obj->direction * -DOT(point, obj->direction) / pow(cos(obj->radius), 2)));
+			//t = DOT(-obj->direction, obj->position) + DOT(point, obj->direction) / addv(pow(obj->direction, 2));
+			//return NORMALIZE(point - (obj->position + obj->direction * t));
 	}
 	return (float4)(0, 0, 0, 0);
 }
@@ -320,7 +347,7 @@ __kernel void	example(							//main kernel, called for each ray
 				dist = MAXFLOAT;
 				for (cur = 0; cur < argn->nb_objects; cur++)
 				{
-					if ((hit = intersect(&objects[cur], &ray_l, &dist)))
+					if ((hit = intersect(&objects[cur], &ray_l, &dist))	> 0)
 					{
 						if (dist > EPSILON && dist < dist_l) // it is between us
 							break ;
@@ -349,7 +376,7 @@ __kernel void	example(							//main kernel, called for each ray
 				// specular highlights (needs pow to make the curve sharper)
 				float4 ir = phong(-ray_l.direction, norm);
 				if (scal > 0 && (scal = DOT(ray_l.direction, ir)) > 0)
-					cur_color += light.color * pow(max(0.0f, scal), 20); // TODO: specular coef
+					cur_color += light.color * pow(scal, 20); // TODO: specular coef
 			}
 
 			color += cur_color; // / (float)argn->nb_lights
