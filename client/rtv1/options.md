@@ -3,12 +3,14 @@
 ## To do
 * Scene file
   * Scene file using JSON or something advanced
-* Perturbation
-  * Color (Perlin noise)
-* Reflection (with percentage)
-* Transparency (with percentage)
-* Refraction
-* Shadows adapt based on transparency
+* Integrated image saving
+* Progress bar with render progress
+* Real-time parameter changes
+  * Preview renders should be low-resolution and unshaded
+* Launch renders through the terminal
+* Video to show off RT on YouTube/Vimeo
+* A good GUI with a library (GTK/SDL)
+
 * Textures
   * At least one object
   * All objects
@@ -16,18 +18,8 @@
   * Translate texture on the object
   * Use another library to read textures
 * Bump mapping textures
-* Groups
-* Integrated image saving
-* Progress bar with render progress
-* A good GUI with a library (GTK/SDL)
-* Real-time parameter changes
-  * Preview renders should be low-resolution and unshaded
-* Launch renders through the terminal
-* Automatic object creation (torus with spheres, helix)
-* Video to show off RT on YouTube/Vimeo
-* Spherical light (soft shadows)
+
 * Red/blue 3D
-* Depth of field
 * Skybox
 
 ## Done
@@ -49,6 +41,7 @@
   * Color (something more complex)
 * Simple quadric object (paraboloid)
 * Cartoon effect
+* Reflection (with percentage)
 
 ## Probably won't do
 * Object limits
@@ -71,3 +64,12 @@
 * Moebius
 * Caustics
 * Global illumination
+* Perturbation
+  * Color (Perlin noise)
+* Groups
+* Automatic object creation (torus with spheres, helix)
+* Spherical light (soft shadows)
+* Depth of field
+* Transparency (with percentage)
+* Refraction
+* Shadows adapt based on transparency

@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 09:15:54 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/23 20:25:48 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/01/24 08:33:22 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ t_primitive	cone(cl_float4 pos, cl_float4 direction, cl_float alpha, cl_float4 c
 	return ((t_primitive){.type = CONE, .position = pos,
 		.direction = direction, .radius = alpha * M_PI / 180.0f, .color = color,
 		.ambient = AMBIENT, .diffuse = DIFFUSE, .specular = SPECULAR,
-		.normal_perturbation = 0.0f, .perturbation = P_NONE});
+		.normal_perturbation = 0.0f, .perturbation = NONE, .reflection = 1.0f,
+		.refraction = 0.0f, .r_index = 0.0f});
 }
 
 t_primitive	cylinder(cl_float4 pos, cl_float4 direction, cl_float radius, cl_float4 color)
@@ -41,7 +42,8 @@ t_primitive	cylinder(cl_float4 pos, cl_float4 direction, cl_float radius, cl_flo
 	return ((t_primitive){.type = CYLINDER, .position = pos,
 		.direction = direction, .radius = radius, .color = color,
 		.ambient = AMBIENT, .diffuse = DIFFUSE, .specular = SPECULAR,
-		.normal_perturbation = 0.0f, .perturbation = P_NONE});
+		.normal_perturbation = 0.0f, .perturbation = NONE, .reflection = 1.0f,
+		.refraction = 0.0f, .r_index = 0.0f});
 }
 
 t_primitive	sphere(cl_float4 pos, cl_float radius, cl_float4 color)
@@ -50,15 +52,17 @@ t_primitive	sphere(cl_float4 pos, cl_float radius, cl_float4 color)
 		.direction = {.x = 0, .y = 0, .z = 1, .w = 0}, .radius = radius,
 		.color = color, .ambient = AMBIENT, .diffuse = DIFFUSE,
 		.specular = SPECULAR, .normal_perturbation = 0.0f,
-		.perturbation = CHECKERBOARD});
+		.perturbation = NONE, .reflection = 1.0f, .refraction = 0.0f,
+		.r_index = 1.00f, .transparency = 0.0f});
 }
 
 t_primitive	plane(cl_float4 pos, cl_float4 norm, cl_float4 color)
 {
 	return ((t_primitive){.type = PLANE, .position = pos, .direction = norm,
 		.radius = 0, .color = color, .ambient = AMBIENT, .diffuse = DIFFUSE,
-		.specular = SPECULAR, .normal_perturbation = 0.3f,
-		.perturbation = P_NONE});
+		.specular = SPECULAR, .normal_perturbation = 0.0f,
+		.perturbation = NONE, .reflection = 1.0f, .refraction = 0.0f,
+		.r_index = 0.0f, .transparency = 0.0f});
 }
 
 t_primitive	paraboloid(cl_float4 pos, cl_float4 norm, cl_float value, cl_float4 color)
@@ -66,7 +70,8 @@ t_primitive	paraboloid(cl_float4 pos, cl_float4 norm, cl_float value, cl_float4 
 	return ((t_primitive){.type = PARABOLOID, .position = pos, .direction = norm,
 		.radius = value, .color = color, .ambient = AMBIENT, .diffuse = DIFFUSE,
 		.specular = SPECULAR, .normal_perturbation = 0.0f,
-		.perturbation = P_NONE});
+		.perturbation = NONE, .reflection = 1.0f, .refraction = 0.0f,
+		.r_index = 0.0f});
 }
 
 t_light		light(cl_float4 pos, cl_float4 color)
@@ -177,20 +182,21 @@ void		rtv1(void)
 	cl_event	event;
 
 	argn()->screen_size = (cl_int2){.x = SW, .y = SH};
-	argn()->nb_objects = 4;
-	argn()->nb_lights = 1;
+	argn()->nb_objects = 3;
+	argn()->nb_lights = 3;
 	argn()->gamma = 0.5f;
 	argn()->filter = NONE;
 	argn()->antialias = 1;
 	*prim() = (t_primitive*)ft_malloc(sizeof(t_primitive) * argn()->nb_objects);
 	*lights() = (t_light*)ft_malloc(sizeof(t_light) * argn()->nb_lights);
-	prim()[0][0] = cone((cl_float4){.x = 0, .y = 0, .z = 800, .w = 0}, (cl_float4){.x = 0, .y = 1, .z = 0, .w = 0}, 10, (cl_float4){.x = 1, .y = 0, .z = 0, .w = 0});
-	prim()[0][1] = sphere((cl_float4){.x = -150, .y = 0, .z = 500, .w = 0}, 200, (cl_float4){.x = 0, .y = 1, .z = 0, .w = 0});
-	prim()[0][2] = plane((cl_float4){.x = 0, .y = 0, .z = 1000, .w = 0}, (cl_float4){.x = 0, .y = 0, .z = 1, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 0, .w = 0});
-	prim()[0][3] = paraboloid((cl_float4){.x = 0, .y = -200, .z = 300, .w = 0}, (cl_float4){.x = 0, .y = -1, .z = 0, .w = 0}, 100, (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
-	lights()[0][0] = light((cl_float4){.x = 0, .y = 0, .z = -100, .w = 0},  (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
-	//lights()[0][1] = light((cl_float4){.x = 0, .y = 300, .z = 600, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
-	//lights()[0][2] = light((cl_float4){.x = 0, .y = 300, .z = 100, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
+	//prim()[0][0] = cone((cl_float4){.x = 0, .y = 0, .z = 800, .w = 0}, (cl_float4){.x = 0, .y = 1, .z = 0, .w = 0}, 10, (cl_float4){.x = 1, .y = 0, .z = 0, .w = 0});
+	prim()[0][0] = sphere((cl_float4){.x = -150, .y = 0, .z = 500, .w = 0}, 200, (cl_float4){.x = 1, .y = 0, .z = 0, .w = 0});
+	prim()[0][1] = plane((cl_float4){.x = 0, .y = 0, .z = 1000, .w = 0}, (cl_float4){.x = 0, .y = 0, .z = 1, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
+	prim()[0][2] = sphere((cl_float4){.x = 300, .y = 0, .z = 500, .w = 0}, 120, (cl_float4){.x = 0, .y = 1, .z = 0, .w = 0});
+	//prim()[0][3] = paraboloid((cl_float4){.x = 0, .y = -200, .z = 300, .w = 0}, (cl_float4){.x = 0, .y = -1, .z = 0, .w = 0}, 100, (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
+	lights()[0][0] = light((cl_float4){.x = 100, .y = 0, .z = 500, .w = 0},  (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
+	lights()[0][1] = light((cl_float4){.x = 0, .y = 300, .z = 600, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
+	lights()[0][2] = light((cl_float4){.x = 0, .y = 300, .z = 100, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
 	cam()->pos = (cl_float4){.x = 0, .y = 0, .z = 0, .w = 0};
 	cam()->vp_size = (cl_int2){.x = SW, .y = SH};
 	cam()->dist = 800;

@@ -1,17 +1,27 @@
+// raytracer kernel is pretty cool actually
+
 typedef enum	e_prim_type
 {
 	SPHERE = 0, PLANE = 1, CONE = 2, CYLINDER = 3, PARABOLOID = 4
 }				t_prim_type;
 
+#define NONE 0
+#define NO_PRIMITIVE -1
+
 typedef enum	e_color_filter
 {
-	NONE = 0, SEPIA = 1, GRAYSCALE = 2, CARTOON = 3
+	SEPIA = 1, GRAYSCALE = 2, CARTOON = 3
 }				t_color_filter;
 
 typedef enum	e_perturbation
 {
-	CHECKERBOARD = 1, SINE = 2, PERLIN = 3
+	CHECKERBOARD = 1, SINE = 2
 }				t_perturbation;
+
+typedef enum	e_ray_type
+{
+	ORIGIN = 0, REFLECTED = 1, REFRACTED = 2
+}				t_ray_type;
 
 typedef struct	s_primitive
 {
@@ -23,6 +33,10 @@ typedef struct	s_primitive
 	float			ambient;
 	float			diffuse;
 	float			specular;
+	float			reflection;
+	float			refraction;
+	float			transparency;
+	float			r_index;
 	float			normal_perturbation;
 	t_perturbation	perturbation;
 }				t_primitive;
@@ -46,12 +60,12 @@ typedef struct	s_argn		//structure containing the limit of out, rays and objects
 
 typedef struct	s_camera	//note: yes, this structure is not equivalent to s_camera in rtv1.h
 {
-	float4	pos;			//
-	float4	dir;			//
-	float4	up;				//
-	float4	right;			//
-	float4	vpul;			//
-	int2	vp_size;		//
+	float4	pos;
+	float4	dir;
+	float4	up;
+	float4	right;
+	float4	vpul;
+	int2	vp_size;
 }				t_camera;
 
 typedef struct	s_ray
@@ -59,6 +73,12 @@ typedef struct	s_ray
 	float4		origin;
 	float4		direction;
 	float		dist;
+	float		weight;
+	int			depth;
+	int			primitive_id;
+	t_ray_type	type;
+	float		r_index;
+	float4		transparency;
 }				t_ray;
 
 //j'aime les commentaires, et vous? :p
@@ -79,6 +99,7 @@ int		solve_quadratic(float a, float b, float c, float *dist);
 float4	get_normal(__global t_primitive *obj, float4 point);
 float4	phong(float4 dir, float4 norm);
 int		color_to_int(float4 color);
+int		raytrace(t_ray *ray, float4 *color, float4 *point, int *result, __global t_primitive *objects, __global t_light *lights, __global t_argn *argn);
 
 #if 0
 # define DOT local_dot
@@ -133,6 +154,16 @@ inline float	local_length(float4 v)
 
 #ifndef SHADOW_E
 # define SHADOW_E 0.1f
+#endif
+
+// maximum ray depth
+#ifndef TRACE_DEPTH
+# define TRACE_DEPTH 3
+#endif
+
+// TODO: generate this in the client
+#ifndef MAX_RAY_COUNT
+# define MAX_RAY_COUNT (1 << TRACE_DEPTH)
 #endif
 
 // minimum direct lighting coefficient
@@ -241,9 +272,9 @@ int		solve_quadratic(float a, float b, float c, float *dist)
 	float x1 = (b - delta) / (2.0f * a);
 	float x2 = (b + delta) / (2.0f * a);
 
-	if (x1 <= EPSILON) // use x2 is x1 is negative
+	if (x1 < EPSILON) // use x2 is x1 is negative
 	{
-		if (x2 <= EPSILON) // both are negative
+		if (x2 < EPSILON) // both are negative
 			return (0);
 		else if (x2 < *dist) // x2 positive
 		{
@@ -259,6 +290,7 @@ int		solve_quadratic(float a, float b, float c, float *dist)
 	return (0);
 }
 
+// TODO: implement limit structures
 inline int		limit(__global t_primitive *obj, float4 point)
 {
 	//if (point.y > 150)
@@ -359,7 +391,7 @@ inline float4	color_perturbation(float4 color, __global t_primitive *prim, float
 				color /= 2.0f;
 			break;
 		case SINE:
-			color *= fabs(cos((pos.x + pos.y) * 10 * CHECKER_SIZE));
+			color *= fabs(cos((pos.x + pos.y) * 36 * CHECKER_SIZE) - 1);
 			break;
 	}
 	return (color);
@@ -407,6 +439,133 @@ inline float4		color_filter(float4 color, t_color_filter filter)
 	return (out);
 }
 
+int		raytrace(t_ray *ray, float4 *color, float4 *point, int *result, __global t_primitive *objects, __global t_light *lights, __global t_argn *argn)
+{
+	int id = NO_PRIMITIVE;
+	int cur;
+	int temp;
+
+	// hit test against all primitives
+	for (cur = 0; cur < argn->nb_objects; cur++)
+	{
+		if ((temp = intersect(&objects[cur], ray, &ray->dist)))
+		{
+			id = cur;
+			*result = temp;
+		}
+	}
+
+	// if we hit something, get relevant info
+	__global t_primitive *prim;
+	float4 collision = (float4)(0, 0, 0, 0);
+	float4 norm;
+
+	float4 cur_color = (float4)(0, 0, 0, 0);
+	float4 add_color = (float4)(0, 0, 0, 0);
+
+	if (id != NO_PRIMITIVE)
+	{
+		// we have our primitive!
+		prim = &objects[id];
+		collision = ray->origin + ray->direction * ray->dist;
+
+		// get the normal for this intersection point
+		norm = get_normal(prim, collision);
+
+		// invert the normal if we're "inside" the primitive
+		if (*result == -1)
+			norm = -norm;
+
+		// add ambient light
+		cur_color += prim->color * prim->ambient;
+	}
+
+	// lights, maestro!
+	int cur_l;
+	t_ray ray_l;
+	float dist_l;
+	float scal;
+	for (cur_l = 0; cur_l < argn->nb_lights; cur_l++)
+	{
+		t_light light = lights[cur_l];
+
+		// calculate direct lighting
+		if (light.direct > 0)
+		{
+			dist_l = LENGTH(light.position - ray->origin);
+			ray_l.direction = NORMALIZE(light.position - ray->origin);
+			ray_l.origin = ray->origin;
+
+			// if our light is closer than intersect
+			if (dist_l < ray->dist)
+			{
+				// if our light is between us and the object, dot will
+				// be positive
+				scal = DOT(ray_l.direction, ray->direction);
+				if (scal > EPSILON)
+				{
+					scal = pow(scal, dist_l / 100);
+					if (scal > MIN_DIRECT)
+						add_color += (light.color * (scal - MIN_DIRECT) / (1.0f - MIN_DIRECT)) * light.direct;
+				}
+			}
+		}
+
+		// if we didn't hit anything, don't calculate light for object
+		if (id == NO_PRIMITIVE)
+			continue;
+
+		// check if our light source is blocked by an object
+		// shadows start a tiny amount from the actual sphere to prevent
+		// rounding errors
+		dist_l = LENGTH(light.position - collision);
+		ray_l.direction = NORMALIZE(light.position - collision);
+		ray_l.origin = collision + ray_l.direction * SHADOW_E;
+		int shadow = 0;
+
+		float dist = MAXFLOAT;
+		for (cur = 0; cur < argn->nb_objects; cur++)
+		{
+			if ((shadow = intersect(&objects[cur], &ray_l, &dist)) > 0)
+			{
+				if (dist > EPSILON && dist < dist_l) // it is between us
+					break ;
+				else // it is behind us
+					shadow = 0;
+			}
+		}
+
+		// did we hit something? it's a shadow... spooky!
+		if (shadow)
+			continue ;
+
+		// diffuse lighting
+		if (prim->diffuse > 0 && (scal = DOT(ray_l.direction, norm)) > EPSILON)
+			cur_color += prim->color * light.color * scal * prim->diffuse;
+
+		// specular highlights (needs pow to make the curve sharper)
+		float4 ir = phong(-ray_l.direction, norm);
+		if (prim->specular > 0 && scal > EPSILON && (scal = DOT(ray_l.direction, ir)) > EPSILON)
+			cur_color += light.color * pow(scal, dist_l / 40) * prim->specular;
+	}
+
+	// calculate final color
+	//*color += clamp(cur_color / ((float)argn->nb_lights * argn->gamma), 0.0f, 1.0f);
+	*color += cur_color / ((float)argn->nb_lights * argn->gamma);
+	// perturbation if we hit something
+	if (id != NO_PRIMITIVE)
+		*color = color_perturbation(*color, prim, norm);
+	// added color
+	//*color += clamp(add_color, 0.0f, 1.0f);
+	*color += add_color;
+
+	*point = collision;
+	return (id);
+}
+
+#define PUSH_RAY(q, r, c) q[c++] = r;
+#define POP_RAY(q, r, c) r = q[--c];
+
 __kernel void	example(							//main kernel, called for each ray
 		__global int *out,				//int bitmap, his size is equal to screen_size.x * screen_size.y
 		__global t_argn *argn,			//structure containing important info on how to acces out, rays and objects
@@ -425,12 +584,15 @@ __kernel void	example(							//main kernel, called for each ray
 	float x = (float)(i % argn->screen_size.x);
 	float y = (float)(i / argn->screen_size.x);
 
-	t_ray ray;
-	ray.origin = cam->pos;
+	t_ray		ray;
+
+	// ray queue to emulate recursion
+	t_ray		queue[MAX_RAY_COUNT];
+	int			queue_pos = 0;
 
 	int aa_x;
 	int aa_y;
-	int samples = 0;
+	int count = 0;
 
 	float4 color = (float4)(0, 0, 0, 0);
 
@@ -445,130 +607,106 @@ __kernel void	example(							//main kernel, called for each ray
 			aa.x = x + (aa_x - argn->antialias / 2.0f) / argn->antialias;
 			aa.y = y + (aa_y - argn->antialias / 2.0f) / argn->antialias;
 
+			// get our subray
 			ray.direction = NORMALIZE(cam->vpul + NORMALIZE(cam->right) * (aa.x) - NORMALIZE(cam->up) * (aa.y));
+			ray.origin = cam->pos;
 			ray.dist = MAXFLOAT;
+			ray.type = ORIGIN;
+			ray.depth = 0;
+			ray.weight = 1.0f;
+			ray.primitive_id = NO_PRIMITIVE;
+			ray.r_index = 1.0f;
+			ray.transparency = (float4)(1, 1, 1, 0);
 
-			// intersection check
-			int id = -1;
-			int cur;
-			int	t_hit;
-			int s_hit;
-			for (cur = 0; cur < argn->nb_objects; cur++)
+			PUSH_RAY(queue, ray, queue_pos);
+
+			// start iterating over our emulated stack
+			while (queue_pos > 0)
 			{
-				if ((t_hit = intersect(&objects[cur], &ray, &ray.dist)))
+				t_ray cur_ray;
+				float4 cur_color = (float4)(0, 0, 0, 0);
+				float4 collision;
+
+				// get our ray
+				POP_RAY(queue, cur_ray, queue_pos);
+
+				// raytrace!
+				int result;
+				int cur_id = raytrace(&cur_ray, &cur_color, &collision, &result, objects, lights, argn);
+
+				// do things based on ray type
+				switch (cur_ray.type)
 				{
-					id = cur;
-					s_hit = t_hit;
+					case ORIGIN:
+						color += cur_color * cur_ray.weight;
+						break;
+					case REFLECTED:
+						color += cur_color * cur_ray.weight * objects[cur_ray.primitive_id].color * cur_ray.transparency;
+						break;
+					case REFRACTED:
+						color += cur_color * cur_ray.weight * cur_ray.transparency;
+						break;
 				}
-			}
+				count++;
 
-			// calculate direct lighting
-			__global t_primitive *prim;
-			float4 collision;
-			float4 norm;
-
-			float4 cur_color = (float4)(0, 0, 0, 0);
-			float4 add_color = (float4)(0, 0, 0, 0);
-
-			// if we hit something, get the related variables
-			if (id != -1)
-			{
-				prim = &objects[id];
-				collision = ray.origin + ray.direction * ray.dist;
-
-				// get the normal for this intersection point
-				norm = get_normal(prim, collision);
-
-				// invert the normal if we're "inside" the primitive
-				if (s_hit == -1)
-					norm = -norm;
-
-				// add ambient light
-				cur_color += prim->color * prim->ambient;
-			}
-
-			// lights, maestro!
-			int cur_l;
-			t_ray ray_l;
-			float dist_l;
-			float scal;
-			for (cur_l = 0; cur_l < argn->nb_lights; cur_l++)
-			{
-				t_light light = lights[cur_l];
-
-				// calculate direct lighting
-				if (light.direct > EPSILON)
-				{
-					dist_l = LENGTH(light.position - ray.origin);
-					ray_l.direction = NORMALIZE(light.position - ray.origin);
-					ray_l.origin = ray.origin;
-
-					// if our light is closer than intersect
-					if (dist_l < ray.dist)
-					{
-						// if our light is between us and the object, dot will
-						// be positive
-						scal = DOT(ray_l.direction, ray.direction);
-						if (scal > EPSILON)
-						{
-							scal = pow(scal, dist_l / 100);
-							if (scal > MIN_DIRECT)
-								add_color += (light.color * (scal - MIN_DIRECT) / (1.0f - MIN_DIRECT)) * light.direct;
-						}
-					}
-				}
-
-				// if we didn't hit anything, don't calculate light for object
-				if (id == -1)
+				// if we have exceeded our depth or didnt hit anything, skip
+				if (cur_ray.depth >= TRACE_DEPTH || cur_id == -1)
 					continue;
 
-				// check if our light source is blocked by an object
-				// shadows start a tiny amount from the actual sphere to prevent
-				// rounding errors
-				dist_l = LENGTH(light.position - collision);
-				ray_l.direction = NORMALIZE(light.position - collision);
-				ray_l.origin = collision + ray_l.direction * SHADOW_E;
-				int hit = 0;
-
-				float dist = MAXFLOAT;
-				for (cur = 0; cur < argn->nb_objects; cur++)
+				// beautiful reflections
+				float refl = objects[cur_id].reflection;
+				float4 normal = get_normal(&objects[cur_id], collision);
+				if (refl > 0.0f)
 				{
-					if ((hit = intersect(&objects[cur], &ray_l, &dist)) > 0)
-					{
-						if (dist > EPSILON && dist < dist_l) // it is between us
-							break ;
-						else // it is behind us
-							hit = 0;
-					}
+					float4 reflect = cur_ray.direction - 2.0f * DOT(cur_ray.direction, normal) * normal;
+
+					t_ray r_ray;
+					r_ray.dist = MAXFLOAT;
+					r_ray.origin = collision + reflect * SHADOW_E;
+					r_ray.direction = reflect;
+					r_ray.depth = cur_ray.depth + 1;
+					r_ray.weight = refl * cur_ray.weight;
+					r_ray.type = REFLECTED;
+					r_ray.primitive_id = cur_id;
+					r_ray.r_index = cur_ray.r_index;
+					r_ray.transparency = cur_ray.transparency;
+
+					if (r_ray.weight > EPSILON)
+						PUSH_RAY(queue, r_ray, queue_pos);
 				}
 
-				// did we hit something? then it's definitely a shadow, hey!
-				if (hit)
-					continue ;
-
-				// diffuse lighting
-				if ((scal = DOT(ray_l.direction, norm)) > EPSILON)
-					cur_color += prim->color * light.color * scal * prim->diffuse;
-
-				// specular highlights (needs pow to make the curve sharper)
-				float4 ir = phong(-ray_l.direction, norm);
-				if (scal > EPSILON && (scal = DOT(ray_l.direction, ir)) > EPSILON)
-					cur_color += light.color * pow(scal, dist_l / 40) * prim->specular;
+				// refract it yeah :(?
+				/*
+				float refr = objects[cur_id].refraction;
+				if (refr > 0.0f)
+				{
+					float r_index = objects[cur_id].r_index;
+					float n = cur_ray.r_index / r_index;
+					normal *= result;
+					float cosi = -DOT(normal, cur_ray.direction);
+					float cost2 = 1.0f - n * n * (1.0f - cosi * cosi);
+					if (cost2 > EPSILON)
+					{
+						float4 refract = n * cur_ray.direction + (n * cosi - sqrt(cost2)) * normal;
+						t_ray r_ray;
+						r_ray.dist = MAXFLOAT;
+						r_ray.origin = collision + refract * EPSILON;
+						r_ray.direction = refract;
+						r_ray.depth = cur_ray.depth + 1;
+						r_ray.weight = cur_ray.weight;
+						r_ray.type = REFRACTED;
+						r_ray.primitive_id = cur_id;
+						r_ray.r_index = r_index;
+						r_ray.transparency = cur_ray.transparency * (exp(objects[cur_id].color * (-cur_ray.dist))) * objects[cur_id].transparency;
+						PUSH_RAY(queue, r_ray, queue_pos);
+					}
+				}*/
 			}
-
-			// calculate final color
-			color += clamp(cur_color / ((float)argn->nb_lights * argn->gamma), 0.0f, 1.0f);
-			// perturbation if we hit something
-			if (prim)
-				color = color_perturbation(color, prim, norm);
-			// added color
-			color += clamp(add_color, 0.0f, 1.0f);
-			samples++;
 		}
 	}
 
 	// divide by the total amount of samples
-	color /= samples;
+	color /= count;
 
 	// apply color filter
 	if (argn->filter != NONE)

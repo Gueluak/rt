@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 00:05:50 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/22 03:39:33 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/01/24 08:01:08 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,15 @@ typedef enum	e_prim_type
 	SPHERE = 0, PLANE = 1, CONE = 2, CYLINDER = 3, PARABOLOID = 4
 }				t_prim_type;
 
+# define NONE 0
 typedef enum	e_color_filter
 {
-	NONE = 0, SEPIA = 1, GRAYSCALE = 2, CARTOON = 3
+	SEPIA = 1, GRAYSCALE = 2, CARTOON = 3
 }				t_color_filter;
 
 typedef enum	e_perturbation
 {
-	P_NONE = 0, CHECKERBOARD = 1, SINE = 2, PERIN = 3
+	CHECKERBOARD = 1, SINE = 2, PERIN = 3
 }				t_perturbation;
 
 /*
@@ -68,6 +69,10 @@ typedef struct	s_primitive
 	cl_float		ambient;
 	cl_float		diffuse;
 	cl_float		specular;
+	cl_float		reflection;
+	cl_float		refraction;
+	cl_float		transparency;
+	cl_float		r_index;
 	cl_float		normal_perturbation;
 	t_perturbation	perturbation;
 }				t_primitive;
