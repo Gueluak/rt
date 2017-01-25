@@ -14,9 +14,12 @@ OBJDIR = ./OBJ
 
 #name of files to compile without the extension
 ITEMS = \
+		ft_json_check_array_types \
+		ft_json_check_string \
 		ft_json_evaluate_array_size \
 		ft_json_evaluate_object_size \
 		ft_json_evaluate_value_type \
+		ft_json_free \
 		ft_json_new_array \
 		ft_json_new_number \
 		ft_json_new_object \
@@ -25,8 +28,9 @@ ITEMS = \
 		ft_json_new_value \
 		ft_json_pack_value \
 		ft_json_parse_src \
-		ft_json_print \
-		ft_json_free
+		ft_json_print_type \
+		ft_json_search_pair_in_object \
+		ft_json_string
 
 #variables for Linux
 ifeq ($(shell uname),Linux)

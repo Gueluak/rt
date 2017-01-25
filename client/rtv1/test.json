@@ -6,7 +6,7 @@
 			"direct": 1.0,
 			"global": 1.0
 		},
-		"global_illumination_samples": 32,
+		"global_illumination_samples": 16,
 		"antialias": 4,
 		"bounce_depth": 4,
 		"filter": "cartoon",
@@ -14,7 +14,11 @@
 	},
 	"camera": {
 		"position": [0, 0, 0],
-		"direction": [0, 0, 1]
+		"direction": [0, 0, 1],
+		"up": [0, 1, 0],
+		"right": [1, 0, 0],
+		"vp_size": [1921, 1087.0],
+		"dist": 800
 	},
 	"materials": {
 		"red": {
@@ -28,8 +32,14 @@
 				"normal": "sine",
 				"color": "sine"
 			},
-			"texture": "wood.bmp",
-			"bumpmap": "wood_bump.bmp"
+			"texture": {
+				"file": "wood.bmp",
+				"size": [100, 100]
+			},
+			"bumpmap": {
+				"file": "wood_bump.bmp",
+				"size": [100, 100]
+			}
 		}
 	},
 	"groups": [
@@ -107,7 +117,7 @@
 			"radius": 20,
 			"material": "red",
 			"limit": {
-				"type": "absolute",
+				"relative": false,
 				"high": [0, 0, 0],
 				"low": [0, 0, 0]
 			}

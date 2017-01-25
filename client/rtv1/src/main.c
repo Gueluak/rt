@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 09:15:54 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/17 22:31:35 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/01/22 02:36:48 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,30 +171,30 @@ int			keys(t_ftx_data *data)
 
 	(void)data;
 	size = SW * SH;
-//	if (data->keymap[KEY_W].status == FTX_KEY_STATUS_PRESSED)
-//		cam()->pos.y += 10;
-//	if (data->keymap[KEY_S].status == FTX_KEY_STATUS_PRESSED)
-//		cam()->pos.y -= 10;
-//	if (data->keymap[KEY_D].status == FTX_KEY_STATUS_PRESSED)
-//		cam()->pos.x += 10;
-//	if (data->keymap[KEY_A].status == FTX_KEY_STATUS_PRESSED)
-//		cam()->pos.x -= 10;
-//	if (data->keymap[KEY_Q].status == FTX_KEY_STATUS_PRESSED)
-//		cam()->pos.z += 10;
-//	if (data->keymap[KEY_E].status == FTX_KEY_STATUS_PRESSED)
-//		cam()->pos.z -= 10;
-//	if (data->keymap[KEY_LEFT].status == FTX_KEY_STATUS_PRESSED)
-//		rotate_cam(-0.05, ft_vector(0, 1, 0));
-//	if (data->keymap[KEY_RIGHT].status == FTX_KEY_STATUS_PRESSED)
-//		rotate_cam(0.05, ft_vector(0, 1, 0));
-//	if (data->keymap[KEY_UP].status == FTX_KEY_STATUS_PRESSED)
-//		rotate_cam(-0.05, ft_vector(1, 0, 0));
-//	if (data->keymap[KEY_DOWN].status == FTX_KEY_STATUS_PRESSED)
-//		rotate_cam(0.05, ft_vector(1, 0, 0));
+	if (data->keymap[KEY_W].status == FTX_KEY_STATUS_PRESSED)
+		cam()->pos.y += 10;
+	if (data->keymap[KEY_S].status == FTX_KEY_STATUS_PRESSED)
+		cam()->pos.y -= 10;
+	if (data->keymap[KEY_D].status == FTX_KEY_STATUS_PRESSED)
+		cam()->pos.x += 10;
+	if (data->keymap[KEY_A].status == FTX_KEY_STATUS_PRESSED)
+		cam()->pos.x -= 10;
+	if (data->keymap[KEY_Q].status == FTX_KEY_STATUS_PRESSED)
+		cam()->pos.z += 10;
+	if (data->keymap[KEY_E].status == FTX_KEY_STATUS_PRESSED)
+		cam()->pos.z -= 10;
+	if (data->keymap[KEY_LEFT].status == FTX_KEY_STATUS_PRESSED)
+		rotate_cam(-0.05, ft_vector(0, 1, 0));
+	if (data->keymap[KEY_RIGHT].status == FTX_KEY_STATUS_PRESSED)
+		rotate_cam(0.05, ft_vector(0, 1, 0));
+	if (data->keymap[KEY_UP].status == FTX_KEY_STATUS_PRESSED)
+		rotate_cam(-0.05, ft_vector(1, 0, 0));
+	if (data->keymap[KEY_DOWN].status == FTX_KEY_STATUS_PRESSED)
+		rotate_cam(0.05, ft_vector(1, 0, 0));
 	if (out.data == NULL)
 		out.data = (int*)ft_memalloc(sizeof(int) * SW * SH);
-//	ftocl_clear_current_kernel_arg(4);													//leaks?
-//	ftocl_set_current_kernel_arg(CL_MEM_READ_ONLY, 4, sizeof(t_camera), (void*)cam());	//leaks?
+	ftocl_clear_current_kernel_arg(4);													//leaks?
+	ftocl_set_current_kernel_arg(CL_MEM_READ_ONLY, 4, sizeof(t_camera), (void*)cam());	//leaks?
 
 //	ftocl_set_current_kernel_arg(CL_MEM_READ_ONLY, 2, sizeof(t_primitive) *
 //		argn()->nb_objects, (void*)*prim());
@@ -205,11 +205,11 @@ int			keys(t_ftx_data *data)
 
 //	printf("%p\n", ftx_data()->focused_window->vbuffer);
 
-//	ftx_fill_image(ftx_data()->focused_window->vbuffer, 0x00FFFF, 1);
-//	ftx_put_ubmp_img(ftx_data()->focused_window->vbuffer, ft_point(0, 0), &out,
-//					NOMASK);
+	ftx_fill_image(ftx_data()->focused_window->vbuffer, 0x00FFFF, 1);
+	ftx_put_ubmp_img(ftx_data()->focused_window->vbuffer, ft_point(0, 0), &out,
+					NOMASK);
 
-//	ftx_refresh_window(ftx_data()->focused_window);
+	ftx_refresh_window(ftx_data()->focused_window);
 //	ft_free(out.data);
 	return (0);
 }
@@ -265,14 +265,18 @@ int			main(const int argc, char **argv, char **env)
 	if (argc != 2)
 		ft_end(0 * printf("\nUsage: \t%s/%s <scene.json>\n\n", ft_pwd(),
 										ft_path_name(argv[0])));
-	if ((fd = open(OCL_SOURCE_PATH, O_RDONLY)) == -1)
+	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		ft_end(-1);
-	ftocl_make_program(ft_str_to_id64("rtv1"),
-		ft_str_clear_commentaries(ft_readfile(fd)), NULL);
+	parser(ft_readfile(fd));
 	close(fd);
-	if (!(fd = ftocl_set_current_kernel(ft_str_to_id64("example"))))
-		rtv1();
-	if (fd == 1)
-		ft_end(0 * printf("kernel was not found\n"));
+//	if ((fd = open(OCL_SOURCE_PATH, O_RDONLY)) == -1)
+//		ft_end(-1);
+//	ftocl_make_program(ft_str_to_id64("rtv1"),
+//		ft_str_clear_commentaries(ft_readfile(fd)), NULL);
+//	close(fd);
+//	if (!(fd = ftocl_set_current_kernel(ft_str_to_id64("example"))))
+//		rtv1();
+//	if (fd == 1)
+//		ft_end(0 * printf("kernel was not found\n"));
 	ft_end(0);
 }

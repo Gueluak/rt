@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/14 18:48:15 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/19 23:24:29 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/01/25 10:27:14 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,14 @@ typedef enum e_json_value_type	t_json_value_type;
 
 enum							e_json_value_type
 {
-	none, null, boolean, array, object, integer, number, string
+	none = 0x00,
+	null = 0x01,
+	boolean = 0x02,
+	array = 0x04,
+	object = 0x08,
+	integer = 0x10,
+	number = 0x20,
+	string = 0x40
 };
 
 /*
@@ -125,16 +132,22 @@ unsigned long					ft_json_evaluate_object_size(const char *src,
 t_json_pair						*ft_json_new_pair(const char *src,
 		const unsigned long length, unsigned long *pos, t_json_value *parent);
 
-int								ft_json_print(t_json_value *node);
-int								ft_json_print_array(t_json_array *array);
-int								ft_json_print_object(t_json_object *obj);
-int								ft_json_print_pair(t_json_pair *pair);
-int								ft_json_print_string(t_json_string *str);
-
 void							ft_json_free(t_json_value *node);
 void							ft_json_free_string(t_json_string *string);
 void							ft_json_free_array(t_json_array *array);
 void							ft_json_free_object(t_json_object *object);
 void							ft_json_free_pair(t_json_pair *pair);
+
+t_json_value					*ft_json_search_pair_in_object(
+						const t_json_value *object, const t_json_string key);
+
+t_json_string					*ft_json_string(const char *str);
+
+t_json_value_type				ft_json_print_type(t_json_value *node);
+int								ft_json_check_array_types(
+							const t_json_value *node, const unsigned long size,
+							const t_json_value_type *types);
+unsigned int					ft_json_check_string(t_json_value *v,
+					const int nb_strings, char **str, const int default_return);
 
 #endif

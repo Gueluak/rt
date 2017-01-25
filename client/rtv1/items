@@ -1,8 +1,0 @@
-ITEMS = \
-		argn \
-		cam \
-		main \
-		prim \
-		ray_plane \
-		temp \
-		update_kernel_args \

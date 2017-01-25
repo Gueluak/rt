@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_int_swap.c                                      :+:      :+:    :+:   */
+/*   ft_clampd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/02 12:44:51 by hmartzol          #+#    #+#             */
-/*   Updated: 2016/11/02 12:45:18 by hmartzol         ###   ########.fr       */
+/*   Created: 2017/01/24 03:52:37 by hmartzol          #+#    #+#             */
+/*   Updated: 2017/01/24 03:52:54 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	ft_int_swap(int *a, int *b)
+double				ft_clampd(double v, double min, double max)
 {
-	int t;
-
-	t = *a;
-	*a = *b;
-	*b = t;
+	if (max < min)
+		ft_swapd(&max, &min);
+	if (v < min)
+		return (min);
+	if (v > max)
+		return (max);
+	return (v);
 }

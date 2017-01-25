@@ -1821,3 +1821,429 @@ Log ended
 New log started
 Initializing OpenCL environement...
 Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+[ft_error] - kernel arg can't be created or is already set
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Initializing OpenCL environement...
+Log ended
+New log started
+Log ended
+New log started
+New log started
+New log started
+New log started
+New log started
+New log started
+New log started
+New log started
+New log started
+New log started
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+node is of type: 'array'
+Log ended
+New log started
+node is of type: 'object'
+node is of type: 'object'
+node is of type: 'array'
+Log ended
+New log started
+node is of type: 'object'
+node is of type: 'object'
+node is of type: 'array'
+Log ended
+New log started
+node is of type: 'object'
+node is of type: 'object'
+node is of type: 'array'
+New log started
+node is of type: 'object'
+node is of type: 'object'
+node is of type: 'array'
+Log ended
+New log started
+node is of type: 'object'
+node is of type: 'object'
+node is of type: 'array'
+Log ended
+New log started
+node is of type: 'object'
+node is of type: 'object'
+node is of type: 'array'
+Log ended
+New log started
+node is of type: 'object'
+node is of type: 'object'
+node is of type: 'array'
+Log ended
+New log started
+node is of type: 'object'
+node is of type: 'object'
+node is of type: 'array'
+Log ended
+New log started
+node is of type: 'object'
+node is of type: 'object'
+node is of type: 'array'
+Log ended
+New log started
+node is of type: 'object'
+node is of type: 'object'
+node is of type: 'array'
+Log ended
+New log started
+node is of type: 'object'
+node is of type: 'object'
+node is of type: 'array'
+Log ended
+New log started
+node is of type: 'object'
+node is of type: 'object'
+node is of type: 'array'
+Log ended
+New log started
+node is of type: 'object'
+node is of type: 'object'
+node is of type: 'array'
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+node is NULL pointed
+Log ended
+New log started
+node is of type: 'string'
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+New log started
+Log ended
+New log started
+New log started
+New log started
+New log started
+New log started
+New log started
+New log started
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+New log started
+New log started
+New log started
+New log started
+Log ended
+New log started
+Log ended
+New log started
+New log started
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+[ft_error] - Invalid json values
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+New log started
+New log started
+New log started
+New log started
+Log ended
+New log started
+Log ended
+New log started
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+New log started
+Log ended
+New log started
+Log ended
+New log started
+New log started
+Log ended
+New log started
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
+New log started
+Log ended
