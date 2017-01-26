@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 09:15:54 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/22 02:36:48 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/01/26 00:30:46 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,29 +28,28 @@ t_light	**lights(void)
 	return (&data);
 }
 
-t_primitive	cone(cl_float4 pos, cl_float4 direction, cl_float alpha, cl_float4 color)
+t_primitive	cone(cl_float4 pos, cl_float4 direction, cl_float alpha)
 {
 	return ((t_primitive){.type = CONE, .position = pos,
-		.direction = direction, .radius = alpha * M_PI / 180.0f, .color = color});
+		.direction = direction, .radius = alpha * M_PI / 180.0f});
 }
 
-t_primitive	cylinder(cl_float4 pos, cl_float4 direction, cl_float radius, cl_float4 color)
+t_primitive	cylinder(cl_float4 pos, cl_float4 direction, cl_float radius)
 {
 	return ((t_primitive){.type = CYLINDER, .position = pos,
-		.direction = direction, .radius = radius, .color = color});
+		.direction = direction, .radius = radius});
 }
 
-t_primitive	sphere(cl_float4 pos, cl_float radius, cl_float4 color)
+t_primitive	sphere(cl_float4 pos, cl_float radius)
 {
 	return ((t_primitive){.type = SPHERE, .position = pos,
-		.direction = {.x = 0, .y = 0, .z = 1, .w = 0}, .radius = radius,
-		.color = color});
+		.direction = {.x = 0, .y = 0, .z = 1, .w = 0}, .radius = radius});
 }
 
-t_primitive	plane(cl_float4 pos, cl_float4 norm, cl_float4 color)
+t_primitive	plane(cl_float4 pos, cl_float4 norm)
 {
 	return ((t_primitive){.type = PLANE, .position = pos,
-		.direction = norm, .radius = 0, .color = color});
+		.direction = norm, .radius = 0});
 }
 
 t_light		light(cl_float4 pos, cl_float4 color)
@@ -224,15 +223,15 @@ void		rtv1(void)
 	argn()->nb_lights = 3;
 	*prim() = (t_primitive*)ft_malloc(sizeof(t_primitive) * argn()->nb_objects);
 	*lights() = (t_light*)ft_malloc(sizeof(t_light) * argn()->nb_lights);
-	prim()[0][0] = cone((cl_float4){.x = 0, .y = 0, .z = 800, .w = 0}, (cl_float4){.x = 0, .y = 1, .z = 0, .w = 0}, 20, (cl_float4){.x = 1, .y = 0, .z = 0, .w = 0});
-	prim()[0][1] = sphere((cl_float4){.x = -150, .y = 0, .z = 500, .w = 0}, 200, (cl_float4){.x = 0, .y = 1, .z = 0, .w = 0});
-	prim()[0][2] = plane((cl_float4){.x = 0, .y = 0, .z = 1000, .w = 0}, (cl_float4){.x = 0, .y = 0, .z = 1, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 0, .w = 0});
-	prim()[0][3] = cylinder((cl_float4){.x = 150, .y = 0, .z = 300, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 0, .w = 0}, 20, (cl_float4){.x = 0, .y = 0, .z = 1, .w = 0});
+	prim()[0][0] = cone((cl_float4){.x = 0, .y = 0, .z = 800, .w = 0}, (cl_float4){.x = 0, .y = 1, .z = 0, .w = 0}, 20);
+	prim()[0][1] = sphere((cl_float4){.x = -150, .y = 0, .z = 500, .w = 0}, 200);
+	prim()[0][2] = plane((cl_float4){.x = 0, .y = 0, .z = 1000, .w = 0}, (cl_float4){.x = 0, .y = 0, .z = 1, .w = 0});
+	prim()[0][3] = cylinder((cl_float4){.x = 150, .y = 0, .z = 300, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 0, .w = 0}, 20);
 	lights()[0][0] = light((cl_float4){.x = 0, .y = 0, .z = -100, .w = 0},  (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
 	lights()[0][1] = light((cl_float4){.x = 0, .y = 300, .z = 600, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
 	lights()[0][2] = light((cl_float4){.x = 0, .y = 30, .z = 500, .w = 0}, (cl_float4){.x = 1, .y = 1, .z = 1, .w = 0});
 	cam()->pos = (cl_float4){.x = 0, .y = 0, .z = 0, .w = 0};
-	cam()->vp_size = (cl_int2){.x = SW, .y = SH};
+	cam()->vp_size = (cl_float2){.x = SW, .y = SH};
 	cam()->dist = 800;
 	calc_vpul();
 	out.size = ft_point(SW, SH);
@@ -260,6 +259,7 @@ void		rtv1(void)
 int			main(const int argc, char **argv, char **env)
 {
 	int		fd;
+	char	*src;
 
 	ft_init(env);
 	if (argc != 2)
@@ -267,8 +267,9 @@ int			main(const int argc, char **argv, char **env)
 										ft_path_name(argv[0])));
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		ft_end(-1);
-	parser(ft_readfile(fd));
+	parser(src = ft_readfile(fd));
 	close(fd);
+	ft_free(src);
 //	if ((fd = open(OCL_SOURCE_PATH, O_RDONLY)) == -1)
 //		ft_end(-1);
 //	ftocl_make_program(ft_str_to_id64("rtv1"),

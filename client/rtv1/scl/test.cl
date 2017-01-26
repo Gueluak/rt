@@ -256,6 +256,21 @@ int		color_to_int(float4 color)
 	return (int)((r << 16) + (g << 8) + b);
 }
 
+/*
+__kernel void	args(
+			__global int			*out,
+			__global t_argn			*argn,
+			__global t_primitive	*objects,
+			__global t_lights		*lights,
+			__global t_camera		*cam,
+			__global t_img_info		*img_info,
+			__global t_material		*mat,
+			__global int			*raw_bmp)
+{
+
+}
+*/
+
 __kernel void	example(							//main kernel, called for each ray
 		__global int *out,				//int bitmap, his size is equal to screen_size.x * screen_size.y
 		__global t_argn *argn,			//structure containing important info on how to acces out, rays and objects

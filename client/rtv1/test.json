@@ -1,7 +1,9 @@
 {
-	"render_options": {
+	"render_options":
+	{
 		"size": [1920, 1080],
-		"lighting": {
+		"lighting":
+		{
 			"ambient": 0.05,
 			"direct": 1.0,
 			"global": 1.0
@@ -12,7 +14,8 @@
 		"filter": "cartoon",
 		"stereoscopy": true
 	},
-	"camera": {
+	"camera":
+	{
 		"position": [0, 0, 0],
 		"direction": [0, 0, 1],
 		"up": [0, 1, 0],
@@ -20,38 +23,46 @@
 		"vp_size": [1921, 1087.0],
 		"dist": 800
 	},
-	"materials": {
-		"red": {
+	"materials":
+	{
+		"red":
+		{
 			"color": [255, 0, 0],
 			"diffuse": 1.0,
 			"specular": 1.0,
 			"reflect": 0.0,
 			"alpha": 1.0,
 			"refraction": 1.33,
-			"perturbation": {
+			"perturbation":
+			{
 				"normal": "sine",
 				"color": "sine"
 			},
-			"texture": {
-				"file": "wood.bmp",
-				"size": [100, 100]
+			"texture":
+			{
+				"file": "fractol.bmp",
+				"stretch": [100, 100]
 			},
-			"bumpmap": {
-				"file": "wood_bump.bmp",
-				"size": [100, 100]
+			"bumpmap":
+			{
+				"file": "fractol.bmp",
+				"stretch": [100, 100]
 			}
 		}
 	},
-	"groups": [
+	"groups":
+	[
 		{
 			"name": "cube",
 			"center": [0, 0, 0],
-			"objects": [
+			"objects":
+			[
 				{
 					"type": "plane",
 					"position": [-0.5, 0, 0],
 					"direction": [-1, 0, 0],
-					"limit": {
+					"limit":
+					{
 						"type": "relative",
 						"high": [null, 0.5, 0.5],
 						"low": [null, -0.5, -0.5]
@@ -61,7 +72,8 @@
 					"type": "plane",
 					"position": [0.5, 0, 0],
 					"direction": [1, 0, 0],
-					"limit": {
+					"limit":
+					{
 						"type": "relative",
 						"high": [null, 0.5, 0.5],
 						"low": [null, -0.5, -0.5]
@@ -71,7 +83,8 @@
 					"type": "plane",
 					"position": [0, -0.5, 0],
 					"direction": [0, -1, 0],
-					"limit": {
+					"limit":
+					{
 						"type": "relative",
 						"high": [0.5, null, 0.5],
 						"low": [-0.5, null, -0.5]
@@ -81,7 +94,8 @@
 					"type": "plane",
 					"position": [0, 0.5, 0],
 					"direction": [0, 1, 0],
-					"limit": {
+					"limit":
+					{
 						"type": "relative",
 						"high": [0.5, null, 0.5],
 						"low": [-0.5, null, -0.5]
@@ -91,7 +105,8 @@
 					"type": "plane",
 					"position": [0, 0, -0.5],
 					"direction": [0, 0, -1],
-					"limit": {
+					"limit":
+					{
 						"type": "relative",
 						"high": [0.5, 0.5, null],
 						"low": [-0.5, -0.5, null]
@@ -101,7 +116,8 @@
 					"type": "plane",
 					"position": [0, 0, 0.5],
 					"direction": [0, 0, 1],
-					"limit": {
+					"limit":
+					{
 						"type": "relative",
 						"high": [0.5, 0.5, null],
 						"low": [-0.5, -0.5, null]
@@ -110,23 +126,48 @@
 			]
 		}
 	],
-	"objects": [
+	"objects":
+	[
 		{
 			"type": "sphere",
 			"position": [0, 0, 200],
 			"radius": 20,
 			"material": "red",
-			"limit": {
-				"relative": false,
-				"high": [0, 0, 0],
-				"low": [0, 0, 0]
+			"limit":
+			{
+				"relative": true,
+				"high": [null, 0, 0],
+				"low": [0, null, 0]
 			}
 		},
 		{
 			"type": "plane",
 			"position": [0, -200, 0],
 			"direction": [0, 1, 0],
-			"material": "red"
+			"material":
+			{
+				"color": [127, 127, 27],
+				"diffuse": 1.0,
+				"specular": 1.0,
+				"reflect": 0.5,
+				"alpha": 1.0,
+				"refraction": 1,
+				"perturbation":
+				{
+					"normal": "none",
+					"color": "none"
+				},
+				"texture":
+				{
+					"file": "fractol.bmp",
+					"stretch": [100, 100]
+				},
+				"bumpmap":
+				{
+					"file": "fractol.bmp",
+					"stretch": [100, 100]
+				}
+			}
 		},
 		{
 			"type": "cylinder",
@@ -150,8 +191,9 @@
 			"material": "red"
 		}
 	],
-	"lights": [
+	"lights":
+	[
 		{ "position": [0, 0, 0], "color": [255, 255, 255] },
-		{ "position": [0, 0, 100], "color": [255, 255, 255] }
+		{ "position": [0, 0, 100], "color": [127, 255, 255] }
 	]
 }

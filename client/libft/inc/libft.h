@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:39:36 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/25 10:25:54 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/01/25 16:10:20 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1277,5 +1277,8 @@ void					*ft_memrchr(const void *s, int c, size_t n);
 
 char					*ft_realpath(char *path, char resolved_path[PATH_MAX]);
 char					*ft_path_clean_slashes(char *path);
+
+void					*ft_reallocf(void *ptr, size_t size_original,
+												size_t size_new);
 
 #endif

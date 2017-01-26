@@ -286,7 +286,8 @@ ITEMS = \
 		./src/path/ft_dirname \
 		./src/mem/ft_memrchr \
 		./src/path/ft_realpath \
-		./src/path/ft_path_clean_slashes
+		./src/path/ft_path_clean_slashes \
+		./src/mem/ft_reallocf
 
 #variables for Linux
 ifeq ($(shell uname),Linux)

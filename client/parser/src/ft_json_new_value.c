@@ -6,12 +6,13 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 17:40:31 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/24 00:48:41 by hmartzol         ###   ########.fr       */
+/*   Updated: 2017/01/25 15:31:56 by hmartzol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_json.h>
 #include <libft.h>
+#include <stdio.h>
 
 inline static t_json_value	*sf_json_new_value(t_json_value *parent,
 				const char *src, const unsigned long length, unsigned long *pos)
@@ -35,8 +36,9 @@ t_json_value				*ft_json_new_value(const char *src,
 	{
 		if ((tmp = ft_malloc(sizeof(int))) == NULL)
 			return (NULL);
-		(void)((*(int*)tmp = (src[*pos] == 't' && *pos + 3 < length &&
-	src[++*pos] == 'r' && src[++*pos] == 'u' && src[++*pos] == 'e')) || ++*pos);
+		(*(int*)tmp = (src[*pos] == 't' && *pos + 3 < length && src[++*pos] ==
+			'r' && src[++*pos] == 'u' && src[++*pos] == 'e')) || (*pos += 4);
+		++*pos;
 		return (ft_json_pack_value(parent, boolean, tmp));
 	}
 	if (type == null && (*pos += 4))
