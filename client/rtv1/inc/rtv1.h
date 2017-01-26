@@ -6,7 +6,7 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 00:05:50 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/24 08:01:08 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/01/26 00:56:52 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <libft.h>
 # include <libftx.h>
 # include <libftocl.h>
+# include "gui.h"
 
 # define OCL_SOURCE_PATH "./scl/test.cl"
 
@@ -102,5 +103,5 @@ t_argn			*argn(void);
 t_light			**lights(void);
 char			*readfile(int fd);
 char			*strmerge(char *a, char *b);
-
+t_window		*rt_win(void);
 #endif

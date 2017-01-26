@@ -18,7 +18,6 @@
   * Translate texture on the object
   * Use another library to read textures
 * Bump mapping textures
-
 * Red/blue 3D
 * Skybox
 

@@ -551,7 +551,7 @@ int		raytrace(t_ray *ray, float4 *color, float4 *point, int *result, __global t_
 
 	// calculate final color
 	//*color += clamp(cur_color / ((float)argn->nb_lights * argn->gamma), 0.0f, 1.0f);
-	*color += cur_color / ((float)argn->nb_lights * argn->gamma);
+	*color += clamp(cur_color / ((float)argn->nb_lights * argn->gamma), 0.0f, 1.0f);
 	// perturbation if we hit something
 	if (id != NO_PRIMITIVE)
 		*color = color_perturbation(*color, prim, norm);

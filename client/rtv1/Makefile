@@ -20,7 +20,8 @@ ITEMS = \
 		prim \
 		argn \
 		readfile \
-		strmerge
+		strmerge \
+		gui
 
 #variables for Linux
 ifeq ($(shell uname),Linux)

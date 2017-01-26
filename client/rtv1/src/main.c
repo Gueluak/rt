@@ -6,11 +6,13 @@
 /*   By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 09:15:54 by hmartzol          #+#    #+#             */
-/*   Updated: 2017/01/24 08:33:22 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/01/26 02:19:50 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rtv1.h>
+#include <stdio.h>
+#include "gui.h"
 
 int			cb_exit(int k, int s, void *p)
 {
@@ -78,8 +80,6 @@ t_light		light(cl_float4 pos, cl_float4 color)
 {
 	return ((t_light){.position = pos, .color = color, .direct = 1.0f});
 }
-
-#include <stdio.h>
 
 void		calc_vpul(void)
 {
@@ -167,13 +167,29 @@ int			keys(t_ftx_data *data)
 
 	ftocl_start_current_kernel(1, (const size_t[1]){SW * SH}, NULL);
 	ftocl_read_current_kernel_arg(0, out.data);
-	ftx_fill_image(ftx_data()->focused_window->vbuffer, 0x00FFFF, 1);
-	ftx_put_ubmp_img(ftx_data()->focused_window->vbuffer, ft_point(0, 0), &out,
+	//ftx_fill_image(rt_win()->vbuffer, 0x00FFFF, 1);
+	ftx_put_ubmp_img(rt_win()->vbuffer, ft_point(GUI_WIDTH, 0), &out,
 					NOMASK);
-	ftx_refresh_window(ftx_data()->focused_window);
+	draw_gui();
+	//ftx_refresh_window(rt_win());
 	//ft_free(out.data);
 
 	return (0);
+}
+
+int		rien(int x, int y, void *lol)
+{
+	(void)x; (void)y; (void)lol;
+	return (0);
+}
+
+t_window	*rt_win(void)
+{
+	static t_window		*window = NULL;
+
+	if (window == NULL)
+		window = ftx_new_window(ft_point(SW + GUI_WIDTH, SH), "RT", NULL);
+	return (window);
 }
 
 void		rtv1(void)
@@ -184,7 +200,7 @@ void		rtv1(void)
 	argn()->screen_size = (cl_int2){.x = SW, .y = SH};
 	argn()->nb_objects = 3;
 	argn()->nb_lights = 3;
-	argn()->gamma = 0.5f;
+	argn()->gamma = 1.0f;
 	argn()->filter = NONE;
 	argn()->antialias = 1;
 	*prim() = (t_primitive*)ft_malloc(sizeof(t_primitive) * argn()->nb_objects);
@@ -208,17 +224,16 @@ void		rtv1(void)
 	clWaitForEvents(1, &event);
 	clReleaseEvent(event);
 	ftocl_read_current_kernel_arg(0, out.data);
-	ftx_new_window(ft_point(SW, SH), "test", NULL);
-	ftx_put_ubmp_img(ftx_data()->focused_window->vbuffer, ft_point(0, 0), &out,
-					NOMASK);
+	//ftx_put_ubmp_img(rt_win()->vbuffer, ft_point(GUI_WIDTH, 0), &out,
+	//				NOMASK);
 	printf("Kernel: %.8s was succesfully loaded\n",
 				(char*)&ftocl_data()->current_kernel->id);
 	ftx_key_hook(KEY_EXIT, cb_exit, NULL);
 	//keys();
 	ftx_loop_hook(&keys);
-	ftx_set_cursor(ftx_data()->focused_window->vbuffer, 10, 10);
-	ftx_write(ftx_data()->focused_window->vbuffer, "thing\ntruc", 10, 0xFFFFFF);
-	ftx_refresh_window(ftx_data()->focused_window);
+	ftx_hook_mice_button(rt_win(), MICE_LEFT, rien, NULL);
+	init_gui(rt_win());
+	draw_gui();
 	ftx_start();
 }
 
